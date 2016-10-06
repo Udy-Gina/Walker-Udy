@@ -5,9 +5,12 @@
  */
 package princessbride;
 
+import byui.cit260.princessBride.model.FlameSpurt;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
+import byui.cit260.princessBride.model.Rodent;
 
 /**
  *
@@ -50,6 +53,34 @@ public class PrincessBride {
         
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);
+        
+        Map mapOne = new Map();
+        
+        mapOne.setColumnNumber(0);
+        mapOne.setRowNumber(0);
+        
+        String mapInfo = mapOne.toString();
+        System.out.println(mapInfo);
+        
+        Rodent rodentOne = new Rodent();
+    
+        rodentOne.setLength(0);
+        rodentOne.setHeight(0);
+        rodentOne.setCalculation(0);
+    
+       String rodentInfo = rodentOne.toString();
+       System.out.println(rodentInfo);
+       
+       FlameSpurt flameSpurtOne = new FlameSpurt ();
+       
+      flameSpurtOne.setBaseWidth(0);
+      flameSpurtOne.setBaseLength(0);
+      flameSpurtOne.setBaseHeight(0);
+      flameSpurtOne.setAnswer(0);
+      
+      String flameSpurtInfo = flameSpurtOne.toString();
+      System.out.println(flameSpurtInfo);
+        
         
     }
     
