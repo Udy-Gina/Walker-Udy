@@ -6,6 +6,8 @@
 package princessbride;
 
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Item;
+import byui.cit260.princessBride.model.LightningSand;
 import byui.cit260.princessBride.model.Player;
 
 /**
@@ -34,10 +36,28 @@ public class PrincessBride {
         
         playerOne.setName("John Doe"); 
         playerOne.setCoordinates(3.0); 
+        playerOne.setItem("Item");
         
         String playerInfo = playerOne.toString(); 
         System.out.println(playerInfo);
         
+        Item itemOne = new Item(); 
+        
+        itemOne.setName("John Doe"); 
+        itemOne.setType("Item"); 
+        itemOne.setQuantity(4);
+        
+        String itemInfo = itemOne.toString(); 
+        System.out.println(itemInfo);
+        
+        LightningSand guessOne = new LightningSand(); 
+        
+        guessOne.setDistance(4); 
+        guessOne.setCalculation(4);
+        guessOne.setResponse("Wrong!  You are dead.");
+        
+        String lightningSandInfo = guessOne.toString(); 
+        System.out.println(lightningSandInfo);
     }
     
 }
