@@ -6,6 +6,7 @@
 package princessbride;
 
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Player;
 
 /**
  *
@@ -26,7 +27,15 @@ public class PrincessBride {
         gameOne.setSaveGame(0);
         gameOne.setLoadGame(0); 
         
-        String playerInfo = gameOne.toString(); 
+        String gameInfo = gameOne.toString(); 
+        System.out.println(gameInfo);
+        
+        Player playerOne = new Player(); 
+        
+        playerOne.setName("John Doe"); 
+        playerOne.setCoordinates(3.0); 
+        
+        String playerInfo = playerOne.toString(); 
         System.out.println(playerInfo);
         
     }
