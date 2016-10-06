@@ -6,6 +6,7 @@
 package princessbride;
 
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Player;
 
 /**
@@ -37,6 +38,18 @@ public class PrincessBride {
         
         String playerInfo = playerOne.toString(); 
         System.out.println(playerInfo);
+        
+        Location locationOne = new Location();
+        
+        locationOne.setColumn(0);
+        locationOne.setDescription("description");
+        locationOne.setRow(0 );
+        locationOne.setTravelTime(0);
+        locationOne.setVisited(0);
+        locationOne.setDisplaySymbol("symbol");
+        
+        String locationInfo = locationOne.toString();
+        System.out.println(locationInfo);
         
     }
     
