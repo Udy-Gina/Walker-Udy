@@ -66,12 +66,12 @@ public class Game implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 79 * hash + Objects.hashCode(this.getItem);
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.getMap) ^ (Double.doubleToLongBits(this.getMap) >>> 32));
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.saveGame) ^ (Double.doubleToLongBits(this.saveGame) >>> 32));
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.loadGame) ^ (Double.doubleToLongBits(this.loadGame) >>> 32));
+        int hash = 3;
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.getItem);
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.getMap) ^ (Double.doubleToLongBits(this.getMap) >>> 32));
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.saveGame) ^ (Double.doubleToLongBits(this.saveGame) >>> 32));
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.loadGame) ^ (Double.doubleToLongBits(this.loadGame) >>> 32));
         return hash;
     }
 
@@ -104,10 +104,7 @@ public class Game implements Serializable {
         if (Double.doubleToLongBits(this.loadGame) != Double.doubleToLongBits(other.loadGame)) {
             return false;
         }
-        if (!Objects.equals(this.getItem, other.getItem)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.getItem, other.getItem);
     }
     
     

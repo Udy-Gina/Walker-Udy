@@ -17,10 +17,11 @@ public class Player implements Serializable {
     //class instance variables 
     private String name; 
     private double coordinates; 
+    private String item; 
 
     public Player() {
     }
-
+    
     public String getName() {
         return name;
     }
@@ -37,17 +38,26 @@ public class Player implements Serializable {
         this.coordinates = coordinates;
     }
 
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.name);
-        hash = 11 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
+        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
+        hash = 41 * hash + Objects.hashCode(this.item);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", coordinates=" + coordinates + '}';
+        return "Player{" + "name=" + name + ", coordinates=" + coordinates + ", item=" + item + '}';
     }
     
     @Override
@@ -65,9 +75,14 @@ public class Player implements Serializable {
         if (Double.doubleToLongBits(this.coordinates) != Double.doubleToLongBits(other.coordinates)) {
             return false;
         }
-        return Objects.equals(this.name, other.name);
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return Objects.equals(this.item, other.item);
     }
     
+    
+
     
     
 }
