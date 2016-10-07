@@ -12,7 +12,6 @@ import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.model.Rodent;
 import byui.cit260.princessBride.model.LightningSand; 
-import byui.cit260.princessBride.model.Item
 
 /**
  *
