@@ -7,6 +7,7 @@ package princessbride;
 
 import byui.cit260.princessBride.model.FlameSpurt;
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
