@@ -15,69 +15,39 @@ import java.util.Objects;
 public class Game implements Serializable {
     
     //class instance variables
-    private double totalTime; 
-    private String getItem; 
-    private double getMap; 
-    private double saveGame; 
-    private double loadGame; 
+    private Player player; 
+    private Map map; 
 
     public Game() {
     }
 
-    public double getTotalTime() {
-        return totalTime;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setTotalTime(double totalTime) {
-        this.totalTime = totalTime;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public String getGetItem() {
-        return getItem;
+    public Map getMap() {
+        return map;
     }
 
-    public void setGetItem(String getItem) {
-        this.getItem = getItem;
-    }
-
-    public double getGetMap() {
-        return getMap;
-    }
-
-    public void setGetMap(double getMap) {
-        this.getMap = getMap;
-    }
-
-    public double getSaveGame() {
-        return saveGame;
-    }
-
-    public void setSaveGame(double saveGame) {
-        this.saveGame = saveGame;
-    }
-
-    public double getLoadGame() {
-        return loadGame;
-    }
-
-    public void setLoadGame(double loadGame) {
-        this.loadGame = loadGame;
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 71 * hash + Objects.hashCode(this.getItem);
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.getMap) ^ (Double.doubleToLongBits(this.getMap) >>> 32));
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.saveGame) ^ (Double.doubleToLongBits(this.saveGame) >>> 32));
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.loadGame) ^ (Double.doubleToLongBits(this.loadGame) >>> 32));
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.player);
+        hash = 29 * hash + Objects.hashCode(this.map);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", getItem=" + getItem + ", getMap=" + getMap + ", saveGame=" + saveGame + ", loadGame=" + loadGame + '}';
+        return "Game{" + "player=" + player + ", map=" + map + '}';
     }
     
     @Override
@@ -92,20 +62,15 @@ public class Game implements Serializable {
             return false;
         }
         final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.getMap) != Double.doubleToLongBits(other.getMap)) {
+        if (!Objects.equals(this.map, other.map)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.saveGame) != Double.doubleToLongBits(other.saveGame)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.loadGame) != Double.doubleToLongBits(other.loadGame)) {
-            return false;
-        }
-        return Objects.equals(this.getItem, other.getItem);
+        return true;
     }
+
     
     
     

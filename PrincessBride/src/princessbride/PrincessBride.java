@@ -25,17 +25,6 @@ public class PrincessBride {
      */
     public static void main(String[] args) {
 
-        Game gameOne = new Game();
-
-        gameOne.setTotalTime(3.0);
-        gameOne.setGetItem("Item");
-        gameOne.setGetMap(0);
-        gameOne.setSaveGame(0);
-        gameOne.setLoadGame(0);
-
-        String gameInfo = gameOne.toString();
-        System.out.println(gameInfo);
-
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
