@@ -50,7 +50,6 @@ public class DangerControl {
         return 1;
     }
 
-
 public double calcFlameSpurt (double length, double width, double height) {
     if (volume <=0 || volume> 50){
         return -1;
