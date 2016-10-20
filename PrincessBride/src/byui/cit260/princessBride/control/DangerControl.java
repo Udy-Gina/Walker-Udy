@@ -50,14 +50,17 @@ public class DangerControl {
         return 1;
     }
 
-public double calcFlameSpurt (double length, double width, double height) {
-    if (volume <=0 || volume> 50){
+public double calcFlameSpurt  (double volume) { 
+//if diameter is less than or equal to zero or greater than 20 throw error
+    if (volume <=0  || volume> 50){
         return -1;
                }
-    else{
-            return 1;
+        double height =0;
+         double length = 0;
+         double width = 0;
+         
+         volume = height * length * width;
+         return volume;
 }
-    double volume = (length * width * height);
-    return volume;
-    
+
 }
