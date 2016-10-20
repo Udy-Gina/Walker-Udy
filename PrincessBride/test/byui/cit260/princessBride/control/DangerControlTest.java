@@ -205,9 +205,125 @@ public class DangerControlTest {
         
         assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
         
-    }
-
+      /*****************
+        * Test Case #6  
+        ******************/
+        
+        System.out.println("\tTest Case #6");
+    
+        playerHeight = 0.0; // input values for test case #6
+        heightCalc = 0.0;
+        
+        expResult = 0.0; // expected output returned value
+        
+        result = instance.checkRodentSize(playerHeight, heightCalc); // call function to run test 
+        
+        assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
+    
+    
+    
     /************************************************************************
+    * Test of calcRodentSize method, of class DangerControl.
+    *************************************************************************/
+    @Test
+    public void testCalcRodentSize() {
+        
+        System.out.println("calcRodentSize");
+        
+        /*****************
+        * Test Case #1  
+        ******************/
+        
+        System.out.println("\tTest Case #1");
+        
+        double rodentLength = -1.0; // input values for test case #1
+        
+        DangerControl instance = new DangerControl(); // create instance of DangerControl class 
+        
+        double expResult = -1.0; // expected output returned value
+        
+        double result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned 
+        
+        
+        /*****************
+        * Test Case #2  
+        ******************/
+        
+        System.out.println("\tTest Case #2");
+        
+        rodentLength = 10.0; // input values for test case #2
+        
+        expResult = 10.0; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+        
+         /*****************
+        * Test Case #3
+        ******************/
+        
+        System.out.println("\tTest Case #3");
+        
+         rodentLength = 15.0; // input values for test case #3      
+  
+        expResult = -15.0; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned 
+        
+
+        /*****************
+        * Test Case #4  
+        ******************/
+        
+        System.out.println("\tTest Case #4");
+        
+        rodentLength = 5.5; // input values for test case #4
+        
+        expResult = 5.5; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+    
+    
+  
+    /*****************
+        * Test Case #5 
+        ******************/
+        
+        System.out.println("\tTest Case #5");
+        
+        rodentLength = 8.0; // input values for test case #4
+        
+        expResult = 8.0; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+    
+       /*****************
+        * Test Case #6  
+        ******************/
+        
+        System.out.println("\tTest Case #6");
+        
+        rodentLength = 9.0; // input values for test case #6
+        
+        expResult = 9.0; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+    
+    }
+    
+
+     /************************************************************************
     * Test of calcRodentSize method, of class DangerControl.
     *************************************************************************/
     @Test
@@ -246,48 +362,166 @@ public class DangerControlTest {
         
         assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
     
-    }
+    
 
-    /**************************************************************************
-    * Test of checkRodentSize method, of class DangerControl.
-    ***************************************************************************/
-    @Test
-    public void testCheckRodentSize() {
-        
-        System.out.println("checkRodentSize");
-        
-        /*****************
-        * Test Case #1  
+   /*****************
+        * Test Case #3  
         ******************/
         
-        System.out.println("\tTest Case #1");
-    
-        double playerHeight = 1.0; // input values for test case #1
-        double heightCalc = 1.5;
+        System.out.println("\tTest Case #3");
         
-        DangerControl instance = new DangerControl(); // create instance of DangerControl class 
-        
-        double expResult = -1.0; // expected output returned value
-        
-        double result = instance.checkRodentSize(playerHeight, heightCalc); // call function to run test 
-        
-        assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
-        
-        
-        /*****************
-        * Test Case #2  
-        ******************/
-        
-        System.out.println("\tTest Case #2");
-    
-        playerHeight = 0.0; // input values for test case #2
-        heightCalc = 0.0;
+        rodentLength = 0.0; // input values for test case #3
         
         expResult = 0.0; // expected output returned value
         
-        result = instance.checkRodentSize(playerHeight, heightCalc); // call function to run test 
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+    
+     
+    
+   /*****************
+        * Test Case #4 
+        ******************/
+        
+        System.out.println("\tTest Case #4");
+        
+        rodentLength = 0.0; // input values for test case #4
+        
+        expResult = 0.0; // expected output returned value
+        
+        result = instance.calcRodentSize(rodentLength); // call function to run test
+        
+        assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
+    
+     
+    }
+
+
+
+    /**
+     * TestCase#3
+     */
+    
+     /****************************************************************
+     * Test of calcFlameSpurt method, of class DangerControl.
+     *****************************************************************/
+   
+     @Test
+    public void testCalcFlameSpurt() {
+        
+      /*****************
+        * Test Case #1
+        ******************/
+    }
+ 
+        System.out.println("/tTestCase#1");
+        
+        double volume = 20.0; //input values for test case #1
+        
+        DangerControl instance = new DangerControl();
+        
+        double expResult = 20.0; // expected output returned value
+        
+        double result = instance.calcFlameSpurt(volume);  // call function to run test
         
         assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
+    
+     /*****************
+        * Test Case #2
+        ******************/
+    
+        System.out.println("/tTestCase#2");
+        
+        volume = -1.0; //input values for test case #2
+        
+        expResult = -1.0; // expected output returned value
+        
+        result = instance.calcFlameSpurt(volume);   // call function to run test
+        
+        assertEquals(expResult, result, 0.0);  // compare expected return value with actual value returned
+        
+         /*****************
+        * Test Case #3
+        ******************/
+    
+        System.out.println("/tTestCase#3");
+        
+        volume = -1.0; //input values for test case #3
+        
+        expResult = -1.0; // expected output returned value
+        
+        result = instance.calcFlameSpurt(volume);   // call function to run test
+        
+        assertEquals(expResult, result, 0.0);// compare expected return value with actual value returned
+        
+         /*****************
+        * Test Case #4
+        ******************/
+    
+        System.out.println("/tTestCase#4");
+        
+        volume = 0.0; //input values for test case #4
+        
+        expResult = 0.0; // expected output returned value
+        
+        result = instance.calcFlameSpurt(volume);   // call function to run test
+        
+        assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
+        
+         /*****************
+        * Test Case #5
+        ******************/
+    
+        System.out.println("/tTestCase#5");
+        
+        volume = 0.0; //input values for test case #5
+        
+        expResult = 0.0; // expected output returned value
+        
+        result = instance.calcFlameSpurt(volume);   // call function to run test
+        
+        assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
+        
+         /*****************
+        * Test Case #6
+        ******************/
+    
+        System.out.println("/tTestCase#6");
+        
+        volume =3500.0; //input values for test case #6
+        
+        expResult = 3500.0; // expected output returned value
+        
+        result = instance.calcFlameSpurt(volume);   // call function to run test
+        
+        assertEquals(expResult, result, 0.0); // compare expected return value with actual value returned
+    }
+
+    /**
+     * Test of checkFlameSpurt method, of class DangerControl.
+     */
+     /*****************
+        * Test Case #1
+        ******************/
+    
+    @Test
+    public void testCheckFlameSpurt()
+    {
+        System.out.println("checkFlameSpurt");
+    
+        double answer = 0.0;
+        
+        double volume = 0.0;
+        
+        DangerControl instance = new DangerControl();
+        
+        double expResult = 0.0;
+        
+        double result = instance.checkFlameSpurt(answer, volume);
+      
+        assertEquals(expResult, result, 0.0);
+      
     
     }
     

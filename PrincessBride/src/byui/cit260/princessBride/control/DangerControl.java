@@ -59,7 +59,7 @@ public double calcFlameSpurt  (double volume) {
          double baseLength = 0;
          double baseWidth = 0;
          
-         volume = baseHeight * baseLength * baseWidth;
+         volume = (baseHeight * baseLength * baseWidth)/3;
          return volume;
 }
 public double checkFlameSpurt (double answer, double volume) {
