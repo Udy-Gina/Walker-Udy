@@ -55,12 +55,20 @@ public double calcFlameSpurt  (double volume) {
     if (volume <=0  || volume> 50){
         return -1;
                }
-        double height =0;
-         double length = 0;
-         double width = 0;
+        double baseHeight =0;
+         double baseLength = 0;
+         double baseWidth = 0;
          
-         volume = height * length * width;
+         volume = baseHeight * baseLength * baseWidth;
          return volume;
 }
+public double checkFlameSpurt (double answer, double volume) {
 
+if (answer != volume) {
+    return -1;
+    
+}   
+
+return 1;
+}
 }
