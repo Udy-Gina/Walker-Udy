@@ -387,7 +387,7 @@ public class DangerControlTest {
         
         DangerControl instance = new DangerControl();
         
-        double expResult = 20.0; // expected output returned value
+        double expResult = 0.0; // expected output returned value
         
         double result = instance.calcFlameSpurt(volume);  // call function to run test
         
@@ -460,9 +460,9 @@ public class DangerControlTest {
     
         System.out.println("\tTestCase#6");
         
-        volume =3500.0; //input values for test case #6
+        volume = 3500.0; //input values for test case #6
         
-        expResult = 3500.0; // expected output returned value
+        expResult = -1.0; // expected output returned value
         
         result = instance.calcFlameSpurt(volume);   // call function to run test
         
@@ -490,22 +490,22 @@ public class DangerControlTest {
         
         DangerControl instance = new DangerControl();
         
-        double expResult = 20.0;   // expected output for test case #1
+        double expResult = 1.0;   // expected output for test case #1
         
         double result = instance.checkFlameSpurt(answer, volume);  //call function to run test
       
         assertEquals(expResult, result, 0.1);  //compare expected return value with actual return value
       
-    /****************
+        /****************
         * Test Case #2
         *****************/
 
         System.out.println("\tTestCase#2");
     
-        answer =3500.0;  //input values for test case #2
+        answer = 3500.0;  //input values for test case #2
         volume = 3500.0;
         
-        expResult =3500.0;   //expected output for test case #2
+        expResult = 1.0;   //expected output for test case #2
         
         result = instance.checkFlameSpurt(answer, volume);  // call function to run test
       
