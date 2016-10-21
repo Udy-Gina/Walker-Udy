@@ -430,9 +430,9 @@ public class DangerControlTest {
     
         System.out.println("\tTestCase#4");
         
-        volume = 0.0; //input values for test case #4
+        volume = -1.0; //input values for test case #4
         
-        expResult = 0.0; // expected output returned value
+        expResult = -1.0; // expected output returned value
         
         result = instance.calcFlameSpurt(volume);   // call function to run test
         
@@ -445,9 +445,9 @@ public class DangerControlTest {
     
         System.out.println("\tTestCase#5");
         
-        volume = 0.0; //input values for test case #5
+        volume = -1.0; //input values for test case #5
         
-        expResult = 0.0; // expected output returned value
+        expResult = -1.0; // expected output returned value
         
         result = instance.calcFlameSpurt(volume);   // call function to run test
         
@@ -485,17 +485,30 @@ public class DangerControlTest {
 
         System.out.println("\tTestCase#1");
     
-        double answer = 0.0;
-        double volume = 0.0;
+        double answer =20.0;  //input values for test case #1
+        double volume = 20.0;
         
         DangerControl instance = new DangerControl();
         
-        double expResult = 0.0;
+        double expResult = 20.0;   // expected output for test case #1
         
-        double result = instance.checkFlameSpurt(answer, volume);
+        double result = instance.checkFlameSpurt(answer, volume);  //call function to run test
       
-        assertEquals(expResult, result, 0.1);
+        assertEquals(expResult, result, 0.1);  //compare expected return value with actual return value
       
-    }
+    /****************
+        * Test Case #2
+        *****************/
+
+        System.out.println("\tTestCase#2");
+    
+        answer =3500.0;  //input values for test case #2
+        volume = 3500.0;
+        
+        expResult =3500.0;   //expected output for test case #2
+        
+        result = instance.checkFlameSpurt(answer, volume);  // call function to run test
+      
+        assertEquals(expResult, result, 0.1);  }  // compare expected return value with actual return value
         
 }
