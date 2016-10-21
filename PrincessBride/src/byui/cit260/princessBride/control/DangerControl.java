@@ -33,7 +33,7 @@ public class DangerControl {
 
     public double calcRodentSize(double rodentLength) {
 
-        if (rodentLength <= 0 ||  rodentLength >= 10) {
+        if (rodentLength <= 0 || rodentLength >= 10) {
             return -1;
         }
 
@@ -50,25 +50,26 @@ public class DangerControl {
         return 1;
     }
 
-public double calcFlameSpurt  (double volume) { 
-//if diameter is less than or equal to zero or greater than 20 throw error
-    if (volume <=0  || volume> 50){
-        return -1;
-               }
-        double baseHeight =0;
-         double baseLength = 0;
-         double baseWidth = 0;
-         
-         volume = (baseHeight * baseLength * baseWidth)/3;
-         return volume;
-}
-public double checkFlameSpurt (double answer, double volume) {
+    public double calcFlameSpurt(double volume) {
 
-if (answer != volume) {
-    return -1;
-    
-}   
+        if (volume <= 0 || volume > 50) { //if diameter is less than or equal to zero or greater than 50 throw error
+            return -1;
+        }
+        double baseHeight = 0;
+        double baseLength = 0;
+        double baseWidth = 0;
 
-return 1;
-}
+        volume = (baseHeight * baseLength * baseWidth) / 3;
+        return volume;
+    }
+
+    public double checkFlameSpurt(double answer, double volume) {
+
+        if (answer != volume) {
+            return -1;
+
+        }
+
+        return 1;
+    }
 }
