@@ -15,6 +15,7 @@ import byui.cit260.princessBride.model.Rodent;
 import byui.cit260.princessBride.model.LightningSand; 
 import citbyui.cit260.princessbride.view.StartProgramView;
 
+
 /**
  *
  * @author Gina Udy
@@ -27,8 +28,9 @@ public class PrincessBride {
     public static void main(String[] args) {
         //create StartProgramViewOrig and display the start program view
         StartProgramView startProgramview = new StartProgramView();
-        StartProgramView.displayStartProgramView();
-
+        startProgramView.displayStartProgramView();
+    }
+    {
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
