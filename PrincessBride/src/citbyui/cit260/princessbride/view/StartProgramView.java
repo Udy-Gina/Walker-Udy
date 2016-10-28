@@ -7,47 +7,18 @@ package citbyui.cit260.princessbride.view;
  */
 public class StartProgramView {
 
-    private String promptMessage;
-    
-    public  void displayStartProgramView() {
-     
-        boolean done = false;  // set flag to not done
-        do {
-            //prompt for and get players name
-            String playersName = this.getPlayersName();
-            if (playersName.toUpperCase().equals("Q")) //user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(playersName);
-        } while (!done);
-    }  
-
-    private String getPlayersName() {
-        System.out.println("\n*** getPlayersName() called***");
-        return "Joe";
-    }
-
-    private boolean doAction(String playersName) {
-       System.out.println("\n*** doAction() called ***");
-       return true;
-    }
-    
+ private String promptMessage;
+  
+    public StartProgramView(){
         
-        public class StartProgramView {
-            
-            private String promptMessage;
-            
-            public StartProgramView() {
-                        //prompt message = "Please enter your name"
+                  //prompt message = "Please enter your name"
                this.promptMessage = "\n*************************"
                        +"\nPlease enter your name:"
                        + "\n********************************";
                        // display the banner when view is created
-                this.displayBanner();
-                
+                this.displayBanner(); 
         }
-        
+            
     public void displayBanner() {
         System.out.println(
                 "\n************************************************************"
@@ -77,3 +48,32 @@ public class StartProgramView {
                   + "\n**********************************************************");
 //To change body of generated methods, choose Tools | Templates.
     }
+        
+  public class startProgramView {
+    public  void displayStartProgramView() {
+     
+        boolean done = false;  // set flag to not done
+        do {
+            //prompt for and get players name
+            String playersName = this.getPlayersName();
+            if (playersName.toUpperCase().equals("Q")) //user wants to quit
+                return; // exit the game
+            
+            // do the requested action and display the next view
+            done = this.doAction(playersName);
+        } while (!done);
+    }  
+
+    private String getPlayersName() {
+        System.out.println("\n*** getPlayersName() called***");
+        return "Joe";
+    }
+
+    private boolean doAction(String playersName) {
+       System.out.println("\n*** doAction() called ***");
+       return true;
+    }
+  }     
+    }
+
+       
