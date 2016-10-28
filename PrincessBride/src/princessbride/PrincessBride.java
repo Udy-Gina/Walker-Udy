@@ -14,7 +14,7 @@ import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.model.Rodent;
 import byui.cit260.princessBride.model.LightningSand; 
 import citbyui.cit260.princessbride.view.StartProgramView;
-import citbyui.cit260.princessbride.view.StartProgramView.startProgramView;
+
 
 
 /**
@@ -28,7 +28,7 @@ public class PrincessBride {
      */
     public static void main(String[] args) {
         //create StartProgramViewOrig and display the start program view
-        StartProgramView startProgramview = new StartProgramView();
+        StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
     }
     {
