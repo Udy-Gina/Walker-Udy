@@ -23,14 +23,19 @@ import citbyui.cit260.princessbride.view.StartProgramView;
  */
 public class PrincessBride {
 
-    /**
+     /**
      * @param args the command line arguments
      */
+    
+    private static Game currentGame = null; 
+    private static Player player = null; 
+    
     public static void main(String[] args) {
         //create StartProgramViewOrig and display the start program view
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
     }
+
     {
         Player playerOne = new Player();
 
@@ -97,6 +102,22 @@ public class PrincessBride {
 
         String lightningSandInfo = guessOne.toString();
         System.out.println(lightningSandInfo);
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        PrincessBride.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        PrincessBride.player = player;
     }
 
 }

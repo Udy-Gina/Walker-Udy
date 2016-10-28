@@ -5,10 +5,28 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.model.Player;
+import princessbride.PrincessBride;
+
 /**
  *
  * @author Gina Udy
  */
 public class GameControl {
+
+    public static Player createPlayer(String name) {
+        
+        if (name == null) {
+            return null;
+        }
+       
+        Player player = new Player(); 
+        player.setName(name);
+        
+        PrincessBride.setPlayer(player);  // save the player 
+        
+        return player;
+        
+    }
     
 }
