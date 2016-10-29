@@ -14,5 +14,5 @@ class GameMenuView {
     void displayGameMenu() {
         System.out.println("\n*** displayGameMenu function called***");
     }
-    
+
 }

@@ -102,17 +102,16 @@ public class MainMenuView {
     }
 
     //private void displayHelpMenu() {
-        // display the help menu 
-      //  HelpMenuView helpMenu = new HelpMenuView();
-        //helpMenu.displayHelpMenu();
+    // display the help menu 
+    //  HelpMenuView helpMenu = new HelpMenuView();
+    //helpMenu.displayHelpMenu();
     //}
-
     private void saveGame() {
         System.out.println("\n*** saveGame function called***");
     }
 
     private void HelpMenuView() {
-        HelpMenuView helpMenu = new HelpMenuView(); 
+        HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayHelpMenuView();
     }
 

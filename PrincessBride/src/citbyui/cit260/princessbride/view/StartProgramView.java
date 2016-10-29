@@ -39,15 +39,15 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
     }
 
     public void displayStartProgramView() {  // shows user name and banner from above functions
-        
-        displayBanner(); 
-        
-        String playerName = getPlayerName(); 
-        
-        displayNextView(playerName); 
-        
-        MainMenuView mainMenuView = new MainMenuView(); 
-        mainMenuView.displayMainMenuView(); 
+
+        displayBanner();
+
+        String playerName = getPlayerName();
+
+        displayNextView(playerName);
+
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
     }
 
     private String getPlayerName() {  // gets user name 
@@ -57,55 +57,31 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         String name = " ";
 
         System.out.println("\nPlease enter your name: ");
-        
+
         while (!isValidName) {
             String input = "";
-            input = in.nextLine(); 
-            
+            input = in.nextLine();
+
             if (input != null && input.length() >= 2) {
                 isValidName = true;
-                name = input; 
+                name = input;
             } else {
                 System.out.println("\nInput is invalid: name must be greater than one character in length.");
             }
-            
+
         }
-        
-           return name;
+
+        return name;
     }
 
     private void displayNextView(String playerName) {
-        
+
         // display a custom welcome message 
         System.out.println("\n===================================="
-                                    + "\n Welcome to the game, " + playerName + "."
-                                    + "\n We hope you have a lot of fun!" 
-                                    + "\n====================================");
-        
+                + "\n Welcome to the game, " + playerName + "."
+                + "\n We hope you have a lot of fun!"
+                + "\n====================================");
+
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
