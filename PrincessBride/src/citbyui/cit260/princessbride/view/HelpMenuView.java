@@ -5,28 +5,26 @@
  */
 package citbyui.cit260.princessbride.view;
 
-import byui.cit260.princessBride.control.GameControl;
 import java.util.Scanner;
-import princessbride.PrincessBride;
 
 /**
  *
  * @author Gina Udy
  */
-public class MainMenuView {
+public class HelpMenuView {
 
     private String menu = "\n"
             + "\n--------------------------------------"
-            + "\nMAIN MENU"
+            + "\nHELP MENU"
             + "\n--------------------------------------"
-            + "\nN - Start new game"
-            + "\nG - Get and start saved game"
-            + "\nH - Help menu"
-            + "\nS - Save game"
-            + "\nQ - Quit"
+            + "\nM - Movement"
+            + "\nI - Inventory"
+            + "\nC - Clues"
+            + "\nD - Dangers"
+            + "\nE - Exit to main menu"
             + "\n--------------------------------------";
 
-    public void displayMainMenuView() {  // displays start program view
+    public void displayHelpMenuView() {  // displays start program view
 
         boolean done = false;
 
@@ -66,19 +64,19 @@ public class MainMenuView {
         char charSel = selection.charAt(0);
 
         switch (charSel) {
-            case 'N':  // create and start a new game 
-                startNewGame();
+            case 'M':  // view movement tips 
+                System.out.println("\n*** View movement tips ***");
                 break;
-            case 'G':  // get and play an existing game 
-                startExistingGame();
+            case 'I':  // inventory information 
+                System.out.println("\n*** Inventory information ***");
                 break;
-            case 'H':  // display help menu 
-                HelpMenuView();
+            case 'C':  // display clues 
+                System.out.println("\n*** Clues ***");
                 break;
-            case 'S':  // save the current game 
-                saveGame();
+            case 'D':  // display dangers 
+                System.out.println("\n*** Dangers ***");
                 break;
-            case 'Q':  // quit the current game 
+            case 'E':  // exit to the main menu 
                 return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again***");
@@ -86,34 +84,6 @@ public class MainMenuView {
         }
 
         return false;
-    }
-
-    private void startNewGame() {
-        // create and start a new game 
-        GameControl.createNewGame(PrincessBride.getPlayer());
-
-        // display the game menu 
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu();
-    }
-
-    private void startExistingGame() {
-        System.out.println("\n*** startExistingGame function called***");
-    }
-
-    //private void displayHelpMenu() {
-        // display the help menu 
-      //  HelpMenuView helpMenu = new HelpMenuView();
-        //helpMenu.displayHelpMenu();
-    //}
-
-    private void saveGame() {
-        System.out.println("\n*** saveGame function called***");
-    }
-
-    private void HelpMenuView() {
-        HelpMenuView helpMenu = new HelpMenuView(); 
-        helpMenu.displayHelpMenuView();
     }
 
 }

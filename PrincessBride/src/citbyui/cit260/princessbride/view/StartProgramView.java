@@ -1,28 +1,14 @@
 package citbyui.cit260.princessbride.view;
 
-import byui.cit260.princessBride.control.GameControl;
-import byui.cit260.princessBride.model.Player;
 import java.util.Scanner;
 
 /**
  *
  * @author lisawalker
  */
-public class StartProgramView {
+public class StartProgramView {  // calls the welcome banner and asks for user name
 
-    private String promptMessage;
-
-    public StartProgramView() {
-
-        //prompt message = "Please enter your name"
-        this.promptMessage = "\n*************************"
-                + "\nPlease enter your name:"
-                + "\n*************************";
-        // display the banner when view is created
-        this.displayBanner();
-    }
-
-    public void displayBanner() {
+    private void displayBanner() {  // this is the welcome banner 
         System.out.println(
                 "\n***************************************************************************"
                 + "\n*"
@@ -50,84 +36,52 @@ public class StartProgramView {
                 + "\n* Good luck, stay alive, and have fun!"
                 + "\n*"
                 + "\n***************************************************************************");
-//To change body of generated methods, choose Tools | Templates.
     }
 
-    public void displayStartProgramView() {
+    public void displayStartProgramView() {  // shows user name and banner from above functions
+        
+        displayBanner(); 
+        
+        String playerName = getPlayerName(); 
+        
+        displayNextView(playerName); 
+        
+        MainMenuView mainMenuView = new MainMenuView(); 
+        mainMenuView.displayMainMenuView(); 
+    }
 
-        boolean done = false;  // set flag to not done
-        do {
-            //prompt for and get players name
-            String playersName = this.getPlayersName();
-            if (playersName.toUpperCase().equals("Q")) //user wants to quit
-            {
-                return; // exit the game
+    private String getPlayerName() {  // gets user name 
+
+        Scanner in = new Scanner(System.in);  // get infile for keyboard 
+        boolean isValidName = false;  // initialize to not valid 
+        String name = " ";
+
+        System.out.println("\nPlease enter your name: ");
+        
+        while (!isValidName) {
+            String input = "";
+            input = in.nextLine(); 
+            
+            if (input != null && input.length() >= 2) {
+                isValidName = true;
+                name = input; 
+            } else {
+                System.out.println("\nInput is invalid: name must be greater than one character in length.");
             }
-            // do the requested action and display the next view
-            done = this.doAction(playersName);
-        
-        } while (!done);
-
-    }
-
-    private String getPlayersName() {
-
-        Scanner keyboard = new Scanner(System.in);  // get infile for keyboard 
-        String value = "";  // value to be returned 
-        boolean valid = false;  // initialize to not valid 
-
-        while (!valid) {  // loop while an invalid value is enter 
-            System.out.println("\n" + this.promptMessage);
-
-            value = keyboard.nextLine();  // get next line typed on keyboard 
-            value = value.trim();  // trim off leading and trailing blanks 
-
-            if (value.length() < 1) {  // value is blank 
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-
-            break;  // end the loop
-        }
-
-        return value;  // return the value entered
-    }
-
-    private boolean doAction(String playersName) {
-        
-        if (playersName.length() < 2) {
-            System.out.println("\nInvalid player's name: " 
-                + "The name must be greater than one character in length");
-            return false;
+            
         }
         
-        // call createPlayer() control function 
-        Player player = GameControl.createPlayer(playersName); 
-        
-        if (player == null) {  // if unsuccessful
-            System.out.println("\nError creating the player"); 
-            return false;
-        }
-        
-        // display next view 
-        this.displayNextView(player); 
-        
-        return true; // success!
+           return name;
     }
 
-    private void displayNextView(Player player) {
+    private void displayNextView(String playerName) {
         
         // display a custom welcome message 
         System.out.println("\n===================================="
-                                    + "\n Welcome to the game, " + player.getName() + "."
+                                    + "\n Welcome to the game, " + playerName + "."
                                     + "\n We hope you have a lot of fun!" 
                                     + "\n====================================");
         
-        // create MainMenuView object 
-        MainMenuView mainMenuView = new MainMenuView(); 
-                
-        // display the main menu view 
-        mainMenuView.displayMainMenuView();
     }
 
 }
