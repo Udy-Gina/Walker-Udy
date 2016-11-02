@@ -24,11 +24,12 @@ class GameMenuView {
             + "\nN - Move North"
             + "\nE - Move East"
             + "\nS - Move South"
+            +"\nW- MoveWest"
             + "\nG - Save Game"
             + "\nH - Help"
             + "\nL - Look Around"
             + "\nB - Back"
-            + "\nE - Exit to main menu"
+            + "\nX - Exit to main menu"
             + "\n--------------------------------------";
 
     public void displayGameMenuView() {  // displays start program view
@@ -101,6 +102,12 @@ class GameMenuView {
             case "B": // go Back
                 this.goBack();
                 break;
+            case "H"://ask for Help
+                this.askHelp();
+                break;
+            case "X":// exit Game
+                this.exitGame();
+                break;
             case "G":// save Game
                 this.saveGame();
             default:
@@ -152,7 +159,14 @@ class GameMenuView {
     private void saveGame() {
         System.out.println("***saveGame function called****");
     }
+    
+    private void askHelp(){
+        System.out.println("***askHelp function called ****");
+    }
 
+    private void exitGame(){
+        System.out.println("Exit");
+    }
     void displayGameMenu() {
         System.out.println("\n*** displayGameMenu function called***");
     }
