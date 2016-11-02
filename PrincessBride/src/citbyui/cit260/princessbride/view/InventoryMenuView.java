@@ -11,20 +11,19 @@ import java.util.Scanner;
  *
  * @author Gina Udy
  */
-public class HelpMenuView {
-
+class InventoryMenuView {
+    
     private String menu = "\n"
             + "\n--------------------------------------"
-            + "\nHELP MENU"
+            + "\nINVENTORY MENU"
             + "\n--------------------------------------"
-            + "\nM - Movement"
-            + "\nI - Inventory"
-            + "\nC - Clues"
-            + "\nD - Dangers"
-            + "\nX - Exit to Previous Menu"
+            + "\nR - Rope"
+            + "\nW - Water"
+            + "\nP - Healing Potion"
+            + "\nX - Exit to Game Menu"
             + "\n--------------------------------------";
 
-    public void displayHelpMenuView() {  // displays start program view
+    public void displayInventoryMenuView() {  // displays start program view
 
         boolean done = false;
 
@@ -64,17 +63,14 @@ public class HelpMenuView {
         char charSel = selection.charAt(0);
 
         switch (charSel) {
-            case 'M':  // view movement tips 
-                System.out.println("\n*** View movement tips ***");
+            case 'R':  // view movement tips 
+                System.out.println("\n*** Rope ***");
                 break;
-            case 'I':  // inventory information 
-                System.out.println("\n*** Inventory information ***");
+            case 'W':  // inventory information 
+                System.out.println("\n*** Water ***");
                 break;
-            case 'C':  // display clues 
-                System.out.println("\n*** Clues ***");
-                break;
-            case 'D':  // display dangers 
-                System.out.println("\n*** Dangers ***");
+            case 'P':  // display clues 
+                System.out.println("\n*** Healing Potion ***");
                 break;
             case 'X':  // exit to the main menu 
                 return true;

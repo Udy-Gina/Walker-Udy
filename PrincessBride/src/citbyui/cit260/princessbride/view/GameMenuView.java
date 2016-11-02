@@ -24,12 +24,12 @@ class GameMenuView {
             + "\nN - Move North"
             + "\nE - Move East"
             + "\nS - Move South"
-            + "\nW - MoveWest"
+            + "\nW - Move West"
             + "\nG - Save Game"
             + "\nH - Help"
             + "\nL - Look Around"
             + "\nB - Back"
-            + "\nX - Exit to main menu"
+            + "\nX - Exit to Main Menu"
             + "\n--------------------------------------";
 
     public void displayGameMenuView() {  // displays start program view
@@ -56,6 +56,7 @@ class GameMenuView {
             //get the value entered from the keyboard
             selection = keyboard.nextLine();
             selection = selection.trim();
+            selection = selection.toUpperCase();  // converts input to upper case
 
             if (selection.length() < 1) {   //blank value entered
                 System.out.println("\n*** Invalid section *** Try again");
@@ -76,7 +77,7 @@ class GameMenuView {
                 this.viewMap();
                 break;
             case "I": // List Inventory
-                this.inventoryList();
+                this.InventoryMenuView();
                 break;
             case "T": // Take Item
                 this.takeItem();
@@ -103,7 +104,7 @@ class GameMenuView {
                 this.goBack();
                 break;
             case "H"://ask for Help
-                this.askHelp();
+                this.HelpMenuView();;
                 break;
             case "X":// exit Game
                 return true;
@@ -120,8 +121,9 @@ class GameMenuView {
         System.out.println("This is a 5 x 5 grid");
     }
 
-    private void inventoryList() {
-        System.out.println("*** inventoryList function called");
+    private void InventoryMenuView() {
+        InventoryMenuView inventoryMenu = new InventoryMenuView();
+        inventoryMenu.displayInventoryMenuView();
     }
 
     private void takeItem() {
@@ -160,12 +162,8 @@ class GameMenuView {
         System.out.println("***saveGame function called****");
     }
     
-    private void askHelp(){
-        System.out.println("***askHelp function called ****");
+    private void HelpMenuView() {
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayHelpMenuView();
     }
-
-   private void displayGameMenu() {
-        System.out.println("\n*** displayGameMenu function called***");
-    }
-
 }
