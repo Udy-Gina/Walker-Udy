@@ -24,7 +24,7 @@ class GameMenuView {
             + "\nN - Move North"
             + "\nE - Move East"
             + "\nS - Move South"
-            +"\nW- MoveWest"
+            + "\nW- MoveWest"
             + "\nG - Save Game"
             + "\nH - Help"
             + "\nL - Look Around"
@@ -106,10 +106,10 @@ class GameMenuView {
                 this.askHelp();
                 break;
             case "X":// exit Game
-                this.exitGame();
-                break;
+                return true;
             case "G":// save Game
                 this.saveGame();
+                break;
             default:
                 System.out.println("\n*** Invalid Selection *** Please Try Again ***");
         }
@@ -164,10 +164,7 @@ class GameMenuView {
         System.out.println("***askHelp function called ****");
     }
 
-    private void exitGame(){
-        System.out.println("Exit");
-    }
-    void displayGameMenu() {
+   private void displayGameMenu() {
         System.out.println("\n*** displayGameMenu function called***");
     }
 
