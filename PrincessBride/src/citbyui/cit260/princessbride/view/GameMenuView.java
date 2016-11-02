@@ -24,7 +24,7 @@ class GameMenuView {
             + "\nN - Move North"
             + "\nE - Move East"
             + "\nS - Move South"
-            + "\nW- MoveWest"
+            + "\nW - MoveWest"
             + "\nG - Save Game"
             + "\nH - Help"
             + "\nL - Look Around"
