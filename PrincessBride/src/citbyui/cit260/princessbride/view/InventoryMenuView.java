@@ -20,7 +20,7 @@ class InventoryMenuView {
             + "\nR - Rope"
             + "\nW - Water"
             + "\nP - Healing Potion"
-            + "\nX - Exit to Game Menu"
+            + "\nX - Exit to Previous Menu"
             + "\n--------------------------------------";
 
     public void displayInventoryMenuView() {  // displays start program view
