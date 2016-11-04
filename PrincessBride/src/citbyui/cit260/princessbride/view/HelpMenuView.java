@@ -11,9 +11,11 @@ import java.util.Scanner;
  *
  * @author Gina Udy
  */
-public class HelpMenuView {
+public class HelpMenuView extends View { 
+    
+    public HelpMenuView() {
 
-    private String menu = "\n"
+    super ("\n"
             + "\n--------------------------------------"
             + "\nHELP MENU"
             + "\n--------------------------------------"
@@ -22,44 +24,11 @@ public class HelpMenuView {
             + "\nC - Clues"
             + "\nD - Dangers"
             + "\nX - Exit to Previous Menu"
-            + "\n--------------------------------------";
-
-    public void displayHelpMenuView() {  // displays start program view
-
-        boolean done = false;
-
-        do {
-            System.out.println("\n" + this.menu);
-
-            String value = this.getMenuOption();
-
-            done = this.doAction(value);
-        } while (!done);
-    }
-
-    private String getMenuOption() {
-
-        Scanner in = new Scanner(System.in);  // get infile for keyboard 
-        String input = " ";  // value to be returned 
-        boolean validInput = false;  // initialize to not valid 
-
-        while (!validInput) {  // loop while an invalid value is enter 
-
-            input = in.nextLine();  // get next line typed on keyboard 
-            input = input.trim();  // trim off leading and trailing blanks 
-            input = input.toUpperCase();  // converts input to upper case
-
-            if (input.length() < 1) {  // value is blank 
-                System.out.println("\nInvalid value: You must enter a character.");
-            } else {
-                validInput = true;
-            }
-        }
-
-        return input;  // return the value entered
-    }
-
-    private boolean doAction(String selection) {
+            + "\n--------------------------------------");
+}
+    
+    @Override
+    public boolean doAction(String selection) {
 
         char charSel = selection.charAt(0);
 
@@ -114,7 +83,8 @@ public class HelpMenuView {
 
     private void InventoryMenuView() {
         InventoryMenuView inventoryMenu = new InventoryMenuView();
-        inventoryMenu.displayInventoryMenuView();
+        inventoryMenu.display();
     }
 
+  
 }

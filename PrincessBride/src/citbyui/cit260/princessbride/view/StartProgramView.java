@@ -47,7 +47,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         displayNextView(playerName);
 
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
     private String getPlayerName() {  // gets user name 

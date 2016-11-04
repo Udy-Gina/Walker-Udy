@@ -5,15 +5,15 @@
  */
 package citbyui.cit260.princessbride.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Lisa Walker
  */
-class GameMenuView {
+public class GameMenuView extends View {
 
-    private String menu = "\n"
+    public GameMenuView() {
+    
+    super ("\n"
             + "\n--------------------------------------"
             + "\n GAME MENU"
             + "\n--------------------------------------"
@@ -30,43 +30,10 @@ class GameMenuView {
             + "\nL - Look Around"
             + "\nB - Back"
             + "\nX - Exit to Main Menu"
-            + "\n--------------------------------------";
+            + "\n--------------------------------------");
+}
 
-    public void displayGameMenuView() {  // displays start program view
-
-        boolean done = false;
-
-        do {
-            System.out.println("\n" + this.menu);
-
-            String value = this.getMenuOption();
-
-            done = this.doAction(value);
-        } while (!done);
-    }
-    
-    public String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String selection = null;
-
-        //while a valid name has not been retrieved
-        while (!valid) {
-
-            //get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            selection = selection.toUpperCase();  // converts input to upper case
-
-            if (selection.length() < 1) {   //blank value entered
-                System.out.println("\n*** Invalid section *** Try again");
-                continue;
-            }
-            break;
-        }
-        return selection; // return the name
-    }
-
+    @Override
     public boolean doAction(String choice) {
 
         choice = choice.toUpperCase(); // convert choice to upper case
@@ -123,7 +90,7 @@ class GameMenuView {
 
     private void InventoryMenuView() {
         InventoryMenuView inventoryMenu = new InventoryMenuView();
-        inventoryMenu.displayInventoryMenuView();
+        inventoryMenu.display();
     }
 
     private void takeItem() {
@@ -164,6 +131,6 @@ class GameMenuView {
     
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenuView();
+        helpMenu.display();
     }
 }
