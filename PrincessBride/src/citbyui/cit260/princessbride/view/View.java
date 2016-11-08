@@ -22,7 +22,7 @@ public abstract class View implements InterfaceView {
         this.displayMessage = message;
     }
 
-    @Override 
+@Override
     public void display() {  // displays start program view
 
         boolean done = false;
