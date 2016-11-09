@@ -36,18 +36,23 @@ public abstract class View implements InterfaceView {
         } while (!done);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getInput() {
 
         Scanner in = new Scanner(System.in);  // get infile for keyboard 
         String input = " ";  // value to be returned 
         boolean validInput = false;  // initialize to not valid 
+        
 
         while (!validInput) {  // loop while an invalid value is enter 
 
             input = in.nextLine();  // get next line typed on keyboard 
             input = input.trim();  // trim off leading and trailing blanks 
-            input = input.toUpperCase();  // converts input to upper case
+            input = input.toUpperCase();  // converts input to upper case 
 
             if (input.length() < 1) {  // value is blank 
                 System.out.println("\nInvalid value: You must enter a character.");

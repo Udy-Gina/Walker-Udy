@@ -61,14 +61,15 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         while (!isValidName) {
             String input = "";
             input = in.nextLine();
-
+            
             if (input != null && input.length() >= 2) {
                 isValidName = true;
-                name = input;
+                name = input.toUpperCase();
+                
             } else {
                 System.out.println("\nInput is invalid: name must be greater than one character in length.");
             }
-
+            
         }
 
         return name;

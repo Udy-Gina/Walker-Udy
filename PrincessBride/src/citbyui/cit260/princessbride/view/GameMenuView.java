@@ -34,48 +34,47 @@ public class GameMenuView extends View {
 }
 
     @Override
-    public boolean doAction(String choice) {
+    public boolean doAction(String selection) {
 
-        choice = choice.toUpperCase(); // convert choice to upper case
-        char charSel = choice.charAt(0);
-
-        switch (choice) {
-            case "V": //view map
+        char charSel = selection.charAt(0);
+        
+        switch (charSel) {
+            case 'V': //view map
                 this.viewMap();
                 break;
-            case "I": // List Inventory
+            case 'I': // List Inventory
                 this.InventoryMenuView();
                 break;
-            case "T": // Take Item
+            case 'T': // Take Item
                 this.takeItem();
                 break;
-            case "U": //Use Item
+            case 'U': //Use Item
                 this.useItem();
                 break;
-            case "N": // move North
+            case 'N': // move North
                 this.moveNorth();
                 break;
-            case "E":// move East
+            case 'E':// move East
                 this.moveEast();
                 break;
-            case "S": // moveSouth
+            case 'S': // moveSouth
                 this.moveSouth();
                 break;
-            case "W"://moveWest
+            case 'W'://moveWest
                 this.moveWest();
                 break;
-            case "L": // look around
+            case 'L': // look around
                 this.lookAround();
                 break;
-            case "B": // go Back
+            case 'B': // go Back
                 this.goBack();
                 break;
-            case "H"://ask for Help
+            case 'H'://ask for Help
                 this.HelpMenuView();;
                 break;
-            case "X":// exit Game
+            case 'X':// exit Game
                 return true;
-            case "G":// save Game
+            case 'G':// save Game
                 this.saveGame();
                 break;
             default:

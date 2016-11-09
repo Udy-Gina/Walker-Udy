@@ -1,3 +1,5 @@
+package citbyui.cit260.princessbride.view;
+
 
 import byui.cit260.princessBride.control.DangerControl;
 import citbyui.cit260.princessbride.view.View;

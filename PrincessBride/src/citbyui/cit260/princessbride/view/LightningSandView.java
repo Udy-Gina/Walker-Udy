@@ -8,7 +8,6 @@ package citbyui.cit260.princessbride.view;
 import byui.cit260.princessBride.control.DangerControl;
 import java.util.Random;
 import java.util.Scanner;
-import static javax.management.Query.value;
 
 /**
  *
