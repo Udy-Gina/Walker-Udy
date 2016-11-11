@@ -12,25 +12,30 @@ import java.util.Scanner;
 
 /**
  *
- * @author lisawalker
+ * @author Gina Udy
  */
-public class LightningSandView extends View {
-
-    private double diameter;
+public class FlameSpurtView extends View {
+    
+    private double length; 
+    private double height; 
+    private double width;
 
     @Override
     public void display() {
         //random number generated
         Random r = new Random();
-        diameter = r.nextInt(5) + 5;
+        length = r.nextInt(5) + 5;
+        height = r.nextInt(5) + 5;
+        width = r.nextInt(5) + 5;
+        
 
         // display problem
-        System.out.println("Uh-oh, the dreaded lightning sand.  This is terrible"
-                + "\nIf you don't think quickly, you will sink to your death."
+        System.out.println("Beware the Flame Spurt!  Your path is blocked."
+                + "You must calculate the volume of a pyramid to safely"
+                + "\ncross this danger.  Answer incorrectly and you with perish!"
                 + "\n"
-                + "\nThe diameter of the sand pit is " + diameter + "ft.  How far"
-                + "\nmust you walk around the lightning sand to get to safety?"); 
-                
+                + "\nThe pyramid's dimensions are: Length = " + length + "; Height = " 
+                + "\n" + height + "; Width = " + width + ".  What is the volume?");
         //get input
         String input = getInput();
 
@@ -39,10 +44,10 @@ public class LightningSandView extends View {
 
         // present results
         if (isCorrect) {
-            System.out.println("Good job!  You made it across!");
+            System.out.println("You are correct!  You may continue on your journey");
         } else {
-            //TODO  Check if player has a rope and then use it
-            System.out.println("Oh no!  You fell in.");
+            //TODO  Check if player has a healing potion  and then use it
+            System.out.println("You are incorrect!  You will now perish by fire!");
         }
     }
 
@@ -61,22 +66,22 @@ public class LightningSandView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("\nInvalid:  You must enter a number!");
+                System.out.println("\n Invalid:  You must enter a number! ");
             }
         }
-            return input; // return the value entered
-    }   
+        return input; // return the value entered
+    }
 
     @Override
-    public  boolean doAction(String value){
+    public boolean doAction(String value) {
         // convert string input into double
         double input = Double.parseDouble(value);
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
         //return answer
-        double actualAnswer = dc.calcLightningSand(diameter);
+        double actualAnswer = dc.calcFlameSpurt(length);
 
         return (int) actualAnswer == (int) input;
     }
+    
 }
-

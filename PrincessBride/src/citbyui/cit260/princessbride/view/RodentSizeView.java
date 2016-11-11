@@ -1,16 +1,15 @@
-package citbyui.cit260.princessbride.view;
-
-
-import byui.cit260.princessBride.control.DangerControl;
-import citbyui.cit260.princessbride.view.View;
-import java.util.Random;
-import java.util.Scanner;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+package citbyui.cit260.princessbride.view;
+
+import byui.cit260.princessBride.control.DangerControl;
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author lisawalker
@@ -26,9 +25,11 @@ public class RodentSizeView extends View {
         length = r.nextInt(5) + 5;
 
         // display problem
-        System.out.println("AGH!  A Rodent of Unusual Size.  You're path is blocked.    "
-                + "\n You need to calculate how high you will have to jump to clear this giant rodent"
-                + "\n  Please think carefully or you could get injured and die!"
+        System.out.println("AGH!  A Rodent of Unusual Size.  Your path is blocked."
+                + "You must calculate how high must jump to clear this "
+                + "\ngiant rodent.  You must have six inches of clearance."
+                + "\nPlease answer carefully...you could get injured and die!"
+                + "\n"
                 + "\nThe length  of the rodent is " + length + "ft.  How high must you jump?");
         //get input
         String input = getInput();
@@ -41,7 +42,7 @@ public class RodentSizeView extends View {
             System.out.println("Good job!  You jumped over the vile rodent!");
         } else {
             //TODO  Check if player has a healing potion  and then use it
-            System.out.println("Oh No! You tripped on the smelly  rodent.  The nasty thing bit you!");
+            System.out.println("Oh no!  You tripped on the smelly  rodent.  The nasty thing bit you!");
         }
     }
 
