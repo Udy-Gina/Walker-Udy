@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package citbyui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.DangerControl;
@@ -25,12 +24,13 @@ public class RodentSizeView extends View {
         length = r.nextInt(5) + 5;
 
         // display problem
-        System.out.println("AGH!  A Rodent of Unusual Size.  Your path is blocked."
-                + "You must calculate how high must jump to clear this "
+        System.out.println("\nAGH!  A Rodent of Unusual Size.  Your path is blocked."
+                + "\nYou must calculate how high must jump to clear this "
                 + "\ngiant rodent.  You must have six inches of clearance."
                 + "\nPlease answer carefully...you could get injured and die!"
                 + "\n"
-                + "\nThe length  of the rodent is " + length + "ft.  How high must you jump?");
+                + "\nThe length  of the rodent is " + length + "ft.  You know ROUS's are"
+                + "\nhalf as tall as they are long.  How high must you jump?");
         //get input
         String input = getInput();
 
