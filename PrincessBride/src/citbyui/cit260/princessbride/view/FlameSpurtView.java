@@ -25,9 +25,9 @@ public class FlameSpurtView extends View {
         //random number generated
         Random r = new Random();
         length = r.nextInt(5) + 5;
-        height = r.nextInt(5) + 5;
         width = r.nextInt(5) + 5;
-        
+        height = r.nextInt(5) + 5;
+                
 
         // display problem
         System.out.println("Beware the Flame Spurt!  Your path is blocked."
@@ -74,12 +74,15 @@ public class FlameSpurtView extends View {
 
     @Override
     public boolean doAction(String value) {
+        
         // convert string input into double
         double input = Double.parseDouble(value);
+        
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
+        
         //return answer
-        double actualAnswer = dc.calcFlameSpurt(length);
+        double actualAnswer = dc.calcFlameSpurt(length, width, height, input);
 
         return (int) actualAnswer == (int) input;
     }

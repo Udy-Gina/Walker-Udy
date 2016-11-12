@@ -68,13 +68,16 @@ public class LightningSandView extends View {
     }   
 
     @Override
-    public  boolean doAction(String value){
+    public boolean doAction(String value){
+        
         // convert string input into double
         double input = Double.parseDouble(value);
+        
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
+        
         //return answer
-        double actualAnswer = dc.calcLightningSand(diameter);
+        double actualAnswer = dc.calcLightningSand(diameter, input);
 
         return (int) actualAnswer == (int) input;
     }

@@ -102,14 +102,20 @@ public class GameMenuView extends View {
 
     private void moveNorth() {
         System.out.println("***moveNorth function called****");
+        LightningSandView lsv = new LightningSandView(); 
+        lsv.display();
     }
 
     private void moveEast() {
         System.out.println("***moveEast function called ****");
+        FlameSpurtView fsv = new FlameSpurtView(); 
+        fsv.display();
     }
 
     private void moveSouth() {
         System.out.println("*** moveSouth function called***");
+        RodentSizeView rsv = new RodentSizeView(); 
+        rsv.display();
     }
 
     private void moveWest() {

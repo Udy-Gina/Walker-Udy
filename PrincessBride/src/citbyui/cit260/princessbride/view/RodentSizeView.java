@@ -69,12 +69,15 @@ public class RodentSizeView extends View {
 
     @Override
     public boolean doAction(String value) {
+        
         // convert string input into double
         double input = Double.parseDouble(value);
+        
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
+        
         //return answer
-        double actualAnswer = dc.calcRodentSize(length);
+        double actualAnswer = dc.calcRodentSize(length, input);
 
         return (int) actualAnswer == (int) input;
     }

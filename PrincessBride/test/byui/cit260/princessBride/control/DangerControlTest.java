@@ -312,7 +312,7 @@ public class DangerControlTest {
         
         double expResult = -1.0; // expected output returned value 
         
-        double result = instance.checkRodentSize(playerHeight, heightCalc); // call function to run test 
+        boolean result = instance.checkRodentSize(playerHeight, heightCalc); // call function to run test 
         
         assertEquals(expResult, result, 0.1); // compare expected return value with actual value returned
         
@@ -492,7 +492,7 @@ public class DangerControlTest {
         
         double expResult = 1.0;   // expected output for test case #1
         
-        double result = instance.checkFlameSpurt(answer, volume);  //call function to run test
+        boolean result = instance.checkFlameSpurt(answer, volume);  //call function to run test
       
         assertEquals(expResult, result, 0.1);  //compare expected return value with actual return value
       
@@ -510,5 +510,36 @@ public class DangerControlTest {
         result = instance.checkFlameSpurt(answer, volume);  // call function to run test
       
         assertEquals(expResult, result, 0.1);  }  // compare expected return value with actual return value
+
+    /**
+     * Test of calcRodentSize method, of class DangerControl.
+     */
+    @Test
+    public void testCalcRodentSize_double_double() {
+        System.out.println("calcRodentSize");
+        double length = 0.0;
+        double input = 0.0;
+        DangerControl instance = new DangerControl();
+        double expResult = 0.0;
+        double result = instance.calcRodentSize(length, input);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of calcRodentSize method, of class DangerControl.
+     */
+    @Test
+    public void testCalcRodentSize_double() {
+        System.out.println("calcRodentSize");
+        double rodentLength = 0.0;
+        DangerControl instance = new DangerControl();
+        double expResult = 0.0;
+        double result = instance.calcRodentSize(rodentLength);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
         
 }
