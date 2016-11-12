@@ -54,7 +54,4 @@ public class DangerControl {
         return input != volume;
     }
 
-    double calcRodentSize(double rodentLength) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

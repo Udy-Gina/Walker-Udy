@@ -5,8 +5,6 @@
  */
 package citbyui.cit260.princessbride.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Gina Udy

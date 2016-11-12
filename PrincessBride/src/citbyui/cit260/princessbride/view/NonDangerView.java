@@ -7,37 +7,45 @@ package citbyui.cit260.princessbride.view;
 
 /**
  *
- * @author Lisa Walker
+ * @author Gina Udy
  */
-public class GameMenuView extends View {
+public class NonDangerView extends View {
 
-    public GameMenuView() {
-    
-    super ("\n"
-            + "\n--------------------------------------"
-            + "\n GAME MENU"
-            + "\n--------------------------------------"
-            + "\nV - View Map"
-            + "\nI - Inventory List"
-            + "\nT - Take Item"
-            + "\nU - Use Item"
-            + "\nN - Move North"
-            + "\nE - Move East"
-            + "\nS - Move South"
-            + "\nW - Move West"
-            + "\nG - Save Game"
-            + "\nH - Help"
-            + "\nL - Look Around"
-            + "\nB - Back"
-            + "\nX - Exit to Main Menu"
-            + "\n--------------------------------------");
-}
+    //TODO Complete the noDangerView - this is for spots on the map with no dangers.  Need to look into how to code this...
+    //I want it to just pull the GameMenuView.  Is that done in the doAction() function?  Will try to see if it works...
+    public NonDangerView() {
+
+        super("\n"
+                + "\n--------------------------------------"
+                + "\n GAME MENU"
+                + "\n--------------------------------------"
+                + "\nV - View Map"
+                + "\nI - Inventory List"
+                + "\nT - Take Item"
+                + "\nU - Use Item"
+                + "\nN - Move North"
+                + "\nE - Move East"
+                + "\nS - Move South"
+                + "\nW - Move West"
+                + "\nG - Save Game"
+                + "\nH - Help"
+                + "\nL - Look Around"
+                + "\nB - Back"
+                + "\nX - Exit to Main Menu"
+                + "\n--------------------------------------");
+
+        System.out.println("\nYou get a brief reprieve...no dangers here!  Take a moment"
+                + "\nto catch your breath...but don't take too long.  Dangers await!"
+                + "\nWhen you are ready, please select a menu option to continue the game.");
+
+    }
 
     @Override
+
     public boolean doAction(String selection) {
 
         char charSel = selection.charAt(0);
-        
+
         switch (charSel) {
             case 'V': //view map
                 this.viewMap();
@@ -70,7 +78,8 @@ public class GameMenuView extends View {
                 this.goBack();
                 break;
             case 'H'://ask for Help
-                this.HelpMenuView();;
+                this.HelpMenuView();
+                ;
                 break;
             case 'X':// exit Game
                 return true;
@@ -102,19 +111,19 @@ public class GameMenuView extends View {
 
     private void moveNorth() {
         System.out.println("***moveNorth function called****");
-        LightningSandView lsv = new LightningSandView(); 
+        LightningSandView lsv = new LightningSandView();
         lsv.display();
     }
 
     private void moveEast() {
         System.out.println("***moveEast function called ****");
-        FlameSpurtView fsv = new FlameSpurtView(); 
+        FlameSpurtView fsv = new FlameSpurtView();
         fsv.display();
     }
 
     private void moveSouth() {
         System.out.println("*** moveSouth function called***");
-        RodentSizeView rsv = new RodentSizeView(); 
+        RodentSizeView rsv = new RodentSizeView();
         rsv.display();
     }
 
@@ -124,8 +133,6 @@ public class GameMenuView extends View {
 
     private void lookAround() {
         System.out.println("***lookAround function called****");
-        NonDangerView ndv = new NonDangerView(); 
-        ndv.display();
     }
 
     private void goBack() {
@@ -135,13 +142,14 @@ public class GameMenuView extends View {
     private void saveGame() {
         System.out.println("***saveGame function called****");
     }
-    
+
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
-    
+
     private void determineNextView() {
         System.out.println("***determineNextView function called***");
     }
+
 }
