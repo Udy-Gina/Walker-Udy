@@ -90,6 +90,12 @@ public class GameMenuView extends View {
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
+        
+        System.out.println("\n ***********************************************"
+                + "\n"
+                + "\n                 Fire Swamp Map                 "
+                + "\n"
+                + "\n");
 
         for (int row = 0; row < Map.ROWS; row++) {
             for (int col = 0; col < Map.COLUMNS; col++) {
@@ -105,6 +111,10 @@ public class GameMenuView extends View {
 
             System.out.println("");
         }
+        
+        System.out.println("\n"
+        + "\n ***********************************************");
+    
     }
 
     private void createInventory() {
