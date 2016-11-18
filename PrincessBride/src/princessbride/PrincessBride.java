@@ -13,6 +13,7 @@ import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.model.Rodent;
 import byui.cit260.princessBride.model.LightningSand;
+import byui.cit260.princessBride.model.LocationType;
 import citbyui.cit260.princessbride.view.StartProgramView;
 
 /**
@@ -26,6 +27,22 @@ public class PrincessBride {
      */
     private static Game currentGame = null;
     private static Player player = null;
+    
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        PrincessBride.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return PrincessBride.player;
+    }
+
+    public static void setPlayer(Player player) {
+        PrincessBride.player = player;
+    }
 
     public static void main(String[] args) {
         //create StartProgramViewOrig and display the start program view
@@ -33,7 +50,7 @@ public class PrincessBride {
         startProgramView.displayStartProgramView();
     }
 
-    {
+    static {
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
@@ -44,22 +61,21 @@ public class PrincessBride {
         System.out.println(playerInfo);
 
         Location locationOne = new Location();
-
-        locationOne.setColumn(0);
-        locationOne.setDescription("description");
-        locationOne.setRow(0);
+        
+        locationOne.setDescription(playerInfo);
         locationOne.setTravelTime(0);
-        locationOne.setVisited(0);
-        locationOne.setDisplaySymbol("symbol");
+        locationOne.setDisplaySymbol(playerInfo);
+        locationOne.setRow(0);
+        locationOne.setCol(0);
+        locationOne.setLocationType(LocationType.NONE);
+        locationOne.setVisited(true);
+        locationOne.setItem(playerInfo);
 
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);
 
         Map mapOne = new Map();
-
-        mapOne.setColumnNumber(0);
-        mapOne.setRowNumber(0);
-
+        
         String mapInfo = mapOne.toString();
         System.out.println(mapInfo);
 
@@ -84,9 +100,9 @@ public class PrincessBride {
 
         Item itemOne = new Item();
 
-        itemOne.setName("John Doe");
-        itemOne.setType("Item");
-        itemOne.setQuantity(4);
+        itemOne.setItemName("Rope");
+        itemOne.setItemDescription("rope");
+        itemOne.setItemQuantity(3);
 
         String itemInfo = itemOne.toString();
         System.out.println(itemInfo);
@@ -99,22 +115,6 @@ public class PrincessBride {
 
         String lightningSandInfo = guessOne.toString();
         System.out.println(lightningSandInfo);
-    }
-
-    public static Game getCurrentGame() {
-        return currentGame;
-    }
-
-    public static void setCurrentGame(Game currentGame) {
-        PrincessBride.currentGame = currentGame;
-    }
-
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        PrincessBride.player = player;
-    }
+    } 
 
 }

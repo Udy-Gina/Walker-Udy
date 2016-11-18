@@ -5,6 +5,9 @@
  */
 package citbyui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.model.Map;
+import princessbride.PrincessBride;
+
 /**
  *
  * @author Lisa Walker
@@ -84,7 +87,22 @@ public class GameMenuView extends View {
     }
 
     private void viewMap() {
-        System.out.println("This is a 5 x 5 grid");
+        Map map = PrincessBride.getCurrentGame().getMap();
+        
+        for (int row = 0; row < Map.ROWS; row++) {
+            for (int col = 0; col <Map.COLUMNS; col++) {
+                char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
+                System.out.print(locationType);
+                if(map.getLocationAt(row, col).getItem() != null) {
+                    System.out.print(map.getLocationAt(row, col).getItem().charAt(0));
+                }
+                        
+                System.out.print("  ");
+                        
+            }
+            
+            System.out.println("");
+        }
     }
 
     private void InventoryMenuView() {

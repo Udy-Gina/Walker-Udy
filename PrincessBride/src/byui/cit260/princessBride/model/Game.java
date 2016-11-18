@@ -17,6 +17,15 @@ public class Game implements Serializable {
     //class instance variables
     private Player player; 
     private Map map; 
+    private Item[] item;
+
+    public Item[] getItem() {
+        return item;
+    }
+
+    public void setItem(Item[] item) {
+        this.item = item;
+    }
 
     public Game() {
     }
@@ -65,13 +74,7 @@ public class Game implements Serializable {
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        if (!Objects.equals(this.map, other.map)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.map, other.map);
     }
 
-    
-    
-    
 }

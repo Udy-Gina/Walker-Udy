@@ -15,51 +15,46 @@ import java.util.Objects;
 public class Item implements Serializable{
     
     //class instance variables 
-    private String name;
-    private String type;
-    private int quantity; 
+    private String itemName;
+    private String itemDescription; 
+    private int itemQuantity; 
 
     public Item() {
     }
-    
-    public String getName() {
-        return name;
+
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public String getType() {
-        return type;
+    public String getItemDescription() {
+        return itemDescription;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getItemQuantity() {
+        return itemQuantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setItemQuantity(int itemQuantity) {
+        this.itemQuantity = itemQuantity;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.type);
-        hash = 41 * hash + this.quantity;
+        hash = 97 * hash + Objects.hashCode(this.itemName);
+        hash = 97 * hash + Objects.hashCode(this.itemDescription);
+        hash = 97 * hash + this.itemQuantity;
         return hash;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" + "name=" + name + ", type=" + type + ", quantity=" + quantity + '}';
-    }
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -72,14 +67,21 @@ public class Item implements Serializable{
             return false;
         }
         final Item other = (Item) obj;
-        if (this.quantity != other.quantity) {
+        if (this.itemQuantity != other.itemQuantity) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.itemName, other.itemName)) {
             return false;
         }
-        return Objects.equals(this.type, other.type);
+        if (!Objects.equals(this.itemDescription, other.itemDescription)) {
+            return false;
+        }
+        return true;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Item{" + "itemName=" + itemName + ", itemDescription=" + itemDescription + ", itemQuantity=" + itemQuantity + '}';
+    }
+ 
 }

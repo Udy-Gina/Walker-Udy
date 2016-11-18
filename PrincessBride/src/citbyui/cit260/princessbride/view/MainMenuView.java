@@ -58,11 +58,11 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         // create and start a new game 
-        GameControl.createNewGame(PrincessBride.getPlayer());
-
-        // display the game menu 
-        GameMenuView gameMenu = new GameMenuView();
+        GameControl gc = new GameControl(); 
+        gc.createNewGame(PrincessBride.getPlayer()); 
+        GameMenuView gameMenu = new GameMenuView(); 
         gameMenu.display();
+        
     }
 
     private void startExistingGame() {
