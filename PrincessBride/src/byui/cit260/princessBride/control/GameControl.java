@@ -85,7 +85,7 @@ public class GameControl {
                 
                 Location location = map.getLocationAt(randomRow, randomCol);
                 if(location.getItem() == null) {
-                    location.setItem("");
+                    location.setItem(item);
                     placed = true;
                 }
             }

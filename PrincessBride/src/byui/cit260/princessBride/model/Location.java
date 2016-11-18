@@ -146,4 +146,8 @@ public class Location implements Serializable {
         return "Location{" + "description=" + description + ", travelTime=" + travelTime + ", displaySymbol=" + displaySymbol + ", row=" + row + ", col=" + col + ", locationType=" + locationType + ", visited=" + visited + ", item=" + item + '}';
     }
 
+    public void setItem(Item item) {
+        System.out.println("testing");
+    }
+
 }
