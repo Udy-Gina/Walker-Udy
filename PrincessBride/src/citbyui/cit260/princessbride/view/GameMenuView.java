@@ -109,6 +109,9 @@ public class GameMenuView extends View {
 
     private void createInventory() {
         System.out.println("\n***createInventory function called");
+        
+        InventoryControl ic = new InventoryControl(); 
+        ic.createNewInventory(); 
     }
 
     private void takeItem() {

@@ -18,7 +18,8 @@ public class InventoryControl implements Serializable {
     private String item;
     private InventoryType inventoryType;
 
-    public void createInventory(Item item) {
+    public void createNewInventory() {
+        System.out.println("\n*** createNewInventory() function called***");
     }
 
 }
