@@ -46,54 +46,52 @@ public class GameControl {
         map.init();
 
         currentGame.setMap(map);
-        
+
         createAndAssignItems(map);
 
         PrincessBride.setCurrentGame(currentGame);
 
     }
-    
+
     private void createAndAssignItems(Map map) {
-        
-        List<Item> items = new ArrayList<>(); 
-        
-        Item rope = new Item(); 
-        rope.setItemDescription("Rope"); 
+
+        List<Item> items = new ArrayList<>();
+
+        Item rope = new Item();
+        rope.setItemDescription("Rope");
         rope.setItemName("rope");
         rope.setItemQuantity(1);
-        items.add(rope); 
-        
-        Item potion = new Item(); 
-        potion.setItemDescription("Healing Potion"); 
+        items.add(rope);
+
+        Item potion = new Item();
+        potion.setItemDescription("Healing Potion");
         potion.setItemName("potion");
         potion.setItemQuantity(1);
         items.add(potion);
-        
-        Item water = new Item(); 
-        water.setItemDescription("Bucket of Water"); 
+
+        Item water = new Item();
+        water.setItemDescription("Bucket of Water");
         water.setItemName("water");
         water.setItemQuantity(1);
         items.add(water);
-        
-        Random rand = new Random(); 
-        
+
+        Random rand = new Random();
+
         for (Item item : items) {
-            boolean placed = false; 
-            while(!placed) {
-                int randomRow = rand.nextInt(Map.ROWS); 
+            boolean placed = false;
+            while (!placed) {
+                int randomRow = rand.nextInt(Map.ROWS);
                 int randomCol = rand.nextInt(Map.COLUMNS);
-                
+
                 Location location = map.getLocationAt(randomRow, randomCol);
-                if(location.getItem() == null) {
+                if (location.getItem() == null) {
                     location.setItem(item);
                     placed = true;
                 }
             }
-            
+
         }
-        
-               
-        
+
     }
 
 }

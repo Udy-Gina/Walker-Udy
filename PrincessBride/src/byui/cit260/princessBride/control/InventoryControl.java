@@ -7,16 +7,19 @@ package byui.cit260.princessBride.control;
 
 import byui.cit260.princessBride.model.Inventory;
 import byui.cit260.princessBride.model.Item;
+import java.io.Serializable;
 import princessbride.PrincessBride;
 
 /**
  *
  * @author Gina Udy & Lisa Walker
  */
+public class InventoryControl implements Serializable {
 
- public class InventoryControl  { 
-     
-     public void createInventory(Item item) {
+    private String item;
+    private InventoryType inventoryType;
+
+    public void createInventory(Item item) {
 
         Inventory currentInventory = new Inventory();
 
@@ -25,19 +28,5 @@ import princessbride.PrincessBride;
         PrincessBride.setCurrentInventory(currentInventory);
 
     }
-     
-     
-     
-          
-     
-     
-     
-     
-     
-     for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
-     System.out.println(alphabet);
- }
-
-    
 
 }
