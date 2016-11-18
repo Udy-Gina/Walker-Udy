@@ -8,7 +8,6 @@ package princessbride;
 import byui.cit260.princessBride.model.FlameSpurt;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Inventory;
-import byui.cit260.princessBride.model.InventoryType;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
@@ -52,7 +51,7 @@ public class PrincessBride {
         startProgramView.displayStartProgramView();
     } 
     
-   public static void setCurrentInventory(Inventory currentInventory) {
+   public static void setInventory(Inventory inventory) {
         System.out.println("\n***create inventory***") ;
     } 
 
@@ -124,12 +123,8 @@ public class PrincessBride {
         
         Inventory inventoryOne = new Inventory(); 
         
-        inventoryOne.setItem("");
-        inventoryOne.setInventoryType(InventoryType.ROPE);
-        
         String inventoryInfo = inventoryOne.toString();
         System.out.println(inventoryInfo);
-        
         
     } 
 

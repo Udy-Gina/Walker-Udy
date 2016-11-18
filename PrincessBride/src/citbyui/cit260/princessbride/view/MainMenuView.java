@@ -21,9 +21,9 @@ public class MainMenuView extends View {
             + "\nMAIN MENU"
             + "\n--------------------------------------"
             + "\nN - Start new game"
-            + "\nG - Get and start saved game"
+            + "\nG - Start saved game"
             + "\nH - Help menu"
-            + "\nS - Save game"
+            + "\nS - Save current game"
             + "\nQ - Quit"
             + "\n--------------------------------------"); 
     }

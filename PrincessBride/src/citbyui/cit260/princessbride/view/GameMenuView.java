@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.control.InventoryControl;
 import byui.cit260.princessBride.model.Map;
 import princessbride.PrincessBride;
 
@@ -15,38 +16,38 @@ import princessbride.PrincessBride;
 public class GameMenuView extends View {
 
     public GameMenuView() {
-    
-    super ("\n"
-            + "\n--------------------------------------"
-            + "\n GAME MENU"
-            + "\n--------------------------------------"
-            + "\nV - View Map"
-            + "\nI - Inventory List"
-            + "\nT - Take Item"
-            + "\nU - Use Item"
-            + "\nN - Move North"
-            + "\nE - Move East"
-            + "\nS - Move South"
-            + "\nW - Move West"
-            + "\nG - Save Game"
-            + "\nH - Help"
-            + "\nL - Look Around"
-            + "\nB - Back"
-            + "\nX - Exit to Main Menu"
-            + "\n--------------------------------------");
-}
+
+        super("\n"
+                + "\n--------------------------------------"
+                + "\n GAME MENU"
+                + "\n--------------------------------------"
+                + "\nV - View Map"
+                + "\nI - Inventory List"
+                + "\nT - Take Item"
+                + "\nU - Use Item"
+                + "\nN - Move North"
+                + "\nE - Move East"
+                + "\nS - Move South"
+                + "\nW - Move West"
+                + "\nG - Save Game"
+                + "\nH - Help"
+                + "\nL - Look Around"
+                + "\nB - Back"
+                + "\nX - Exit to Main Menu"
+                + "\n--------------------------------------");
+    }
 
     @Override
     public boolean doAction(String selection) {
 
         char charSel = selection.charAt(0);
-        
+
         switch (charSel) {
             case 'V': //view map
                 this.viewMap();
                 break;
             case 'I': // List Inventory
-                this.InventoryMenuView();
+                this.createInventory();
                 break;
             case 'T': // Take Item
                 this.takeItem();
@@ -73,7 +74,8 @@ public class GameMenuView extends View {
                 this.goBack();
                 break;
             case 'H'://ask for Help
-                this.HelpMenuView();;
+                this.HelpMenuView();
+                ;
                 break;
             case 'X':// exit Game
                 return true;
@@ -88,26 +90,25 @@ public class GameMenuView extends View {
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
-        
+
         for (int row = 0; row < Map.ROWS; row++) {
-            for (int col = 0; col <Map.COLUMNS; col++) {
+            for (int col = 0; col < Map.COLUMNS; col++) {
                 char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
                 System.out.print(locationType);
-                if(map.getLocationAt(row, col).getItem() != null) {
+                if (map.getLocationAt(row, col).getItem() != null) {
                     System.out.print(map.getLocationAt(row, col).getItem().charAt(0));
                 }
-                        
+
                 System.out.print("  ");
-                        
+
             }
-            
+
             System.out.println("");
         }
     }
 
-    private void InventoryMenuView() {
-        InventoryMenuView inventoryMenu = new InventoryMenuView();
-        inventoryMenu.display();
+    private void createInventory() {
+        System.out.println("\n***createInventory function called");
     }
 
     private void takeItem() {
@@ -120,19 +121,19 @@ public class GameMenuView extends View {
 
     private void moveNorth() {
         System.out.println("***moveNorth function called****");
-        LightningSandView lsv = new LightningSandView(); 
+        LightningSandView lsv = new LightningSandView();
         lsv.display();
     }
 
     private void moveEast() {
         System.out.println("***moveEast function called ****");
-        FlameSpurtView fsv = new FlameSpurtView(); 
+        FlameSpurtView fsv = new FlameSpurtView();
         fsv.display();
     }
 
     private void moveSouth() {
         System.out.println("*** moveSouth function called***");
-        RodentSizeView rsv = new RodentSizeView(); 
+        RodentSizeView rsv = new RodentSizeView();
         rsv.display();
     }
 
@@ -142,7 +143,7 @@ public class GameMenuView extends View {
 
     private void lookAround() {
         System.out.println("***lookAround function called****");
-        NonDangerView ndv = new NonDangerView(); 
+        NonDangerView ndv = new NonDangerView();
         ndv.display();
     }
 
@@ -153,12 +154,12 @@ public class GameMenuView extends View {
     private void saveGame() {
         System.out.println("***saveGame function called****");
     }
-    
+
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
-    
+
     private void determineNextView() {
         System.out.println("***determineNextView function called***");
     }
