@@ -22,7 +22,7 @@ public class Location implements Serializable {
     private int col;
     private LocationType locationType;
     private boolean visited;
-    private String item;
+    private Item item;
 
     public Location() {
     }
@@ -83,11 +83,11 @@ public class Location implements Serializable {
         this.visited = visited;
     }
 
-    public String getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(String item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
@@ -144,10 +144,6 @@ public class Location implements Serializable {
     @Override
     public String toString() {
         return "Location{" + "description=" + description + ", travelTime=" + travelTime + ", displaySymbol=" + displaySymbol + ", row=" + row + ", col=" + col + ", locationType=" + locationType + ", visited=" + visited + ", item=" + item + '}';
-    }
-
-    public void setItem(Item item) {
-        System.out.println("testing");
     }
 
 }

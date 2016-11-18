@@ -53,7 +53,7 @@ public class GameControl {
 
     }
 
-    private void createAndAssignItems(Map map) {
+    public void createAndAssignItems(Map map) {
 
         List<Item> items = new ArrayList<>();
 

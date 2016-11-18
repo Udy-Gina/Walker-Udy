@@ -28,6 +28,7 @@ public class PrincessBride {
      */
     private static Game currentGame = null;
     private static Player player = null;
+    private static Item item;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -74,7 +75,7 @@ public class PrincessBride {
         locationOne.setCol(0);
         locationOne.setLocationType(LocationType.NONE);
         locationOne.setVisited(true);
-        locationOne.setItem(playerInfo);
+        locationOne.setItem(item);
 
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);

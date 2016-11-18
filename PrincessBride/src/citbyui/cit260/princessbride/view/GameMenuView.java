@@ -96,7 +96,7 @@ public class GameMenuView extends View {
                 char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
                 System.out.print(locationType);
                 if (map.getLocationAt(row, col).getItem() != null) {
-                    System.out.print(map.getLocationAt(row, col).getItem().charAt(0));
+                    System.out.print(map.getLocationAt(row, col).getItem().getItemName().charAt(0));
                 }
 
                 System.out.print("  ");
