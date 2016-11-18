@@ -7,8 +7,17 @@ package byui.cit260.princessBride.control;
 
 /**
  *
- * @author Gina Udy
+ * @author Gina Udy & Lisa Walker
  */
-public class InventoryControl {
-    
+
+ public enum InventoryControl {
+     ROPE (), POTION(), WATER();   // items in game
+
+private final int id;
+private final int inventory;
+private InventoryControl (int id, int inventory){
+    this.id = id;
+    this.inventory = inventory;
 }
+        
+ }
