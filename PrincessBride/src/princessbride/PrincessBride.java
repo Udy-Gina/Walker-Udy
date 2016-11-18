@@ -7,6 +7,8 @@ package princessbride;
 
 import byui.cit260.princessBride.model.FlameSpurt;
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Inventory;
+import byui.cit260.princessBride.model.InventoryType;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
@@ -48,7 +50,11 @@ public class PrincessBride {
         //create StartProgramViewOrig and display the start program view
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
-    }
+    } 
+    
+   public static void setCurrentInventory(Inventory currentInventory) {
+        System.out.println("\n***create inventory***") ;
+    } 
 
     static {
         Player playerOne = new Player();
@@ -115,6 +121,16 @@ public class PrincessBride {
 
         String lightningSandInfo = guessOne.toString();
         System.out.println(lightningSandInfo);
+        
+        Inventory inventoryOne = new Inventory(); 
+        
+        inventoryOne.setItem("");
+        inventoryOne.setInventoryType(InventoryType.ROPE);
+        
+        String inventoryInfo = inventoryOne.toString();
+        System.out.println(inventoryInfo);
+        
+        
     } 
 
 }

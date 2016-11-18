@@ -10,7 +10,7 @@ package byui.cit260.princessBride.model;
  * @author lisawalker & ginaudy
  */
     
- public enum InventoryTypeView {
+ public enum InventoryType {
      ROPE, POTION, WATER   // items in game
  }
 

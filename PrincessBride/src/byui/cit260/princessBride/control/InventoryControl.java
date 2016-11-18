@@ -5,11 +5,39 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.model.Inventory;
+import byui.cit260.princessBride.model.Item;
+import princessbride.PrincessBride;
+
 /**
  *
  * @author Gina Udy & Lisa Walker
  */
 
- public class InventoryControl  {
+ public class InventoryControl  { 
+     
+     public void createInventory(Item item) {
+
+        Inventory currentInventory = new Inventory();
+
+        currentInventory.setInventory(Inventory);
+
+        PrincessBride.setCurrentInventory(currentInventory);
+
+    }
+     
+     
+     
+          
+     
+     
+     
+     
+     
+     for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
+     System.out.println(alphabet);
+ }
+
+    
 
 }

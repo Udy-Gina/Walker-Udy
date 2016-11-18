@@ -53,10 +53,18 @@ public class Map implements Serializable {
         return matrix[row][col];
     }
 
+    public Location[][] getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(Location[][] matrix) {
+        this.matrix = matrix;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Arrays.deepHashCode(this.matrix);
+        int hash = 3;
+        hash = 97 * hash + Arrays.deepHashCode(this.matrix);
         return hash;
     }
 
@@ -77,7 +85,7 @@ public class Map implements Serializable {
 
     @Override
     public String toString() {
-        return "Map{" + "matrix=" + Arrays.toString(matrix) + '}';
+        return "Map{" + "matrix=" + matrix + '}';
     }
-
+    
 }
