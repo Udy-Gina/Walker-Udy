@@ -6,6 +6,8 @@
 package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.GameControl;
+import static java.lang.System.console;
+import static java.lang.System.in;
 import princessbride.PrincessBride;
 
 /**
@@ -15,17 +17,17 @@ import princessbride.PrincessBride;
 public class MainMenuView extends View {
 
     public MainMenuView() {
-    
-    super ( "\n"
-            + "\n--------------------------------------"
-            + "\nMAIN MENU"
-            + "\n--------------------------------------"
-            + "\nN - start New game"
-            + "\nL - Load saved game"
-            + "\nH - Help menu"
-            + "\nS - Save current game"
-            + "\nQ - Quit"
-            + "\n--------------------------------------"); 
+
+        super("\n"
+                + "\n--------------------------------------"
+                + "\nMAIN MENU"
+                + "\n--------------------------------------"
+                + "\nN - start New game"
+                + "\nL - Load saved game"
+                + "\nS - Save current game"
+                + "\nH - Help menu"
+                + "\nQ - Quit"
+                + "\n--------------------------------------");
     }
 
     @Override
@@ -40,11 +42,11 @@ public class MainMenuView extends View {
             case 'L':  // load and play an existing game 
                 loadSavedGame();
                 break;
-            case 'H':  // display help menu 
-                HelpMenuView();
-                break;
             case 'S':  // save the current game 
                 saveCurrentGame();
+                break;
+            case 'H':  // display help menu 
+                HelpMenuView();
                 break;
             case 'Q':  // quit the current game 
                 return true;
@@ -58,19 +60,28 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         // create and start a new game 
-        GameControl gc = new GameControl(); 
-        gc.createNewGame(PrincessBride.getPlayer()); 
-        GameMenuView gameMenu = new GameMenuView(); 
+        GameControl gc = new GameControl();
+        gc.createNewGame(PrincessBride.getPlayer());
+        GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
-        
+
     }
 
+    /*private void saveCurrentGame() {
+        System.out.println("\nPlease enter your name: ");
+        try {
+            String fileName = in.readLine();
+            GameControl.keepCurrentGame(fileName);
+        } catch (Exception e) {
+            System.out.println("\n *** Please enter a valid file name! ***");
+        }
+    } */
+
+        private void saveCurrentGame() {
+        System.out.println("\n*** saveCurrentGame function called***");
+    } 
     private void loadSavedGame() {
         System.out.println("\n*** loadSavedGame function called***");
-    }
-
-    private void saveCurrentGame() {
-        System.out.println("\n*** saveCurrentGame function called***");
     }
 
     private void HelpMenuView() {
@@ -79,3 +90,20 @@ public class MainMenuView extends View {
     }
 
 }
+
+
+
+    
+
+
+
+
+/* console.println("Enter file name: ");
+        try {
+            String fileName = in.readLine();
+            ProgramController.loadCurrentGame(fileName);
+            GameMenuView gmv = new GameMenuView();
+            gmv.display();
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error on input");
+        } */

@@ -67,9 +67,9 @@ public class GameControl {
 
     }
 
-    public static void keepCurrentGame(String file) {
+    public static void keepCurrentGame(String fileName) {
 
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
             out.writeObject(PrincessBride.getCurrentGame());
         } catch (Exception e) {
             System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with saveCurrentGame()!!!");
