@@ -96,6 +96,8 @@ public class GameControl {
     }
 
     private void startingLocation(Map map) {  //TODO: set starting point on map 
+        
+        //Set the location property of the Player
         System.out.println("\n *** startingLocation() function called ***");
     }
 

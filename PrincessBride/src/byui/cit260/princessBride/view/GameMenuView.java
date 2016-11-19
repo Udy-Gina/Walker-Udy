@@ -5,7 +5,10 @@
  */
 package byui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.control.MovementControl;
 import byui.cit260.princessBride.model.Inventory;
+import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import princessbride.PrincessBride;
 
@@ -89,7 +92,7 @@ public class GameMenuView extends View {
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
-        
+
         System.out.println("\n ***********************************************"
                 + "\n"
                 + "\n                 Fire Swamp Map                 "
@@ -110,10 +113,10 @@ public class GameMenuView extends View {
 
             System.out.println("");
         }
-        
+
         System.out.println("\n"
-        + "\n ***********************************************");
-    
+                + "\n ***********************************************");
+
     }
 
     private void createInventory() {
@@ -147,13 +150,29 @@ public class GameMenuView extends View {
     }
 
     private void moveWest() {
+        MovementControl mc = new MovementControl();
+        boolean success = mc.moveWest();
+        if (!success) {
+            System.out.println("You are unable to move further West!");
+        }
         determineNextView();
+    }
+
+    /**
+     * Determines next view based on player location
+     */
+    private void determineNextView() {
+        Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
+
+        if (currentLocation.getLocationType() == LocationType.FLAMESPURT && !currentLocation.getVisited()) {
+            FlameSpurtView fsv = new FlameSpurtView();
+            fsv.display();
+            currentLocation.setVisited(true);
+        }
     }
 
     private void lookAround() {
         System.out.println("***lookAround function called****");
-        NonDangerView ndv = new NonDangerView();
-        ndv.display();
     }
 
     private void goBack() {
@@ -167,9 +186,5 @@ public class GameMenuView extends View {
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
-    }
-
-    private void determineNextView() {
-        System.out.println("***determineNextView function called***");
     }
 }
