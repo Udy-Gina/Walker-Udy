@@ -75,7 +75,6 @@ public class GameMenuView extends View {
                 break;
             case 'H'://ask for Help
                 this.HelpMenuView();
-                ;
                 break;
             case 'X':// exit Game
                 return true;
