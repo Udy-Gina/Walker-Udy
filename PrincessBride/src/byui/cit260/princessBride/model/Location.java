@@ -16,8 +16,6 @@ public class Location implements Serializable {
 
     //class instance variables
     private String description;
-    private double travelTime;
-    private String displaySymbol;
     private int row;
     private int col;
     private LocationType locationType;
@@ -33,22 +31,6 @@ public class Location implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public double getTravelTime() {
-        return travelTime;
-    }
-
-    public void setTravelTime(double travelTime) {
-        this.travelTime = travelTime;
-    }
-
-    public String getDisplaySymbol() {
-        return displaySymbol;
-    }
-
-    public void setDisplaySymbol(String displaySymbol) {
-        this.displaySymbol = displaySymbol;
     }
 
     public int getRow() {
@@ -95,8 +77,6 @@ public class Location implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.description);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.travelTime) ^ (Double.doubleToLongBits(this.travelTime) >>> 32));
-        hash = 89 * hash + Objects.hashCode(this.displaySymbol);
         hash = 89 * hash + this.row;
         hash = 89 * hash + this.col;
         hash = 89 * hash + Objects.hashCode(this.locationType);
@@ -117,9 +97,6 @@ public class Location implements Serializable {
             return false;
         }
         final Location other = (Location) obj;
-        if (Double.doubleToLongBits(this.travelTime) != Double.doubleToLongBits(other.travelTime)) {
-            return false;
-        }
         if (this.row != other.row) {
             return false;
         }
@@ -132,9 +109,6 @@ public class Location implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
-            return false;
-        }
         if (!Objects.equals(this.item, other.item)) {
             return false;
         }
@@ -143,7 +117,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "Location{" + "description=" + description + ", travelTime=" + travelTime + ", displaySymbol=" + displaySymbol + ", row=" + row + ", col=" + col + ", locationType=" + locationType + ", visited=" + visited + ", item=" + item + '}';
+        return "Location{" + "description=" + description + ", row=" + row + ", col=" + col + ", locationType=" + locationType + ", visited=" + visited + ", item=" + item + '}';
     }
 
 }

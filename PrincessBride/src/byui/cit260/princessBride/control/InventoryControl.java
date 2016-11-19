@@ -5,8 +5,6 @@
  */
 package byui.cit260.princessBride.control;
 
-import byui.cit260.princessBride.model.InventoryType;
-import byui.cit260.princessBride.model.Item;
 import java.io.Serializable;
 
 /**
@@ -15,11 +13,16 @@ import java.io.Serializable;
  */
 public class InventoryControl implements Serializable {
 
-    private String item;
-    private InventoryType inventoryType;
-
-    public void createNewInventory() {
+    public void createInventoryList() {
         System.out.println("\n*** createNewInventory() function called***");
+    }
+
+    public void removeFromInventoryList() {
+        System.out.println("\n*** removeFromInventory() function called***");
+    }
+
+    public void addToInventoryList() {
+        System.out.println("\n*** addToInventory() function called***");
     }
 
 }

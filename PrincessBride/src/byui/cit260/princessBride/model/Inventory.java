@@ -12,5 +12,5 @@ import java.io.Serializable;
  * @author Gina Udy
  */
 public class Inventory implements Serializable {
-    
+
 }
