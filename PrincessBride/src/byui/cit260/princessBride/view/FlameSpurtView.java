@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package citbyui.cit260.princessbride.view;
+package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.DangerControl;
 import java.util.Random;

@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.princessbride.view;
-
-import byui.cit260.princessBride.model.Inventory;
-import byui.cit260.princessBride.model.Map;
-import princessbride.PrincessBride;
+package byui.cit260.princessbride.view;
 
 /**
  *
- * @author Lisa Walker
+ * @author Gina Udy
  */
-public class GameMenuView extends View {
+public class NonDangerView extends View {
 
-    public GameMenuView() {
+    //TODO Complete the noDangerView - this is for spots on the map with no dangers.  Need to look into how to code this...
+    //I want it to just pull the GameMenuView.  Is that done in the doAction() function?  Will try to see if it works...
+    public NonDangerView() {
 
         super("\n"
                 + "\n--------------------------------------"
@@ -35,9 +33,15 @@ public class GameMenuView extends View {
                 + "\nB - Back"
                 + "\nX - Exit to Main Menu"
                 + "\n--------------------------------------");
+
+        System.out.println("\nYou get a brief reprieve...no dangers here!  Take a moment"
+                + "\nto catch your breath...but don't take too long.  Dangers await!"
+                + "\nWhen you are ready, please select a menu option to continue the game.");
+
     }
 
     @Override
+
     public boolean doAction(String selection) {
 
         char charSel = selection.charAt(0);
@@ -47,7 +51,7 @@ public class GameMenuView extends View {
                 this.viewMap();
                 break;
             case 'I': // List Inventory
-                this.createInventory();
+                this.InventoryMenuView();
                 break;
             case 'T': // Take Item
                 this.takeItem();
@@ -89,44 +93,20 @@ public class GameMenuView extends View {
     }
 
     private void viewMap() {
-        Map map = PrincessBride.getCurrentGame().getMap();
-        
-        System.out.println("\n ***********************************************"
-                + "\n"
-                + "\n                 Fire Swamp Map                 "
-                + "\n"
-                + "\n");
-
-        for (int row = 0; row < Map.ROWS; row++) {
-            for (int col = 0; col < Map.COLUMNS; col++) {
-                char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
-                System.out.print("\t" + locationType);
-                if (map.getLocationAt(row, col).getItem() != null) {
-                    System.out.print(map.getLocationAt(row, col).getItem().getItemName().charAt(0));
-                }
-
-                System.out.print("  ");
-
-            }
-
-            System.out.println("");
-        }
-        
-        System.out.println("\n"
-        + "\n ***********************************************");
-    
+        System.out.println("This is a 5 x 5 grid");
     }
 
-    private void createInventory() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+    private void InventoryMenuView() {
+        InventoryMenuView inventoryMenu = new InventoryMenuView();
+        inventoryMenu.display();
     }
 
     private void takeItem() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+        System.out.println("***takeItem function called");
     }
 
     private void useItem() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+        System.out.println("*** useItem function called****");
     }
 
     private void moveNorth() {
@@ -153,8 +133,6 @@ public class GameMenuView extends View {
 
     private void lookAround() {
         System.out.println("***lookAround function called****");
-        NonDangerView ndv = new NonDangerView();
-        ndv.display();
     }
 
     private void goBack() {
@@ -173,4 +151,5 @@ public class GameMenuView extends View {
     private void determineNextView() {
         System.out.println("***determineNextView function called***");
     }
+
 }

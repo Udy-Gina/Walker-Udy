@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.princessbride.view;
+package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.GameControl;
 import princessbride.PrincessBride;

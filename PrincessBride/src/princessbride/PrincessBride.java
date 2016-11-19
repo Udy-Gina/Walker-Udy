@@ -14,7 +14,7 @@ import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.model.Rodent;
 import byui.cit260.princessBride.model.LightningSand;
 import byui.cit260.princessBride.model.LocationType;
-import citbyui.cit260.princessbride.view.StartProgramView;
+import byui.cit260.princessbride.view.StartProgramView;
 
 /**
  *

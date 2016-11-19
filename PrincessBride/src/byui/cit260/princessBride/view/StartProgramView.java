@@ -1,4 +1,4 @@
-package citbyui.cit260.princessbride.view;
+package byui.cit260.princessbride.view;
 
 import java.util.Scanner;
 
