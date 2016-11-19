@@ -36,7 +36,7 @@ public class GameControl {
 
     }
 
-    public void createNewGame(Player player) {
+    public void createNewGame(Player player) { 
 
         Game currentGame = new Game();
 
@@ -53,7 +53,7 @@ public class GameControl {
 
     }
 
-    public void createAndAssignItems(Map map) {
+    public void createAndAssignItems(Map map) { 
 
         List<Item> items = new ArrayList<>();
 

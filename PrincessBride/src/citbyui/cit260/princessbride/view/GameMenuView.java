@@ -118,22 +118,16 @@ public class GameMenuView extends View {
     }
 
     private void createInventory() {
-        System.out.println("\n***createInventory function called");
-        
         InventoryControl ic = new InventoryControl(); 
         ic.createInventoryList(); 
     }
 
     private void takeItem() {
-        System.out.println("***takeItem function called");
-        
         InventoryControl ic = new InventoryControl(); 
         ic.removeFromInventoryList(); 
     }
 
     private void useItem() {
-        System.out.println("*** useItem function called****");
-        
         InventoryControl ic = new InventoryControl(); 
         ic.addToInventoryList(); 
     }
