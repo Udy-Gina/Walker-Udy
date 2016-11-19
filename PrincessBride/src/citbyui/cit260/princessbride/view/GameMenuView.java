@@ -5,7 +5,7 @@
  */
 package citbyui.cit260.princessbride.view;
 
-import byui.cit260.princessBride.control.InventoryControl;
+import byui.cit260.princessBride.model.Inventory;
 import byui.cit260.princessBride.model.Map;
 import princessbride.PrincessBride;
 
@@ -118,18 +118,15 @@ public class GameMenuView extends View {
     }
 
     private void createInventory() {
-        InventoryControl ic = new InventoryControl(); 
-        ic.createInventoryList(); 
+        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
     }
 
     private void takeItem() {
-        InventoryControl ic = new InventoryControl(); 
-        ic.removeFromInventoryList(); 
+        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
     }
 
     private void useItem() {
-        InventoryControl ic = new InventoryControl(); 
-        ic.addToInventoryList(); 
+        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
     }
 
     private void moveNorth() {

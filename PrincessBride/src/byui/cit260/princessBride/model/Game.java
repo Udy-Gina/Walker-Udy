@@ -6,6 +6,7 @@
 package byui.cit260.princessBride.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -19,25 +20,6 @@ public class Game implements Serializable {
     private Map map; 
     private Item[] item;
     private Inventory[] inventory;
-
-    public Inventory[] getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory[] inventory) {
-        this.inventory = inventory;
-    }
-
-    public Item[] getItem() {
-        return item;
-    }
-
-    public void setItem(Item[] item) {
-        this.item = item;
-    }
-
-    public Game() {
-    }
 
     public Player getPlayer() {
         return player;
@@ -55,19 +37,32 @@ public class Game implements Serializable {
         this.map = map;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.player);
-        hash = 29 * hash + Objects.hashCode(this.map);
-        return hash;
+    public Item[] getItem() {
+        return item;
+    }
+
+    public void setItem(Item[] item) {
+        this.item = item;
+    }
+
+    public Inventory[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory[] inventory) {
+        this.inventory = inventory;
     }
 
     @Override
-    public String toString() {
-        return "Game{" + "player=" + player + ", map=" + map + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.player);
+        hash = 89 * hash + Objects.hashCode(this.map);
+        hash = 89 * hash + Arrays.deepHashCode(this.item);
+        hash = 89 * hash + Arrays.deepHashCode(this.inventory);
+        return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -83,7 +78,18 @@ public class Game implements Serializable {
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        return Objects.equals(this.map, other.map);
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.item, other.item)) {
+            return false;
+        }
+        return Arrays.deepEquals(this.inventory, other.inventory);
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" + "player=" + player + ", map=" + map + ", item=" + item + ", inventory=" + inventory + '}';
     }
 
 }

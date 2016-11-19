@@ -13,4 +13,12 @@ import java.io.Serializable;
  */
 public class Inventory implements Serializable {
 
+    public Inventory() {
+        System.out.println("\n *** Inventory() function called ***");
+    }
+
+    public void createInventoryList() {
+        System.out.println("\n *** init() function called ***");
+    }
+
 }

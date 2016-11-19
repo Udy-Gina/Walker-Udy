@@ -6,6 +6,7 @@
 package byui.cit260.princessBride.control;
 
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Inventory;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
@@ -37,20 +38,43 @@ public class GameControl {
     }
 
     public void createNewGame(Player player) { 
-
+        
+        // New Game - create new game
         Game currentGame = new Game();
-
+        PrincessBride.setCurrentGame(currentGame);
+        
+        
+        // Player - create player 
         currentGame.setPlayer(player);
-
+        
+        
+        // Inventory - create inventory list
+        Inventory[] inventoryList = GameControl.createInventoryList();
+        currentGame.setInventory(inventoryList);
+        
+        // Map - create and populate with dangers/inventory items and starting point 
         Map map = new Map();
         map.init();
-
+        
         currentGame.setMap(map);
-
+        
         createAndAssignItems(map);
 
-        PrincessBride.setCurrentGame(currentGame);
+        startingLocation(map); 
 
+    }
+
+    private static Inventory[] createInventoryList() {
+        System.out.println("\n *** createInventoryList() function called ***");
+        return null;
+    }
+    
+    private void setInventory() {
+        System.out.println("\n *** setInventory() function called ***");
+    }
+            
+    private void startingLocation(Map map) {
+        System.out.println("\n *** startingLocation() function called ***");
     }
 
     public void createAndAssignItems(Map map) { 
