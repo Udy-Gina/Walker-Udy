@@ -5,10 +5,27 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.Map;
+import byui.cit260.princessBride.model.Player;
+import princessbride.PrincessBride;
+
 /**
  *
  * @author Gina Udy
  */
 public class MovementControl {
+    
+    public boolean moveWest() {
+        Player player = PrincessBride.getCurrentGame().getPlayer();
+        Location currentLocation = player.getLocation();
+        Map map = PrincessBride.getCurrentGame().getMap();
+
+        if (currentLocation.getCol() == 0) {
+            return false;
+        }
+        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
+        return true;
+    }
     
 }

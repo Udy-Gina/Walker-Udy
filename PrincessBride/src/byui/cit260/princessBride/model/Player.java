@@ -17,7 +17,8 @@ public class Player implements Serializable {
     //class instance variables 
     private String name; 
     private double coordinates; 
-    private String item; 
+    private String item;
+    private Location location;
 
     public Player() {
     }
@@ -46,6 +47,14 @@ public class Player implements Serializable {
         this.item = item;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

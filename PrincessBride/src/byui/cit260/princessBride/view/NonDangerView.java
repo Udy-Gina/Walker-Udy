@@ -5,10 +5,13 @@
  */
 package byui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.control.MovementControl;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
+import princessbride.PrincessBride;
 
 /**
  *
@@ -133,15 +136,25 @@ public class NonDangerView extends View {
     }
 
     private void moveWest() {
-        Player playerName = getPlayerName();
-        Location currentLocation = playerName.getLocationAt();
-        Map map = Game.Map();
-
-        if (currentLocation.getCol() == 0) {
+        MovementControl mc = new MovementControl();
+        boolean success = mc.moveWest();
+        if(!success) {
             System.out.println("You are unable to move further West!");
         }
-        playerName.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
-        return true;
+        determineNextView();
+    }
+    
+    /**
+     * Determines next view based on player location
+     */
+    private void determineNextView() {
+        Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
+        
+        if(currentLocation.getLocationType() == LocationType.FLAMESPURT && !currentLocation.getVisited()) {
+            FlameSpurtView fsv = new FlameSpurtView();
+            fsv.display();
+            currentLocation.setVisited(true);
+        }
     }
 
     private void lookAround() {
@@ -159,10 +172,6 @@ public class NonDangerView extends View {
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
-    }
-
-    private void determineNextView() {
-        System.out.println("***determineNextView function called***");
     }
 
     private Player getPlayerName() {
