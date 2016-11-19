@@ -6,7 +6,6 @@
 package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.GameControl;
-import java.util.Scanner;
 import princessbride.PrincessBride;
 
 /**
@@ -21,7 +20,7 @@ public class MainMenuView extends View {
             + "\n--------------------------------------"
             + "\nMAIN MENU"
             + "\n--------------------------------------"
-            + "\nN - New game"
+            + "\nN - start New game"
             + "\nL - Load saved game"
             + "\nH - Help menu"
             + "\nS - Save current game"
@@ -38,7 +37,7 @@ public class MainMenuView extends View {
             case 'N':  // create and start a new game 
                 startNewGame();
                 break;
-            case 'L':  // get and play an existing game 
+            case 'L':  // load and play an existing game 
                 loadSavedGame();
                 break;
             case 'H':  // display help menu 
@@ -66,38 +65,13 @@ public class MainMenuView extends View {
         
     }
 
-
-    //TODO: Need to look into readLine() and ErrorView() functions     
-    private void loadSavedGame() { 
-        
-        Scanner in = new Scanner(System.in);  // get infile for keyboard 
-        
-        System.out.println("\nEnter file name: ");
-        
-        try {
-            String file = in.readLine();
-            GameControl.loadSavedGame(file);
-            GameMenuView gmv = new GameMenuView();
-            gmv.display();
-        } catch (Exception e) {
-            System.out.println("\n *** Error about loadSavedGame() ***");
-        }
+    private void loadSavedGame() {
+        System.out.println("\n*** loadSavedGame function called***");
     }
 
-    //TODO: Need to look into readLine() and ErrorView() functions     
-    private void saveCurrentGame() { 
-        
-        Scanner in = new Scanner(System.in);  // get infile for keyboard 
-        
-        System.out.println("\nEnter file name: ");
-        try {
-            String file = in.readLine();
-            GameControl.saveCurrentGame(file);
-        } catch (Exception e) {
-            System.out.println("\n *** Error about loadSavedGame() ***");
-        }
+    private void saveCurrentGame() {
+        System.out.println("\n*** saveCurrentGame function called***");
     }
-    
 
     private void HelpMenuView() {
         HelpMenuView helpMenu = new HelpMenuView();
