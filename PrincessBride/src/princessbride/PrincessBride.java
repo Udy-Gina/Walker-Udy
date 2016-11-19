@@ -26,6 +26,8 @@ public class PrincessBride {
      * @param args the command line arguments
      */
     private static Game currentGame = null;
+    private static Game loadSavedGame = null;
+    private static Game saveCurrentGame = null;
     private static Player player = null;
     private static Item item;
     
@@ -37,6 +39,22 @@ public class PrincessBride {
         PrincessBride.currentGame = currentGame;
     }
 
+    public static Game getloadSavedGame() {
+        return loadSavedGame;
+    }
+    
+    public static void setloadSavedGame(Game loadSavedGame) {
+        PrincessBride.loadSavedGame = loadSavedGame;
+    }
+        
+    public static Game getsaveCurrentGame() {
+        return saveCurrentGame;
+    }
+    
+    public static void setsaveCurrentGame(Game saveCurrentGame) {
+        PrincessBride.saveCurrentGame = saveCurrentGame;
+    }
+    
     public static Player getPlayer() {
         return PrincessBride.player;
     }
@@ -45,11 +63,12 @@ public class PrincessBride {
         PrincessBride.player = player;
     }
 
+    
     public static void main(String[] args) {
         //create StartProgramViewOrig and display the start program view
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
-    } 
+    }
     
    static {
         Player playerOne = new Player();
