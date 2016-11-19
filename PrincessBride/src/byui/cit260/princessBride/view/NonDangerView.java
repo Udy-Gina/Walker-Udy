@@ -5,9 +5,14 @@
  */
 package byui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.Map;
+import byui.cit260.princessBride.model.Player;
+
 /**
  *
- * @author Gina Udy
+ * @author Gina Udy & Lisa Walker
  */
 public class NonDangerView extends View {
 
@@ -128,7 +133,15 @@ public class NonDangerView extends View {
     }
 
     private void moveWest() {
-        determineNextView();
+        Player playerName = getPlayerName();
+        Location currentLocation = playerName.getLocationAt();
+        Map map = Game.Map();
+
+        if (currentLocation.getCol() == 0) {
+            System.out.println("You are unable to move further West!");
+        }
+        playerName.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
+        return true;
     }
 
     private void lookAround() {
@@ -150,6 +163,10 @@ public class NonDangerView extends View {
 
     private void determineNextView() {
         System.out.println("***determineNextView function called***");
+    }
+
+    private Player getPlayerName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
