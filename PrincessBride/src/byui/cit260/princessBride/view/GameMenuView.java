@@ -144,10 +144,14 @@ public class GameMenuView extends View {
     }
 
     private void moveSouth() {
-        System.out.println("*** moveSouth function called***");
-        RodentSizeView rsv = new RodentSizeView();
-        rsv.display();
+      MovementControl mc = new MovementControl();
+        boolean success = mc.moveSouth();
+        if (!success) {
+            System.out.println("You are unable to move further South!");
+        }
+        determineNextView();
     }
+    
 
     private void moveWest() {
         MovementControl mc = new MovementControl();

@@ -12,7 +12,7 @@ import princessbride.PrincessBride;
 
 /**
  *
- * @author Gina Udy
+ * @author Gina Udy & Lisa Walker
  */
 public class MovementControl {
     
@@ -22,6 +22,17 @@ public class MovementControl {
         Map map = PrincessBride.getCurrentGame().getMap();
 
         if (currentLocation.getCol() == 0) {
+            return false;
+        }
+        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
+        return true;
+    }
+      public boolean moveSouth() {
+        Player player = PrincessBride.getCurrentGame().getPlayer();
+        Location currentLocation = player.getLocation();
+        Map map = PrincessBride.getCurrentGame().getMap();
+
+        if (currentLocation.getRow() == 5) {
             return false;
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
