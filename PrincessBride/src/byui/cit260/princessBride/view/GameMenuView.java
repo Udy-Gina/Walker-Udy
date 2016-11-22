@@ -128,8 +128,17 @@ public class GameMenuView extends View {
     }
 
     private void takeItemFromLocation() {
-        GameControl gc = new GameControl();
-        gc.addItemToInventory();
+        Location currentLocation = PrincessBride.getPlayer().getLocation();
+        
+        if(currentLocation.getItem() !=null) {
+                PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
+                System.out.println("you found a " + currentLocation.getItem().getItemName());
+                currentLocation.setItem(null);
+        }   else{
+           
+                System.out.println("there is nothing here");
+                  
+        }
     }
 
     private void useItemInInventory() {

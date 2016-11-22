@@ -20,7 +20,7 @@ public class Player implements Serializable {
     private String name;
     private String item;
     private Location location;
-    private List<Item> inventory; 
+    private List<Item> inventory;
 
     public List<Item> getInventory() {
         return inventory;
@@ -29,7 +29,7 @@ public class Player implements Serializable {
     public Player() {
         inventory = new ArrayList<>();
     }
-
+  
     public void addItemToInventory(Item item) {
         inventory.add(item);
     }
