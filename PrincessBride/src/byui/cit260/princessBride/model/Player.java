@@ -6,6 +6,8 @@
 package byui.cit260.princessBride.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -19,8 +21,17 @@ public class Player implements Serializable {
     private double coordinates; 
     private String item;
     private Location location;
+    private List<Item> inventory;
 
     public Player() {
+        inventory = new ArrayList<>();
+    }
+    public List<Item> getInventory() {
+        return inventory;
+    }
+    
+    public void addItemToInventory(Item item) {
+        inventory.add(item);
     }
     
     public String getName() {
