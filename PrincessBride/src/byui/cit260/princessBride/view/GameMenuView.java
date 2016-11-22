@@ -117,8 +117,8 @@ public class GameMenuView extends View {
         System.out.println("\n"
                 + "\n ***********************************************");
         
-        Location a = PrincessBride.getCurrentGame().getPlayer().getLocation();
-        System.out.println("\nPlayer is at:  " + a.getRow() + ", " + a.getCol());
+        //Location a = PrincessBride.getCurrentGame().getPlayer().getLocation();
+        //System.out.println("\nPlayer is at:  " + a.getRow() + ", " + a.getCol());
 
     }
 
