@@ -6,8 +6,6 @@
 package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.GameControl;
-import static java.lang.System.console;
-import static java.lang.System.in;
 import princessbride.PrincessBride;
 
 /**
@@ -76,10 +74,10 @@ public class MainMenuView extends View {
             System.out.println("\n *** Please enter a valid file name! ***");
         }
     } */
-
-        private void saveCurrentGame() {
+    private void saveCurrentGame() {
         System.out.println("\n*** saveCurrentGame function called***");
-    } 
+    }
+
     private void loadSavedGame() {
         System.out.println("\n*** loadSavedGame function called***");
     }
@@ -90,13 +88,6 @@ public class MainMenuView extends View {
     }
 
 }
-
-
-
-    
-
-
-
 
 /* console.println("Enter file name: ");
         try {

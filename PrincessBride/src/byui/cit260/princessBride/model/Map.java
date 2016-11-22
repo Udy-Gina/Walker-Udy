@@ -53,10 +53,6 @@ public class Map implements Serializable {
         return matrix[row][col];
     }
 
-    public Location[][] getMatrix() {
-        return matrix;
-    }
-
     public void setMatrix(Location[][] matrix) {
         this.matrix = matrix;
     }
@@ -87,5 +83,5 @@ public class Map implements Serializable {
     public String toString() {
         return "Map{" + "matrix=" + matrix + '}';
     }
-    
+
 }

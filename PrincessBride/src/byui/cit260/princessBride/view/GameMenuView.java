@@ -5,8 +5,8 @@
  */
 package byui.cit260.princessbride.view;
 
+import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
-import byui.cit260.princessBride.model.Inventory;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
@@ -50,13 +50,13 @@ public class GameMenuView extends View {
                 this.viewMap();
                 break;
             case 'I': // List Inventory
-                this.createInventory();
+                this.showInventory();
                 break;
             case 'T': // Take Item
-                this.takeItem();
+                this.takeItemFromLocation();
                 break;
             case 'U': //Use Item
-                this.useItem();
+                this.useItemInInventory();
                 break;
             case 'N': // move North
                 this.moveNorth();
@@ -116,19 +116,25 @@ public class GameMenuView extends View {
 
         System.out.println("\n"
                 + "\n ***********************************************");
+        
+        Location a = PrincessBride.getCurrentGame().getPlayer().getLocation();
+        System.out.println("\nPlayer is at:  " + a.getRow() + ", " + a.getCol());
 
     }
 
-    private void createInventory() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+    private void showInventory() {
+        GameControl gc = new GameControl();
+        gc.displayInventory();
     }
 
-    private void takeItem() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+    private void takeItemFromLocation() {
+        GameControl gc = new GameControl();
+        gc.addItemToInventory();
     }
 
-    private void useItem() {
-        Inventory[] inventory = PrincessBride.getCurrentGame().getInventory();
+    private void useItemInInventory() {
+        GameControl gc = new GameControl();
+        gc.removeItemFromInventory();
     }
 
     private void moveNorth() {
@@ -140,14 +146,13 @@ public class GameMenuView extends View {
     }
 
     private void moveSouth() {
-      MovementControl mc = new MovementControl();
+        MovementControl mc = new MovementControl();
         boolean success = mc.moveSouth();
         if (!success) {
             System.out.println("You are unable to move further South!");
         }
         determineNextView();
     }
-    
 
     private void moveWest() {
         MovementControl mc = new MovementControl();

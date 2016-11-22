@@ -74,7 +74,7 @@ public class PrincessBride {
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
-        playerOne.setCoordinates(3.0);
+        //playerOne.setCoordinates(3.0);
         playerOne.setItem("Item");
 
         String playerInfo = playerOne.toString();

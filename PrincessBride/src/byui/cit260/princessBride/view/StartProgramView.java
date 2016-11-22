@@ -2,6 +2,7 @@ package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.model.Player;
 import java.util.Scanner;
+import princessbride.PrincessBride;
 
 /**
  *
@@ -46,6 +47,10 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         String playerName = getPlayerName();
         
         displayNextView(playerName);
+        
+        Player p = new Player();
+        p.setName(playerName); 
+        PrincessBride.setPlayer(p);
 
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();

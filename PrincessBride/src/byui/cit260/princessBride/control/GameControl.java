@@ -6,16 +6,11 @@
 package byui.cit260.princessBride.control;
 
 import byui.cit260.princessBride.model.Game;
-import byui.cit260.princessBride.model.Inventory;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,9 +47,7 @@ public class GameControl {
         currentGame.setPlayer(player);
 
         // Inventory - create inventory list
-        Inventory[] inventoryList = GameControl.createInventoryList();
-        currentGame.setInventory(inventoryList);
-
+        
         // Map - create and populate with dangers/inventory items and starting point 
         Map map = new Map();
         map.init();
@@ -63,42 +56,49 @@ public class GameControl {
 
         createAndAssignItems(map);
 
-        startingLocation(map);
+        //startingLocation(map);
+        
+        //player.setLocationAt(0, 0);
 
     }
 
     public static void keepCurrentGame(String fileName) {
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            out.writeObject(PrincessBride.getCurrentGame());
-        } catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with saveCurrentGame()!!!");
-        }
+        System.out.println("\n *** keepCurrentGame() function called *** ");
     }
 
-    public static Object playSavedGame(String file) throws IOException, ClassNotFoundException {
-
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-            return in.readObject();
-        }
-        /*catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with loadSavedGame()!!!");
-        }*/
+    public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
+        System.out.println("\n *** playSavedGame() function called *** ");
     }
 
-    private static Inventory[] createInventoryList() {  //TODO: create inventory list 
-        System.out.println("\n *** createInventoryList() function called ***");
-        return null;
-    }
-
-    private void setInventory() {  //TODO: not sure what this is for???
-        System.out.println("\n *** setInventory() function called ***");
-    }
-
-    private void startingLocation(Map map) {  //TODO: set starting point on map 
+    public void displayInventory() {
         
-        //Set the location property of the Player
-        System.out.println("\n *** startingLocation() function called ***");
+        //TODO Loop over inventory to display sorted/counted list
+        System.out.println("\n *** displayInventory() function called *** ");
+    }
+    
+    public void addItemToInventory() { 
+        Location currentLocation = PrincessBride.getPlayer().getLocation();
+        
+        if(currentLocation.getItem() != null) {
+            PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
+            System.out.println("\nYou found a " + currentLocation.getItem().getItemDescription());
+            currentLocation.setItem(null);
+        }
+        else {
+            System.out.println("\nThere is nothing here.");
+        }
+    } 
+
+    public void removeItemFromInventory() { 
+        
+    //TODO Build function to remove item from inventory list
+    System.out.println("\n *** removeItemFromInventory() function called *** ");
+}
+    
+    private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
+        
+        player.setLocation(map.getLocationAt(0, 0));
+        
     }
 
     // creates map and assigns random items from inventory to various locations 
@@ -144,50 +144,3 @@ public class GameControl {
     }
 
 }
-
-/*
-    
-    
-    public static void keepCurrentGame(String file) {
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
-            out.writeObject(PrincessBride.getCurrentGame());
-        } catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with saveCurrentGame()!!!");
-        }
-
-        /*try {
-            FileOutputStream fileStream = new FileOutputStream(file);
-            ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-
-            objectStream.writeObject(PrincessBride.getCurrentGame());
-
-        } catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with saveCurrentGame()!!!");
-        }
-    } 
-
-    
-    public static Object playSavedGame(String file) throws IOException, ClassNotFoundException {
-
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-            return in.readObject();
-        }
-        /*} catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with loadSavedGame()!!!");
-        }
-
- /*Game game = null;
-
-        try {
-            FileInputStream fileStream = new FileInputStream(file);
-            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-
-            game = (Game)objectStream.readObject();
-
-            PrincessBride.setloadSavedGame(game);
-            PrincessBride.setPlayer(game.getPlayer());
-        } catch (Exception e) {
-            System.out.println("\n Invalid:  I'm not sure what this error should say but it has something to do with loadSavedGame()!!!");
-        }
-    } */
