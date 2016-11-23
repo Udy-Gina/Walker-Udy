@@ -46,36 +46,36 @@ public class GameControl {
         // Player - create player 
         currentGame.setPlayer(player);
 
-        // Inventory - create inventory list
-        
-        // Map - create and populate with dangers/inventory items and starting point 
+        // Create map
         Map map = new Map();
         map.init();
 
+        // Set map for the current game
         currentGame.setMap(map);
 
+        // Assign inventory to random locations
         createAndAssignItems(map);
-
-        //startingLocation(map);
-        
-        //player.setLocationAt(0, 0);
 
     }
 
+    // Save the current game
     public static void keepCurrentGame(String fileName) {
         System.out.println("\n *** keepCurrentGame() function called *** ");
     }
 
+    // Reload and play a saved game 
     public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
         System.out.println("\n *** playSavedGame() function called *** ");
     }
 
+    // Show the current inventory, sort it alphabetically, and show a total 
     public void displayInventory() {
         
         //TODO Loop over inventory to display sorted/counted list
         System.out.println("\n *** displayInventory() function called *** ");
     }
     
+    // Add items to the inventory list
     public void addItemToInventory() { 
         Location currentLocation = PrincessBride.getPlayer().getLocation();
         
@@ -89,19 +89,21 @@ public class GameControl {
         }
     } 
 
+    // Remove items from the inventory list when used in a danger
     public void removeItemFromInventory() { 
         
     //TODO Build function to remove item from inventory list
     System.out.println("\n *** removeItemFromInventory() function called *** ");
 }
     
+    // Create starting point on map at location 0,0 
     private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
         
         player.setLocation(map.getLocationAt(0, 0));
         
     }
 
-    // creates map and assigns random items from inventory to various locations 
+    // Creates map and assigns random items from inventory to various locations 
     public void createAndAssignItems(Map map) {
 
         List<Item> items = new ArrayList<>();

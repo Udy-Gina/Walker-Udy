@@ -122,11 +122,13 @@ public class GameMenuView extends View {
 
     }
 
+    // Show the player what they have in their inventory
     private void showInventory() {
         GameControl gc = new GameControl();
         gc.displayInventory();
     }
 
+    // Pick up an item and put it in inventory
     private void takeItemFromLocation() {
         Location currentLocation = PrincessBride.getPlayer().getLocation();
         
@@ -141,6 +143,7 @@ public class GameMenuView extends View {
         }
     }
 
+    // Use an item from inventory to make it through a danger safely
     private void useItemInInventory() {
         GameControl gc = new GameControl();
         gc.removeItemFromInventory();
@@ -172,9 +175,8 @@ public class GameMenuView extends View {
         determineNextView();
     }
 
-    /**
-     * Determines next view based on player location
-     */
+   
+    // Determines the next view based on the player's location
     private void determineNextView() {
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
 
