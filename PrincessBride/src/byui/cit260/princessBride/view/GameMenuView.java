@@ -24,19 +24,20 @@ public class GameMenuView extends View {
                 + "\n--------------------------------------"
                 + "\n GAME MENU"
                 + "\n--------------------------------------"
-                + "\nV - View Map"
-                + "\nI - Inventory List"
-                + "\nT - Take Item"
-                + "\nU - Use Item"
-                + "\nN - Move North"
-                + "\nE - Move East"
-                + "\nS - Move South"
-                + "\nW - Move West"
-                + "\nG - Save Game"
-                + "\nH - Help"
-                + "\nL - Look Around"
-                + "\nB - Back"
-                + "\nX - Exit to Main Menu"
+                + "\nV - View map"
+                + "\nC - view Current location"
+                + "\nI - Inventory list"
+                + "\nT - Take item"
+                + "\nU - Use item"
+                + "\nN - move North"
+                + "\nE - move East"
+                + "\nS - move South"
+                + "\nW - move West"
+                + "\nG - save Game"
+                + "\nH - Help menu"
+                + "\nL - Look around"
+                + "\nB - bo Back"
+                + "\nX - eXit to main menu"
                 + "\n--------------------------------------");
     }
 
@@ -46,8 +47,11 @@ public class GameMenuView extends View {
         char charSel = selection.charAt(0);
 
         switch (charSel) {
-            case 'V': //view map
+            case 'V': //View map
                 this.viewMap();
+                break;
+            case 'C': //View current location on map
+                this.viewCurrentLocation();
                 break;
             case 'I': // List Inventory
                 this.showInventory();
@@ -116,10 +120,11 @@ public class GameMenuView extends View {
 
         System.out.println("\n"
                 + "\n ***********************************************");
-        
-        //Location a = PrincessBride.getCurrentGame().getPlayer().getLocation();
-        //System.out.println("\nPlayer is at:  " + a.getRow() + ", " + a.getCol());
+    }
 
+    private void viewCurrentLocation() {
+        Location currentLocation = PrincessBride.getCurrentGame().getMap().getLocationAt(0, 0);
+        System.out.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
     }
 
     // Show the player what they have in their inventory
@@ -131,15 +136,15 @@ public class GameMenuView extends View {
     // Pick up an item and put it in inventory
     private void takeItemFromLocation() {
         Location currentLocation = PrincessBride.getPlayer().getLocation();
-        
-        if(currentLocation.getItem() !=null) {
-                PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
-                System.out.println("you found a " + currentLocation.getItem().getItemName());
-                currentLocation.setItem(null);
-        }   else{
-           
-                System.out.println("there is nothing here");
-                  
+
+        if (currentLocation.getItem() != null) {
+            PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
+            System.out.println("you found a " + currentLocation.getItem().getItemName());
+            currentLocation.setItem(null);
+        } else {
+
+            System.out.println("there is nothing here");
+
         }
     }
 
@@ -150,24 +155,22 @@ public class GameMenuView extends View {
     }
 
     private void moveNorth() {
-         MovementControl mc = new MovementControl();
+        MovementControl mc = new MovementControl();
         boolean success = mc.moveNorth();
         if (!success) {
             System.out.println("You are unable to move further North!");
         }
         determineNextView();
     }
-    
 
     private void moveEast() {
-    MovementControl mc = new MovementControl();
+        MovementControl mc = new MovementControl();
         boolean success = mc.moveEast();
         if (!success) {
             System.out.println("You are unable to move further East!");
         }
         determineNextView();
     }
-    
 
     private void moveSouth() {
         MovementControl mc = new MovementControl();
@@ -187,7 +190,6 @@ public class GameMenuView extends View {
         determineNextView();
     }
 
-   
     // Determines the next view based on the player's location
     private void determineNextView() {
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();

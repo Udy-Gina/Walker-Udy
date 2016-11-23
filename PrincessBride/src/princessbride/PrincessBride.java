@@ -5,15 +5,10 @@
  */
 package princessbride;
 
-import byui.cit260.princessBride.model.FlameSpurt;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
-import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import byui.cit260.princessBride.model.Rodent;
-import byui.cit260.princessBride.model.LightningSand;
-import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessbride.view.StartProgramView;
 
 /**
@@ -30,9 +25,42 @@ public class PrincessBride {
     private static Game saveCurrentGame = null;
     private static Player player = null;
     private static Item item;
+    private static Map map;
     
     public static Game getCurrentGame() {
         return currentGame;
+    }
+
+    public static Game getLoadSavedGame() {
+        return loadSavedGame;
+    }
+
+    public static void setLoadSavedGame(Game loadSavedGame) {
+        PrincessBride.loadSavedGame = loadSavedGame;
+    }
+
+    public static Game getSaveCurrentGame() {
+        return saveCurrentGame;
+    }
+
+    public static void setSaveCurrentGame(Game saveCurrentGame) {
+        PrincessBride.saveCurrentGame = saveCurrentGame;
+    }
+
+    public static Item getItem() {
+        return item;
+    }
+
+    public static void setItem(Item item) {
+        PrincessBride.item = item;
+    }
+
+    public static Map getMap() {
+        return map;
+    }
+
+    public static void setMap(Map map) {
+        PrincessBride.map = map;
     }
 
     public static void setCurrentGame(Game currentGame) {
@@ -70,7 +98,7 @@ public class PrincessBride {
         startProgramView.displayStartProgramView();
     }
     
-   static {
+   /*static {
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
@@ -134,6 +162,6 @@ public class PrincessBride {
         String lightningSandInfo = guessOne.toString();
         System.out.println(lightningSandInfo);
         
-    } 
+    } */
 
 }
