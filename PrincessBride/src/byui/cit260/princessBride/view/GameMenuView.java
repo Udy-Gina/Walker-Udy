@@ -150,12 +150,24 @@ public class GameMenuView extends View {
     }
 
     private void moveNorth() {
-        System.out.println("***moveNorth function called****");
+         MovementControl mc = new MovementControl();
+        boolean success = mc.moveNorth();
+        if (!success) {
+            System.out.println("You are unable to move further North!");
+        }
+        determineNextView();
     }
+    
 
     private void moveEast() {
-        System.out.println("***moveEast function called ****");
+    MovementControl mc = new MovementControl();
+        boolean success = mc.moveEast();
+        if (!success) {
+            System.out.println("You are unable to move further East!");
+        }
+        determineNextView();
     }
+    
 
     private void moveSouth() {
         MovementControl mc = new MovementControl();

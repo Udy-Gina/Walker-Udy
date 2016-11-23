@@ -32,11 +32,34 @@ public class MovementControl {
         Location currentLocation = player.getLocation();
         Map map = PrincessBride.getCurrentGame().getMap();
 
-        if (currentLocation.getRow() == 5) {
+        if (currentLocation.getRow() == 4) {
+            return false;
+        }
+        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol()  +1));
+        return true;
+    }
+    public boolean moveNorth() {
+        Player player = PrincessBride.getCurrentGame().getPlayer();
+        Location currentLocation = player.getLocation();
+        Map map = PrincessBride.getCurrentGame().getMap();
+
+        if (currentLocation.getRow() == 0) {
             return false;
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
         return true;
     }
+    public boolean moveEast() {
+        Player player = PrincessBride.getCurrentGame().getPlayer();
+        Location currentLocation = player.getLocation();
+        Map map = PrincessBride.getCurrentGame().getMap();
+
+        if (currentLocation.getCol() == 4) {
+            return false;
+        }
+        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() + 1));
+        return true;
+    }
+    
     
 }
