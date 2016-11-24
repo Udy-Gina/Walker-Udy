@@ -25,7 +25,6 @@ public class GameMenuView extends View {
                 + "\n GAME MENU"
                 + "\n--------------------------------------"
                 + "\nV - View map"
-                + "\nC - view Current location"
                 + "\nI - Inventory list"
                 + "\nT - Take item"
                 + "\nU - Use item"
@@ -49,9 +48,6 @@ public class GameMenuView extends View {
         switch (charSel) {
             case 'V': //View map
                 this.viewMap();
-                break;
-            case 'C': //View current location on map
-                this.viewCurrentLocation();
                 break;
             case 'I': // List Inventory
                 this.showInventory();
@@ -120,10 +116,8 @@ public class GameMenuView extends View {
 
         System.out.println("\n"
                 + "\n ***********************************************");
-    }
-
-    private void viewCurrentLocation() {
-        Location currentLocation = PrincessBride.getCurrentGame().getMap().getLocationAt(0, 0);
+    
+        Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
         System.out.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
     }
 
