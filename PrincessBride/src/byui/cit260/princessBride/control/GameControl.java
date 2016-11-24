@@ -49,6 +49,8 @@ public class GameControl {
         // Create map
         Map map = new Map();
         map.init();
+        
+        player.setLocation(map.getLocationAt(0, 0));
 
         // Set map for the current game
         currentGame.setMap(map);
