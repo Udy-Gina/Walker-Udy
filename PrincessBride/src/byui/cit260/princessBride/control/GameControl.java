@@ -49,13 +49,13 @@ public class GameControl {
         // Create map
         Map map = new Map();
         map.init();
-        
+
         player.setLocation(map.getLocationAt(0, 0));
 
         // Set map for the current game
         currentGame.setMap(map);
 
-        // Assign inventory to random locations
+        // Assign items to random locations
         createAndAssignItems(map);
 
     }
@@ -70,61 +70,62 @@ public class GameControl {
         System.out.println("\n *** playSavedGame() function called *** ");
     }
 
-    // Show the current inventory, sort it alphabetically, and show a total 
-    public void displayInventory() {
-        
-        //TODO Loop over inventory to display sorted/counted list
-        System.out.println("\n *** displayInventory() function called *** ");
-    }
-    
-    // Add items to the inventory list
-    public void addItemToInventory() { 
-        Location currentLocation = PrincessBride.getPlayer().getLocation();
-        
-        if(currentLocation.getItem() != null) {
-            PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
-            System.out.println("\nYou found a " + currentLocation.getItem().getItemDescription());
-            currentLocation.setItem(null);
-        }
-        else {
-            System.out.println("\nThere is nothing here.");
-        }
-    } 
+    // Show the current backpack, sort it alphabetically, and show a total 
+    public void displayBackpack() {
 
-    // Remove items from the inventory list when used in a danger
-    public void removeItemFromInventory() { 
-        
-    //TODO Build function to remove item from inventory list
-    System.out.println("\n *** removeItemFromInventory() function called *** ");
-}
-    
+        //TODO Loop over backpack to display sorted/counted list
+        System.out.println("\n *** displayBackpack() function called *** ");
+    }
+
+    // Add items to the backpack list
+    public boolean addItemToBackpack() {
+        Location currentLocation = PrincessBride.getPlayer().getLocation();
+
+        if (currentLocation.getItem() != null) {
+            PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
+            //System.out.println("\nYou found a " + currentLocation.getItem().getItemDescription() + ".");
+            currentLocation.setItem(null);
+            return true;
+        } else {
+            System.out.println("\nThere is nothing here.");
+            return false;
+        }
+    }
+
+    // Remove items from the backpack list when used in a danger
+    public void removeItemFromBackpack() {
+
+        //TODO Build function to remove item from backpack list
+        System.out.println("\n *** removeItemFromBackpack() function called *** ");
+    }
+
     // Create starting point on map at location 0,0 
     private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
-        
+
         player.setLocation(map.getLocationAt(0, 0));
-        
+
     }
 
-    // Creates map and assigns random items from inventory to various locations 
+    // Creates map and assigns random items from backpack to various locations 
     public void createAndAssignItems(Map map) {
 
         List<Item> items = new ArrayList<>();
 
         Item rope = new Item();
-        rope.setItemDescription("Rope");
-        rope.setItemName("rope");
+        rope.setItemDescription("rope");
+        rope.setItemName("Rope");
         rope.setItemQuantity(1);
         items.add(rope);
 
         Item potion = new Item();
-        potion.setItemDescription("Healing Potion");
-        potion.setItemName("potion");
+        potion.setItemDescription("healing potion");
+        potion.setItemName("Healing Potion");
         potion.setItemQuantity(1);
         items.add(potion);
 
         Item water = new Item();
-        water.setItemDescription("Bucket of Water");
-        water.setItemName("water");
+        water.setItemDescription("bucket of water");
+        water.setItemName("Bucket of Water");
         water.setItemQuantity(1);
         items.add(water);
 

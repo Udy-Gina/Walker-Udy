@@ -32,7 +32,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
                 + "\n* the swamp you can pick up helpful items, and when you land on "
                 + "\n* a square with a hazard, you will have to answer a math question"
                 + "\n* to pass through safely.  If you do not answer a question correctly,"
-                + "\n* you will need to have a helpful item in your inventory that matches"
+                + "\n* you will need to have a helpful item in your backpack that matches"
                 + "\n* the hazard in order to be safe.  If you do not, you will perish!"
                 + "\n*"
                 + "\n* Good luck, stay alive, and have fun!"

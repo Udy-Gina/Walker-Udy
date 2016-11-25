@@ -25,7 +25,7 @@ public class GameMenuView extends View {
                 + "\n GAME MENU"
                 + "\n--------------------------------------"
                 + "\nV - View map"
-                + "\nI - Inventory list"
+                + "\nI - backpack Inventory"
                 + "\nT - Take item"
                 + "\nU - Use item"
                 + "\nN - move North"
@@ -35,7 +35,7 @@ public class GameMenuView extends View {
                 + "\nG - save Game"
                 + "\nH - Help menu"
                 + "\nL - Look around"
-                + "\nB - bo Back"
+                + "\nB - go Back"
                 + "\nX - eXit to main menu"
                 + "\n--------------------------------------");
     }
@@ -49,14 +49,14 @@ public class GameMenuView extends View {
             case 'V': //View map
                 this.viewMap();
                 break;
-            case 'I': // List Inventory
-                this.showInventory();
+            case 'I': // List Backpack  Inventory
+                this.showBackpack();
                 break;
             case 'T': // Take Item
                 this.takeItemFromLocation();
                 break;
             case 'U': //Use Item
-                this.useItemInInventory();
+                this.useItemInBackpack();
                 break;
             case 'N': // move North
                 this.moveNorth();
@@ -116,36 +116,36 @@ public class GameMenuView extends View {
 
         System.out.println("\n"
                 + "\n ***********************************************");
-    
+
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
         System.out.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
     }
 
-    // Show the player what they have in their inventory
-    private void showInventory() {
+    // Show the player what they have in their backpack
+    private void showBackpack() {
         GameControl gc = new GameControl();
-        gc.displayInventory();
+        gc.displayBackpack();
     }
 
-    // Pick up an item and put it in inventory
+    // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
         Location currentLocation = PrincessBride.getPlayer().getLocation();
 
         if (currentLocation.getItem() != null) {
-            PrincessBride.getPlayer().addItemToInventory(currentLocation.getItem());
-            System.out.println("you found a " + currentLocation.getItem().getItemName());
+            PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
+            System.out.println("You found a " + currentLocation.getItem().getItemName() + ".  It will be added to your backpack.");
             currentLocation.setItem(null);
         } else {
 
-            System.out.println("there is nothing here");
+            System.out.println("There is nothing here.");
 
         }
     }
 
-    // Use an item from inventory to make it through a danger safely
-    private void useItemInInventory() {
+    // Use an item from backpack to make it through a danger safely
+    private void useItemInBackpack() {
         GameControl gc = new GameControl();
-        gc.removeItemFromInventory();
+        gc.removeItemFromBackpack();
     }
 
     private void moveNorth() {

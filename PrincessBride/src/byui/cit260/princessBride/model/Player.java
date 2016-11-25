@@ -20,18 +20,18 @@ public class Player implements Serializable {
     private String name;
     private String item;
     private Location location;
-    private List<Item> inventory;
+    private List<Item> backpack;
 
-    public List<Item> getInventory() {
-        return inventory;
+    public List<Item> getBackpack() {
+        return backpack;
     }
     
     public Player() {
-        inventory = new ArrayList<>();
+        backpack = new ArrayList<>();
     }
   
-    public void addItemToInventory(Item item) {
-        inventory.add(item);
+    public void addItemToBackpack(Item item) {
+        backpack.add(item);
     }
     
     public String getName() {

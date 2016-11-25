@@ -18,7 +18,7 @@ public class HelpMenuView extends View {
             + "\nHELP MENU"
             + "\n--------------------------------------"
             + "\nM - Movement"
-            + "\nI - Inventory"
+            + "\nI - backpack Inventory"
             + "\nC - Clues"
             + "\nD - Dangers"
             + "\nX - Exit to Previous Menu"
@@ -34,8 +34,8 @@ public class HelpMenuView extends View {
             case 'M':  // view movement tips 
                 System.out.println("\n*** View movement tips ***");
                 break;
-            case 'I':  // inventory information 
-                this.InventoryMenuView();
+            case 'I':  // backpack inventory information 
+                this.BackpackMenuView();
                 break;
             case 'C':  // display clues 
                 System.out.println("\n*** Clues ***");
@@ -53,8 +53,8 @@ public class HelpMenuView extends View {
                         + "\n* you must calculate the height of your jump.  If you are correct,"
                         + "\n* you will be allowed to pass through the danger.  If you are"
                         + "\n* incorrect, you will be bitten by the rodent and only a healing"
-                        + "\n* potion will save you.  You may check your inventory, and if you"
-                        + "\n* have a healing potion, you will be allowed to continue the game."
+                        + "\n* potion will save you.  You may check your backpack inventory, and"
+                        + "\n* if you have a healing potion, you will be allowed to continue the game."
                         + "\n* If you don't, you will perish!"
                         + "\n*"
                         + "\n*"
@@ -79,9 +79,9 @@ public class HelpMenuView extends View {
         return false;
     }
 
-    private void InventoryMenuView() {
-        InventoryMenuView inventoryMenu = new InventoryMenuView();
-        inventoryMenu.display();
+    private void BackpackMenuView() {
+        BackpackMenuView backpackMenu = new BackpackMenuView();
+        backpackMenu.display();
     }
 
   
