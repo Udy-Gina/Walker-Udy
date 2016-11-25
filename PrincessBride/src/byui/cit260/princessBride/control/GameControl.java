@@ -5,6 +5,7 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.model.Backpack;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
@@ -70,11 +71,17 @@ public class GameControl {
         System.out.println("\n *** playSavedGame() function called *** ");
     }
 
-    // Show the current backpack, sort it alphabetically, and show a total 
     public void displayBackpack() {
 
         //TODO Loop over backpack to display sorted/counted list
-        System.out.println("\n *** displayBackpack() function called *** ");
+        List<Item> currentBackpack = PrincessBride.getPlayer().getBackpack();
+        
+        if (currentBackpack != null) {
+            System.out.println("\nYour backpack contains: " + PrincessBride.getCurrentGame().getPlayer().getBackpack());
+        } else {
+
+            System.out.println("\nYour backpack is empty.");
+        }
     }
 
     // Add items to the backpack list
@@ -111,23 +118,59 @@ public class GameControl {
 
         List<Item> items = new ArrayList<>();
 
-        Item rope = new Item();
-        rope.setItemDescription("rope");
-        rope.setItemName("Rope");
-        rope.setItemQuantity(1);
-        items.add(rope);
+        Item rope1 = new Item();
+        rope1.setItemDescription("rope");
+        rope1.setItemName("Rope");
+        rope1.setItemQuantity(1);
+        items.add(rope1);
 
-        Item potion = new Item();
-        potion.setItemDescription("healing potion");
-        potion.setItemName("Healing Potion");
-        potion.setItemQuantity(1);
-        items.add(potion);
+        Item rope2 = new Item();
+        rope2.setItemDescription("rope");
+        rope2.setItemName("Rope2");
+        rope2.setItemQuantity(1);
+        items.add(rope2); 
+        
+        Item rope3 = new Item();
+        rope3.setItemDescription("rope");
+        rope3.setItemName("Rope2");
+        rope3.setItemQuantity(1);
+        items.add(rope3); 
+        
+        Item potion1 = new Item();
+        potion1.setItemDescription("healing potion");
+        potion1.setItemName("Healing Potion");
+        potion1.setItemQuantity(1);
+        items.add(potion1);
+        
+        Item potion2 = new Item();
+        potion2.setItemDescription("healing potion");
+        potion2.setItemName("Healing Potion");
+        potion2.setItemQuantity(1);
+        items.add(potion2);
+        
+        Item potion3 = new Item();
+        potion3.setItemDescription("healing potion");
+        potion3.setItemName("Healing Potion");
+        potion3.setItemQuantity(1);
+        items.add(potion3);
 
-        Item water = new Item();
-        water.setItemDescription("bucket of water");
-        water.setItemName("Bucket of Water");
-        water.setItemQuantity(1);
-        items.add(water);
+        Item water1 = new Item();
+        water1.setItemDescription("bucket of water");
+        water1.setItemName("Bucket of Water");
+        water1.setItemQuantity(1);
+        items.add(water1);
+        
+        Item water2 = new Item();
+        water2.setItemDescription("bucket of water");
+        water2.setItemName("Bucket of Water");
+        water2.setItemQuantity(1);
+        items.add(water2);
+        
+        Item water3 = new Item();
+        water3.setItemDescription("bucket of water");
+        water3.setItemName("Bucket of Water");
+        water3.setItemQuantity(1);
+        items.add(water3);
 
         Random rand = new Random();
 
