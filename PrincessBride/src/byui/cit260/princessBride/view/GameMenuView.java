@@ -192,6 +192,17 @@ public class GameMenuView extends View {
             FlameSpurtView fsv = new FlameSpurtView();
             fsv.display();
             currentLocation.setVisited(true);
+        } else if (currentLocation.getLocationType() == LocationType.ROUS && !currentLocation.getVisited()) {
+            RodentSizeView rsv = new RodentSizeView();
+            rsv.display();
+            currentLocation.setVisited(true);
+        } else if (currentLocation.getLocationType() == LocationType.LIGHTNINGSAND && !currentLocation.getVisited()) {
+            LightningSandView lsv = new LightningSandView();
+            lsv.display();
+            currentLocation.setVisited(true);
+        } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
+            System.out.println("\nThere is nothing here.");
+            currentLocation.setVisited(true);
         }
     }
 
