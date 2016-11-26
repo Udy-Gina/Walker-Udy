@@ -14,7 +14,7 @@ import princessbride.PrincessBride;
  *
  * @author Gina Udy & Lisa Walker
  */
-public class MovementControl {
+public class MovementControl  {
     
     public boolean moveWest() {
         Player player = PrincessBride.getCurrentGame().getPlayer();

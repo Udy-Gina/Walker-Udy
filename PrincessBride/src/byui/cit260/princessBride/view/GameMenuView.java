@@ -7,6 +7,7 @@ package byui.cit260.princessbride.view;
 
 import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
+import byui.cit260.princessBride.exceptions.MovementControlException;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
@@ -43,7 +44,7 @@ public class GameMenuView extends View {
     @Override
     public boolean doAction(String selection) {
 
-        char charSel = selection.charAt(0);
+        char charSel = selection.toUpperCase().charAt(0);
 
         switch (charSel) {
             case 'V': //View map
@@ -58,16 +59,16 @@ public class GameMenuView extends View {
             case 'U': //Use Item
                 this.useItemInBackpack();
                 break;
-            case 'N': // move North
+            case 'N': 
                 this.moveNorth();
                 break;
-            case 'E':// move East
-                this.moveEast();
+            case 'E': 
+                this: moveEast();
                 break;
-            case 'S': // moveSouth
+            case 'S': 
                 this.moveSouth();
                 break;
-            case 'W'://moveWest
+            case 'W': 
                 this.moveWest();
                 break;
             case 'L': // look around
@@ -88,7 +89,8 @@ public class GameMenuView extends View {
                 System.out.println("\n*** Invalid Selection *** Please Try Again ***");
         }
         return false;
-    }
+}
+            
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
@@ -126,7 +128,7 @@ public class GameMenuView extends View {
         GameControl gc = new GameControl();
         gc.displayBackpack();
     }
-    
+
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
         GameControl gc = new GameControl();
@@ -139,38 +141,39 @@ public class GameMenuView extends View {
         gc.removeItemFromBackpack();
     }
 
-    private void moveNorth() {
+    private void moveNorth() throws Exception {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveNorth();
-        if (!success) {
-            System.out.println("You are unable to move further North!");
+        if(mc.moveNorth() == false) {
+            throw new MovementControlException("You cannot move further north.");
         }
         determineNextView();
     }
 
-    private void moveEast() {
+    private void moveEast() throws Exception {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveEast();
-        if (!success) {
-            System.out.println("You are unable to move further East!");
+        if(mc.moveEast() == false) {
+            throw new MovementControlException("You cannot move further east.");
         }
         determineNextView();
     }
 
-    private void moveSouth() {
+    private void moveSouth() throws Exception {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveSouth();
-        if (!success) {
-            System.out.println("You are unable to move further South!");
+        if(mc.moveSouth() == false) {
+        //if (!success) {
+            throw new MovementControlException("You cannot move further south.");
         }
         determineNextView();
     }
 
-    private void moveWest() {
+    private void moveWest() throws Exception {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveWest();
-        if (!success) {
-            System.out.println("You are unable to move further West!");
+        if(mc.moveWest() == false) {
+            throw new MovementControlException("You cannot move further west.");
         }
         determineNextView();
     }
