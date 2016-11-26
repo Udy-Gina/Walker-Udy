@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package princessbride;
+package princessBride;
 
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import byui.cit260.princessbride.view.StartProgramView;
+import byui.cit260.princessBride.view.ErrorView;
+import byui.cit260.princessBride.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -126,35 +125,36 @@ public class PrincessBride {
 
     public static void main(String[] args) {
         try {
-            PrincessBride.inFile
-                    = new BufferedReader(new InputStreamReader(System.in));
-            PrincessBride.outFile
-                    = new PrintWriter(this.console, true);
-            String.filePath = "log.txt";
+            PrincessBride.inFile = new BufferedReader(new InputStreamReader(System.in));
+            PrincessBride.outFile = new PrintWriter(System.out, true);
+
+            String filePath = "log.txt";
             PrincessBride.logFile = new PrintWriter(filePath);
+
             //create StartProgramViewOrig and display the start program view
-            StartProgramView startProgramView = new StartProgramView();
-            startProgramView.displayStartProgramView();
+            StartProgramView spv = new StartProgramView();
+            spv.displayStartProgramView();
             return;
-        } catch (Throwable e) {
-            ErrorView.display("Exception: " + e.toString()
-                    + "\n Cause: " + e.getCause()
-                    + "\n Message: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
             
-            try {
-                if (PrincessBride.inFile != null) 
-                    PrincessBride.inFile.close();
-                    
-                if (PrincessBride.outFile != null) 
-                    PrincessBride.outFile.close();
-                
-                
-               if (PrincessBride.logFile != null) 
-                    PrincessBride.logFile.close(); 
-                
-            } catch (IOException ex) {
+        } catch (Exception e) {
+            
+            ErrorView.display("Exception: " + e.toString()
+                    + "\nCause: " + e.getCause()
+                    + "\nMessage: " + e.getMessage());
+            //e.printStackTrace();
+        } 
+        finally {
+              try {
+                    if (PrincessBride.inFile != null) 
+                        PrincessBride.inFile.close();
+
+                    if (PrincessBride.outFile != null) 
+                        PrincessBride.outFile.close();
+
+                    if (PrincessBride.logFile != null) 
+                        PrincessBride.logFile.close();
+                    }
+                } catch (IOException e) {
                 ErrorView.display("Error closing files");
                 return;
             }
@@ -230,4 +230,3 @@ public class PrincessBride {
         System.out.println(lightningSandInfo);
         
     } */
-}

@@ -1,8 +1,8 @@
-package byui.cit260.princessbride.view;
+package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.model.Player;
 import java.util.Scanner;
-import princessbride.PrincessBride;
+import princessBride.PrincessBride;
 
 /**
  *

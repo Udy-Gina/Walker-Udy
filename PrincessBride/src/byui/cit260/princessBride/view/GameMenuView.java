@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.princessbride.view;
+package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
@@ -11,7 +11,7 @@ import byui.cit260.princessBride.exceptions.MovementControlException;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
-import princessbride.PrincessBride;
+import princessBride.PrincessBride;
 
 /**
  *

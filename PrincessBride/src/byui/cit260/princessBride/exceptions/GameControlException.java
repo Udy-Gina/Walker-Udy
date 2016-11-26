@@ -11,5 +11,10 @@ package byui.cit260.princessBride.exceptions;
  */
 public class GameControlException {
 
+    public GameControlException() {
+    }
+
+    
+
     
 }

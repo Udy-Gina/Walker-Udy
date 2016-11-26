@@ -5,7 +5,7 @@
  */
 package byui.cit260.princessBride.view;
 import java.io.PrintWriter;
-import princessbride.PrincessBride;
+import princessBride.PrincessBride;
 
 /**
  *

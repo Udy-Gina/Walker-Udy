@@ -17,7 +17,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import princessbride.PrincessBride;
+import princessBride.PrincessBride;
 
 
 /**

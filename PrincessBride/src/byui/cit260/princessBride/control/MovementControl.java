@@ -8,7 +8,7 @@ package byui.cit260.princessBride.control;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import princessbride.PrincessBride;
+import princessBride.PrincessBride;
 
 /**
  *
