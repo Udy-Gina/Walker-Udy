@@ -19,7 +19,7 @@ public class Game implements Serializable {
     private Player player; 
     private Map map; 
     private Item[] item;
-    private Inventory[] inventory;
+    private Backpack[] backpack;
 
     public Player getPlayer() {
         return player;
@@ -45,12 +45,12 @@ public class Game implements Serializable {
         this.item = item;
     }
 
-    public Inventory[] getInventory() {
-        return inventory;
+    public Backpack[] getInventory() {
+        return backpack;
     }
 
-    public void setInventory(Inventory[] inventory) {
-        this.inventory = inventory;
+    public void setInventory(Backpack[] backpack) {
+        this.backpack = backpack;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Game implements Serializable {
         hash = 89 * hash + Objects.hashCode(this.player);
         hash = 89 * hash + Objects.hashCode(this.map);
         hash = 89 * hash + Arrays.deepHashCode(this.item);
-        hash = 89 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 89 * hash + Arrays.deepHashCode(this.backpack);
         return hash;
     }
 
@@ -84,12 +84,12 @@ public class Game implements Serializable {
         if (!Arrays.deepEquals(this.item, other.item)) {
             return false;
         }
-        return Arrays.deepEquals(this.inventory, other.inventory);
+        return Arrays.deepEquals(this.backpack, other.backpack);
     }
 
     @Override
     public String toString() {
-        return "Game{" + "player=" + player + ", map=" + map + ", item=" + item + ", inventory=" + inventory + '}';
+        return "Game{" + "player=" + player + ", map=" + map + ", item=" + item + ", backpack=" + backpack + '}';
     }
 
 }

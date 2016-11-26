@@ -9,13 +9,13 @@ package byui.cit260.princessbride.view;
  *
  * @author Gina Udy
  */
-public class InventoryMenuView extends View {
+public class BackpackMenuView extends View {
 
-    public InventoryMenuView() {
+    public BackpackMenuView() {
     
     super ("\n"
             + "\n--------------------------------------"
-            + "\nINVENTORY MENU"
+            + "\nBACKPACK MENU"
             + "\n--------------------------------------"
             + "\nR - Rope"
             + "\nW - Water"
@@ -33,7 +33,7 @@ public class InventoryMenuView extends View {
             case 'R':  // view movement tips 
                 System.out.println("\n*** Rope ***");
                 break;
-            case 'W':  // inventory information 
+            case 'W':  // backpack information 
                 System.out.println("\n*** Water ***");
                 break;
             case 'P':  // display clues 

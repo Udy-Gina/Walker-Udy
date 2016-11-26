@@ -42,7 +42,9 @@ public class RodentSizeView extends View {
             System.out.println("Good job!  You jumped over the vile rodent!");
         } else {
             //TODO  Check if player has a healing potion  and then use it
-            System.out.println("Oh no!  You tripped on the smelly  rodent.  The nasty thing bit you!");
+            System.out.println("\nOh no!  You tripped on the smelly  rodent.  The nasty thing bit you!"
+            + "\nCheck your backpack to see if you have a healing potion!"
+            + "\n\"If you don't...you're dead!");
         }
     }
 

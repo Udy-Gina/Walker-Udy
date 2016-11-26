@@ -11,13 +11,13 @@ import java.io.Serializable;
  *
  * @author Gina Udy
  */
-public class Inventory implements Serializable {
+public class Backpack implements Serializable {
 
-    public Inventory() {
-        System.out.println("\n *** Inventory() function called ***");
+    public Backpack() {
+        System.out.println("\n *** Backpack() function called ***");
     }
 
-    public void createInventoryList() {
+    public void createBackpackList() {
         System.out.println("\n *** init() function called ***");
     }
 

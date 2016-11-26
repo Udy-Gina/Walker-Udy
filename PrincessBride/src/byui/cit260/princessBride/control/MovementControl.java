@@ -35,7 +35,7 @@ public class MovementControl {
         if (currentLocation.getRow() == 4) {
             return false;
         }
-        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol()  +1));
+        player.setLocation(map.getLocationAt(currentLocation.getRow() +1, currentLocation.getCol()));
         return true;
     }
     public boolean moveNorth() {
@@ -46,7 +46,7 @@ public class MovementControl {
         if (currentLocation.getRow() == 0) {
             return false;
         }
-        player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
+        player.setLocation(map.getLocationAt(currentLocation.getRow() -1, currentLocation.getCol()));
         return true;
     }
     public boolean moveEast() {
