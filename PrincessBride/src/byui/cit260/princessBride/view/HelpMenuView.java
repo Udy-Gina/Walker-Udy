@@ -35,7 +35,7 @@ public class HelpMenuView extends View {
                 System.out.println("\n*** View movement tips ***");
                 break;
             case 'I':  // backpack inventory information 
-                this.BackpackMenuView();
+                BackpackMenuView();
                 break;
             case 'C':  // display clues 
                 System.out.println("\n*** Clues ***");

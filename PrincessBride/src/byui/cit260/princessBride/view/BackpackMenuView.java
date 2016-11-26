@@ -9,57 +9,13 @@ package byui.cit260.princessbride.view;
  *
  * @author Gina Udy
  */
-public class BackpackMenuView extends View {
+public class BackpackMenuView {
 
     public BackpackMenuView() {
-    
-    super ("\n"
-            + "\n--------------------------------------"
-            + "\nBACKPACK MENU"
-            + "\n--------------------------------------"
-            + "\nR - Rope"
-            + "\nW - Water"
-            + "\nP - Healing Potion"
-            + "\nX - Exit to Previous Menu"
-            + "\n--------------------------------------");
-}
-    
-    @Override
-    public boolean doAction(String selection) {
-
-        char charSel = selection.charAt(0);
-
-        switch (charSel) {
-            case 'R':  // view movement tips 
-                System.out.println("\n*** Rope ***");
-                break;
-            case 'W':  // backpack information 
-                System.out.println("\n*** Water ***");
-                break;
-            case 'P':  // display clues 
-                System.out.println("\n*** Healing Potion ***");
-                break;
-            case 'X':  // exit to the main menu 
-                return true;
-            default:
-                System.out.println("\n*** Invalid selection *** Try again***");
-                break;
-        }
-
-        return false;
+    System.out.println("\n *** BackbackMenuView() function called *** ");
     }
-
+    
+    public void display() {
+        System.out.println("\n *** BackbackMenuView() function called *** ");
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,11 +14,10 @@ import java.io.Serializable;
 public class Backpack implements Serializable {
 
     public Backpack() {
-        System.out.println("\n *** Backpack() function called ***");
     }
 
-    public void createBackpackList() {
-        System.out.println("\n *** init() function called ***");
-    }
+    //public void createBackpackList() {
+    //   System.out.println("\n *** init() function called ***");
+    //}
 
 }

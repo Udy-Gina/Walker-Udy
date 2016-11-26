@@ -104,7 +104,7 @@ public class GameMenuView extends View {
                 char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
                 System.out.print("\t" + locationType);
                 if (map.getLocationAt(row, col).getItem() != null) {
-                    System.out.print(map.getLocationAt(row, col).getItem().getItemName().charAt(0));
+                    System.out.print(map.getLocationAt(row, col).getItem().getItemDescription().charAt(0));
                 }
 
                 System.out.print("  ");
@@ -126,20 +126,11 @@ public class GameMenuView extends View {
         GameControl gc = new GameControl();
         gc.displayBackpack();
     }
-
+    
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
-        Location currentLocation = PrincessBride.getPlayer().getLocation();
-
-        if (currentLocation.getItem() != null) {
-            PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            System.out.println("You found a " + currentLocation.getItem().getItemName() + ".  It will be added to your backpack.");
-            currentLocation.setItem(null);
-        } else {
-
-            System.out.println("There is nothing here.");
-
-        }
+        GameControl gc = new GameControl();
+        gc.addItemToBackpack();
     }
 
     // Use an item from backpack to make it through a danger safely

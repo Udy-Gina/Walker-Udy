@@ -5,22 +5,16 @@
  */
 package byui.cit260.princessBride.control;
 
-import byui.cit260.princessBride.model.Backpack;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import byui.cit260.princessBride.view.ErrorView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import princessbride.PrincessBride;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 
 /**
@@ -77,16 +71,18 @@ public class GameControl {
         System.out.println("\n *** playSavedGame() function called *** ");
     }
 
-    public void displayBackpack() {
+    public boolean displayBackpack() {
 
         //TODO Loop over backpack to display sorted/counted list
-        List<Item> currentBackpack = PrincessBride.getPlayer().getBackpack();
+        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
         
         if (currentBackpack != null) {
-            System.out.println("\nYour backpack contains: " + PrincessBride.getCurrentGame().getPlayer().getBackpack());
+            System.out.println("\nYou have " + "currentBackpackQuantity" + " items in your backpack." 
+                    + "\nThe items are: " + currentBackpack + ".");
+            return true;
         } else {
-
             System.out.println("\nYour backpack is empty.");
+            return false;
         }
     }
 
@@ -96,7 +92,7 @@ public class GameControl {
 
         if (currentLocation.getItem() != null) {
             PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            //System.out.println("\nYou found a " + currentLocation.getItem().getItemDescription() + ".");
+            System.out.println("You found a " + currentLocation.getItem().getItemDescription() + ".  It will be added to your backpack.");
             currentLocation.setItem(null);
             return true;
         } else {
@@ -105,7 +101,7 @@ public class GameControl {
         }
     }
 
-    // Remove items from the backpack list when used in a danger
+    // TODO Remove items from the backpack list when used in a danger
     public void removeItemFromBackpack() {
 
         //TODO Build function to remove item from backpack list
