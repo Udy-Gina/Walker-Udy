@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import princessbride.PrincessBride;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 
 /**
  *
@@ -146,5 +151,30 @@ public class GameControl {
         }
 
     }
-
+    public static void saveGame(String filePath) {
+        try {
+            FileOutputStream fos = new FileOutputStream(filePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(PrincessBride.getGame());
+        } catch(Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+        }
+    }
+    
+    public static void loadGame(String filePath) {
+        Game game = null;
+        
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            game = (Game)ois.readObject();
+            
+            PrincessBride.setGame(game);
+            PrincessBride.setPlayer(game.getPlayer());
+        } catch (Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+        }
+    }
 }
