@@ -12,10 +12,10 @@ package byui.cit260.princessbride.view;
 public class BackpackMenuView {
 
     public BackpackMenuView() {
-    System.out.println("\n *** BackbackMenuView() function called *** ");
+    this.console.println("\n *** BackbackMenuView() function called *** ");
     }
     
     public void display() {
-        System.out.println("\n *** BackbackMenuView() function called *** ");
+        this.console.println("\n *** BackbackMenuView() function called *** ");
     }
 }

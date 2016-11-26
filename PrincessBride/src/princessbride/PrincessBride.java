@@ -10,6 +10,12 @@ import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessbride.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +32,34 @@ public class PrincessBride {
     private static Player player = null;
     private static Item item;
     private static Map map;
-    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    private static PrintWriter logFile = null;
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        PrincessBride.logFile = logFile;
+    }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        PrincessBride.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        PrincessBride.inFile = inFile;
+    }
+
     public static Game getCurrentGame() {
         return currentGame;
     }
@@ -70,19 +103,19 @@ public class PrincessBride {
     public static Game getloadSavedGame() {
         return loadSavedGame;
     }
-    
+
     public static void setloadSavedGame(Game loadSavedGame) {
         PrincessBride.loadSavedGame = loadSavedGame;
     }
-        
+
     public static Game getsaveCurrentGame() {
         return saveCurrentGame;
     }
-    
+
     public static void setsaveCurrentGame(Game saveCurrentGame) {
         PrincessBride.saveCurrentGame = saveCurrentGame;
     }
-    
+
     public static Player getPlayer() {
         return PrincessBride.player;
     }
@@ -91,14 +124,48 @@ public class PrincessBride {
         PrincessBride.player = player;
     }
 
-    
     public static void main(String[] args) {
-        //create StartProgramViewOrig and display the start program view
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
+        try {
+            PrincessBride.inFile
+                    = new BufferedReader(new InputStreamReader(System.in));
+            PrincessBride.outFile
+                    = new PrintWriter(this.console, true);
+            String.filePath = "log.txt";
+            PrincessBride.logFile = new PrintWriter(filePath);
+            //create StartProgramViewOrig and display the start program view
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.displayStartProgramView();
+            return;
+        } catch (Throwable e) {
+            ErrorView.display("Exception: " + e.toString()
+                    + "\n Cause: " + e.getCause()
+                    + "\n Message: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            
+            try {
+                if (PrincessBride.inFile != null) 
+                    PrincessBride.inFile.close();
+                    
+                if (PrincessBride.outFile != null) 
+                    PrincessBride.outFile.close();
+                
+                
+               if (PrincessBride.logFile != null) 
+                    PrincessBride.logFile.close(); 
+                
+            } catch (IOException ex) {
+                ErrorView.display("Error closing files");
+                return;
+            }
+            PrincessBride.outFile.close();
+        }
+
     }
-    
-   /*static {
+
+}
+
+/*static {
         Player playerOne = new Player();
 
         playerOne.setName("John Doe");
@@ -163,5 +230,4 @@ public class PrincessBride {
         System.out.println(lightningSandInfo);
         
     } */
-
 }

@@ -32,16 +32,16 @@ public class HelpMenuView extends View {
 
         switch (charSel) {
             case 'M':  // view movement tips 
-                System.out.println("\n*** View movement tips ***");
+                this.console.println("\n*** View movement tips ***");
                 break;
             case 'I':  // backpack inventory information 
                 BackpackMenuView();
                 break;
             case 'C':  // display clues 
-                System.out.println("\n*** Clues ***");
+                this.console.println("\n*** Clues ***");
                 break;
             case 'D':  // display dangers 
-                System.out.println("\n***************************************************************************"
+                this.console.println("\n***************************************************************************"
                         + "\n*"
                         + "\n* The dangers you will face in this game are: "
                         + "\n*"
@@ -72,7 +72,7 @@ public class HelpMenuView extends View {
             case 'X':  // exit to the main menu 
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again***");
+                ErrorView.display("\n*** Invalid selection *** Try again***");
                 break;
         }
 

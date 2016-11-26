@@ -11,7 +11,7 @@ import princessbride.PrincessBride;
 public class StartProgramView {  // calls the welcome banner and asks for user name
 
     private void displayBanner() {  // this is the welcome banner 
-        System.out.println(
+        this.console.println(
                 "\n***************************************************************************"
                 + "\n*"
                 + "\n* Can you survive the Fire Swamp?"
@@ -62,7 +62,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         boolean isValidName = false;  // initialize to not valid 
         String name = " ";
 
-        System.out.println("\nPlease enter your name: ");
+        this.console.println("\nPlease enter your name: ");
 
         while (!isValidName) {
             String input = "";
@@ -73,7 +73,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
                 name = input.toUpperCase();
                 
             } else {
-                System.out.println("\nInput is invalid: name must be greater than one character in length.");
+                ErrorView.display("\nInput is invalid: name must be greater than one character in length.");
             }
             
         }
@@ -84,7 +84,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
     private void displayNextView(String playerName) {
 
         // display a custom welcome message 
-        System.out.println("\n===================================="
+        this.console.println("\n===================================="
                 + "\n Welcome to the game, " + playerName + "."
                 + "\n We hope you have a lot of fun!"
                 + "\n====================================");

@@ -5,12 +5,15 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -62,14 +65,54 @@ public class GameControl {
     }
 
     // Save the current game
-    public static void keepCurrentGame(String fileName) {
-        System.out.println("\n *** keepCurrentGame() function called *** ");
+    public static void keepCurrentGame(Game game, String filePath)
+            throws GameControlException {
+        
+        try( FileOutStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game); // write the ame object out to file
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
     }
 
+//    public static void saveGame(String filePath) {
+//        try {
+//            FileOutputStream fos = new FileOutputStream(filePath);
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            
+//            oos.writeObject(PrincessBride.getGame());
+//        } catch(Exception e) {
+//            ErrorView.display("GameControl", e.getMessage());
+//        }
+//    }
+    
+    public static void playSavedGame(String filePath) {
+        Game game = null;
+        
+        try (
+            FileInputStream fips = new FileInputStream(filePath)){
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game)input.readObject();
+        }
+            
+            catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+            
+            
+            PrincessBride.setGame(game);
+        } 
+    
+    
+    
     // Reload and play a saved game 
-    public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
-        System.out.println("\n *** playSavedGame() function called *** ");
-    }
+//    public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
+//        this.console.println("\n *** playSavedGame() function called *** ");
+//    }
 
     public boolean displayBackpack() {
 
@@ -77,11 +120,11 @@ public class GameControl {
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
         
         if (currentBackpack != null) {
-            System.out.println("\nYou have " + "currentBackpackQuantity" + " items in your backpack." 
+            this.console.println("\nYou have " + "currentBackpackQuantity" + " items in your backpack." 
                     + "\nThe items are: " + currentBackpack + ".");
             return true;
         } else {
-            System.out.println("\nYour backpack is empty.");
+            this.console.println("\nYour backpack is empty.");
             return false;
         }
     }
@@ -92,11 +135,11 @@ public class GameControl {
 
         if (currentLocation.getItem() != null) {
             PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            System.out.println("You found a " + currentLocation.getItem().getItemDescription() + ".  It will be added to your backpack.");
+            this.console.println("You found a " + currentLocation.getItem().getItemDescription() + ".  It will be added to your backpack.");
             currentLocation.setItem(null);
             return true;
         } else {
-            System.out.println("\nThere is nothing here.");
+            this.console.println("\nThere is nothing here.");
             return false;
         }
     }
@@ -105,7 +148,7 @@ public class GameControl {
     public void removeItemFromBackpack() {
 
         //TODO Build function to remove item from backpack list
-        System.out.println("\n *** removeItemFromBackpack() function called *** ");
+        this.console.println("\n *** removeItemFromBackpack() function called *** ");
     }
 
     // Create starting point on map at location 0,0 
@@ -192,30 +235,5 @@ public class GameControl {
         }
 
     }
-//    public static void saveGame(String filePath) {
-//        try {
-//            FileOutputStream fos = new FileOutputStream(filePath);
-//            ObjectOutputStream oos = new ObjectOutputStream(fos);
-//            
-//            oos.writeObject(PrincessBride.getGame());
-//        } catch(Exception e) {
-//            ErrorView.display("GameControl", e.getMessage());
-//        }
-//    }
-//    
-//    public static void loadGame(String filePath) {
-//        Game game = null;
-//        
-//        try {
-//            FileInputStream fis = new FileInputStream(filePath);
-//            ObjectInputStream ois = new ObjectInputStream(fis);
-//            
-//            game = (Game)ois.readObject();
-//            
-//            PrincessBride.setGame(game);
-//            PrincessBride.setPlayer(game.getPlayer());
-//        } catch (Exception e) {
-//            ErrorView.display("GameControl", e.getMessage());
-//        }
-//    }
+    
 }

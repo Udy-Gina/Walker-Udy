@@ -86,7 +86,7 @@ public class GameMenuView extends View {
                 this.saveGame();
                 break;
             default:
-                System.out.println("\n*** Invalid Selection *** Please Try Again ***");
+                ErrorView.display("\n*** Invalid Selection *** Please Try Again ***");
         }
         return false;
 }
@@ -95,7 +95,7 @@ public class GameMenuView extends View {
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
 
-        System.out.println("\n ***********************************************"
+        this.console.println("\n ***********************************************"
                 + "\n"
                 + "\n                 Fire Swamp Map                 "
                 + "\n"
@@ -104,23 +104,23 @@ public class GameMenuView extends View {
         for (int row = 0; row < Map.ROWS; row++) {
             for (int col = 0; col < Map.COLUMNS; col++) {
                 char locationType = map.getLocationAt(row, col).getLocationType().toString().charAt(0);
-                System.out.print("\t" + locationType);
+                this.console.print("\t" + locationType);
                 if (map.getLocationAt(row, col).getItem() != null) {
-                    System.out.print(map.getLocationAt(row, col).getItem().getItemDescription().charAt(0));
+                    this.console.print(map.getLocationAt(row, col).getItem().getItemDescription().charAt(0));
                 }
 
-                System.out.print("  ");
+                this.console.print("  ");
 
             }
 
-            System.out.println("");
+            this.console.println("");
         }
 
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\n ***********************************************");
 
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
-        System.out.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
+        this.console.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
     }
 
     // Show the player what they have in their backpack
@@ -195,21 +195,21 @@ public class GameMenuView extends View {
             lsv.display();
             currentLocation.setVisited(true);
         } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
-            System.out.println("\nThere is nothing here.");
+            this.console.println("\nThere is nothing here.");
             currentLocation.setVisited(true);
         }
     }
 
     private void lookAround() {
-        System.out.println("***lookAround function called****");
+        this.console.println("***lookAround function called****");
     }
 
     private void goBack() {
-        System.out.println("***goBack function called****");
+        this.console.println("***goBack function called****");
     }
 
     private void saveGame() {
-        System.out.println("***saveGame function called****");
+        this.console.println("***saveGame function called****");
     }
 
     private void HelpMenuView() {

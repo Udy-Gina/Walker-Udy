@@ -49,7 +49,7 @@ public class MainMenuView extends View {
             case 'Q':  // quit the current game 
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again***");
+                ErrorView.display("\n*** Invalid selection *** Try again***");
                 break;
         }
 
@@ -66,20 +66,36 @@ public class MainMenuView extends View {
     }
 
     /*private void saveCurrentGame() {
-        System.out.println("\nPlease enter your name: ");
+        this.console.println("\nPlease enter your name: ");
         try {
             String fileName = in.readLine();
             GameControl.keepCurrentGame(fileName);
         } catch (Exception e) {
-            System.out.println("\n *** Please enter a valid file name! ***");
+            this.console.println("\n *** Please enter a valid file name! ***");
         }
     } */
     private void saveCurrentGame() {
-        System.out.println("\n*** saveCurrentGame function called***");
+        this.console.println("\nSave game as: ");
+        String filePath = this.getInput();
+                try{
+                    GameControl.keepCurrentGame(PrincessBride.getCurrentGame(),filePath);
+                    
+                }
+                catch(Exception e) {
+                    ErrorView.display("\nMainMenuView", e.getMessage());
+                }
     }
 
     private void loadSavedGame() {
-        System.out.println("\n*** loadSavedGame function called***");
+        this.console.println("\nEnter the saved file name: ");
+        String filePath = this.getInput();
+        try {
+            GameControl.playSavedGame(filePath);
+        } catch (Exception e) {
+            ErrorView.display("MainMenuView", e.getMessage());
+        }
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void HelpMenuView() {

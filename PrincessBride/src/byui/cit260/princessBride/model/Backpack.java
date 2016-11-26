@@ -17,7 +17,7 @@ public class Backpack implements Serializable {
     }
 
     //public void createBackpackList() {
-    //   System.out.println("\n *** init() function called ***");
+    //   this.console.println("\n *** init() function called ***");
     //}
 
 }

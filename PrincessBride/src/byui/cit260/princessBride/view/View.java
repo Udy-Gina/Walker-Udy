@@ -5,7 +5,10 @@
  */
 package byui.cit260.princessbride.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import princessbride.PrincessBride;
 
 /**
  *
@@ -13,7 +16,10 @@ import java.util.Scanner;
  */
 public abstract class View implements InterfaceView {
 
-    protected String displayMessage;
+    private String displayMessage;
+    
+    protected final BufferedReader keyboard = PrincessBride.getInFile();
+    protected final PrintWriter console = PrincessBride.getOutFile();
 
     public View() {
     }
@@ -28,7 +34,7 @@ public abstract class View implements InterfaceView {
         boolean done = false;
 
         do {
-            System.out.println("\n" + this.displayMessage);
+            this.console.println("\n" + this.displayMessage);
 
             String value = this.getInput();
 
@@ -43,19 +49,18 @@ public abstract class View implements InterfaceView {
     @Override
     public String getInput() {
 
-        Scanner in = new Scanner(System.in);  // get infile for keyboard 
         String input = " ";  // value to be returned 
         boolean validInput = false;  // initialize to not valid 
         
 
         while (!validInput) {  // loop while an invalid value is enter 
 
-            input = in.nextLine();  // get next line typed on keyboard 
+            input = this.keyboard.readLine();  // get next line typed on keyboard 
             input = input.trim();  // trim off leading and trailing blanks 
             input = input.toUpperCase();  // converts input to upper case 
 
             if (input.length() < 1) {  // value is blank 
-                System.out.println("\nInvalid value: You must enter a character.");
+                ErrorView.display("\nInvalid value: You must enter a character.");
             } else {
                 validInput = true;
             }

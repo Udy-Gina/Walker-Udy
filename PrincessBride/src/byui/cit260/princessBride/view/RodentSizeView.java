@@ -24,7 +24,7 @@ public class RodentSizeView extends View {
         length = r.nextInt(5) + 5;
 
         // display problem
-        System.out.println("\nAGH!  A Rodent of Unusual Size.  Your path is blocked."
+        this.console.println("\nAGH!  A Rodent of Unusual Size.  Your path is blocked."
                 + "\nYou must calculate how high must jump to clear this "
                 + "\ngiant rodent.  You must have six inches of clearance."
                 + "\nPlease answer carefully...you could get injured and die!"
@@ -39,10 +39,10 @@ public class RodentSizeView extends View {
 
         // present results
         if (isCorrect) {
-            System.out.println("Good job!  You jumped over the vile rodent!");
+            this.console.println("Good job!  You jumped over the vile rodent!");
         } else {
             //TODO  Check if player has a healing potion  and then use it
-            System.out.println("\nOh no!  You tripped on the smelly  rodent.  The nasty thing bit you!"
+            this.console.println("\nOh no!  You tripped on the smelly  rodent.  The nasty thing bit you!"
             + "\nCheck your backpack to see if you have a healing potion!"
             + "\n\"If you don't...you're dead!");
         }
@@ -63,7 +63,7 @@ public class RodentSizeView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("\n Invalid:  You must enter a number! ");
+                ErrorView.display("\n Invalid:  You must enter a number! ");
             }
         }
         return input; // return the value entered

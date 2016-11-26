@@ -25,7 +25,7 @@ public class LightningSandView extends View {
         diameter = r.nextInt(5) + 5;
 
         // display problem
-        System.out.println("Uh-oh, the dreaded lightning sand.  This is terrible"
+        this.console.println("Uh-oh, the dreaded lightning sand.  This is terrible"
                 + "\nIf you don't think quickly, you will sink to your death."
                 + "\n"
                 + "\nThe diameter of the sand pit is " + diameter + "ft.  How far"
@@ -39,10 +39,10 @@ public class LightningSandView extends View {
 
         // present results
         if (isCorrect) {
-            System.out.println("Good job!  You made it across!");
+            this.console.println("Good job!  You made it across!");
         } else {
             //TODO  Check if player has a rope and then use it
-            System.out.println("Oh no!  You fell in.");
+            this.console.println("Oh no!  You fell in.");
         }
     }
 
@@ -61,7 +61,7 @@ public class LightningSandView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("\nInvalid:  You must enter a number!");
+                ErrorView.display("\nInvalid:  You must enter a number!");
             }
         }
             return input; // return the value entered

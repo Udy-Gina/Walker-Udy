@@ -30,7 +30,7 @@ public class FlameSpurtView extends View {
                 
 
         // display problem
-        System.out.println("Beware the Flame Spurt!  Your path is blocked."
+        this.console.println("Beware the Flame Spurt!  Your path is blocked."
                 + "You must calculate the volume of a pyramid to safely"
                 + "\ncross this danger.  Answer incorrectly and you with perish!"
                 + "\n"
@@ -44,10 +44,10 @@ public class FlameSpurtView extends View {
 
         // present results
         if (isCorrect) {
-            System.out.println("You are correct!  You may continue on your journey");
+            this.console.println("You are correct!  You may continue on your journey");
         } else {
             //TODO  Check if player has a healing potion  and then use it
-            System.out.println("You are incorrect!  You will now perish by fire!");
+            this.console.println("You are incorrect!  You will now perish by fire!");
         }
     }
 
@@ -66,7 +66,7 @@ public class FlameSpurtView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("\n Invalid:  You must enter a number! ");
+                ErrorView.display("\n Invalid:  You must enter a number! ");
             }
         }
         return input; // return the value entered
