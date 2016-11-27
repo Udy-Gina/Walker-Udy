@@ -1,14 +1,14 @@
 package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.model.Player;
-import java.util.Scanner;
+import java.io.IOException;
 import princessBride.PrincessBride;
 
 /**
  *
  * @author lisawalker
  */
-public class StartProgramView {  // calls the welcome banner and asks for user name
+public class StartProgramView extends View {  // calls the welcome banner and asks for user name
 
     private void displayBanner() {  // this is the welcome banner 
         this.console.println(
@@ -40,7 +40,7 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
                 + "\n***************************************************************************");
     }
 
-    public void displayStartProgramView() {  // shows user name and banner from above functions
+    public void displayStartProgramView() throws IOException {  // shows user name and banner from above functions
 
         displayBanner();
 
@@ -56,9 +56,8 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
         mainMenuView.display();
     }
 
-    private String getPlayerName() {  // gets user name 
+    private String getPlayerName() throws IOException {  // gets user name 
 
-        Scanner in = new Scanner(System.in);  // get infile for keyboard 
         boolean isValidName = false;  // initialize to not valid 
         String name = " ";
 
@@ -66,14 +65,14 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
 
         while (!isValidName) {
             String input = "";
-            input = in.nextLine();
+            input = this.keyboard.readLine();  // get next line typed on keyboard 
             
             if (input != null && input.length() >= 2) {
                 isValidName = true;
                 name = input.toUpperCase();
                 
             } else {
-                ErrorView.display("\nInput is invalid: name must be greater than one character in length.");
+                ErrorView.display(this.getClass().getName(), "\nInput is invalid: name must be greater than one character in length.");
             }
             
         }
@@ -89,6 +88,11 @@ public class StartProgramView {  // calls the welcome banner and asks for user n
                 + "\n We hope you have a lot of fun!"
                 + "\n====================================");
 
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

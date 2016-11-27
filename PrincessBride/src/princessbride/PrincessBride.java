@@ -9,7 +9,6 @@ import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
-import byui.cit260.princessBride.view.ErrorView;
 import byui.cit260.princessBride.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -135,32 +134,32 @@ public class PrincessBride {
             StartProgramView spv = new StartProgramView();
             spv.displayStartProgramView();
             return;
-            
+
         } catch (Exception e) {
-            
-            ErrorView.display("Exception: " + e.toString()
+
+            this.console.println("Exception: " + e.toString()
                     + "\nCause: " + e.getCause()
                     + "\nMessage: " + e.getMessage());
             //e.printStackTrace();
-        } 
-        finally {
-              try {
-                    if (PrincessBride.inFile != null) 
-                        PrincessBride.inFile.close();
+        } finally {
+            try {
+                if (PrincessBride.inFile != null) {
+                    PrincessBride.inFile.close();
+                }
 
-                    if (PrincessBride.outFile != null) 
-                        PrincessBride.outFile.close();
+                if (PrincessBride.outFile != null) {
+                    PrincessBride.outFile.close();
+                }
 
-                    if (PrincessBride.logFile != null) 
-                        PrincessBride.logFile.close();
-                    }
-                } catch (IOException e) {
-                ErrorView.display("Error closing files");
+                if (PrincessBride.logFile != null) {
+                    PrincessBride.logFile.close();
+                }
+
+            } catch (IOException e) {
+                this.console.println("Error closing files");
                 return;
             }
-            PrincessBride.outFile.close();
         }
-
     }
 
 }
@@ -173,7 +172,7 @@ public class PrincessBride {
         playerOne.setItem("Item");
 
         String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
+        this.console.println(playerInfo);
 
         Location locationOne = new Location();
         
@@ -185,12 +184,12 @@ public class PrincessBride {
         locationOne.setItem(item);
 
         String locationInfo = locationOne.toString();
-        System.out.println(locationInfo);
+        this.console.println(locationInfo);
         
         Map mapOne = new Map();
         
         String mapInfo = mapOne.toString();
-        System.out.println(mapInfo);
+        this.console.println(mapInfo);
 
         Rodent rodentOne = new Rodent();
 
@@ -199,7 +198,7 @@ public class PrincessBride {
         rodentOne.setCalculation(0);
 
         String rodentInfo = rodentOne.toString();
-        System.out.println(rodentInfo);
+        this.console.println(rodentInfo);
 
         FlameSpurt flameSpurtOne = new FlameSpurt();
 
@@ -209,7 +208,7 @@ public class PrincessBride {
         flameSpurtOne.setAnswer(0);
 
         String flameSpurtInfo = flameSpurtOne.toString();
-        System.out.println(flameSpurtInfo);
+        this.console.println(flameSpurtInfo);
 
         Item itemOne = new Item();
 
@@ -218,7 +217,7 @@ public class PrincessBride {
         itemOne.setItemQuantity(3);
 
         String itemInfo = itemOne.toString();
-        System.out.println(itemInfo);
+        this.console.println(itemInfo);
 
         LightningSand guessOne = new LightningSand();
 
@@ -227,6 +226,6 @@ public class PrincessBride {
         guessOne.setResponse("Wrong!  You are dead.");
 
         String lightningSandInfo = guessOne.toString();
-        System.out.println(lightningSandInfo);
+        this.console.println(lightningSandInfo);
         
     } */

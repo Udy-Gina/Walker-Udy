@@ -49,7 +49,7 @@ public class MainMenuView extends View {
             case 'Q':  // quit the current game 
                 return true;
             default:
-                ErrorView.display("\n*** Invalid selection *** Try again***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection *** Try again***");
                 break;
         }
 
@@ -71,19 +71,18 @@ public class MainMenuView extends View {
             String fileName = in.readLine();
             GameControl.keepCurrentGame(fileName);
         } catch (Exception e) {
-            this.console.println("\n *** Please enter a valid file name! ***");
+            ErrorView.display(this.getClass().getName(), "\n *** Please enter a valid file name! ***");
         }
     } */
     private void saveCurrentGame() {
         this.console.println("\nSave game as: ");
         String filePath = this.getInput();
-                try{
-                    GameControl.keepCurrentGame(PrincessBride.getCurrentGame(),filePath);
-                    
-                }
-                catch(Exception e) {
-                    ErrorView.display("\nMainMenuView", e.getMessage());
-                }
+        try {
+            GameControl.keepCurrentGame(PrincessBride.getCurrentGame(), filePath);
+
+        } catch (Exception e) {
+            ErrorView.display("\nMainMenuView", e.getMessage());
+        }
     }
 
     private void loadSavedGame() {
@@ -92,7 +91,7 @@ public class MainMenuView extends View {
         try {
             GameControl.playSavedGame(filePath);
         } catch (Exception e) {
-            ErrorView.display("MainMenuView", e.getMessage());
+            ErrorView.display("\nMainMenuView", e.getMessage());
         }
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();

@@ -6,8 +6,10 @@
 package byui.cit260.princessBride.view;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
 /**
@@ -17,7 +19,7 @@ import princessBride.PrincessBride;
 public abstract class View implements InterfaceView {
 
     private String displayMessage;
-    
+
     protected final BufferedReader keyboard = PrincessBride.getInFile();
     protected final PrintWriter console = PrincessBride.getOutFile();
 
@@ -28,7 +30,7 @@ public abstract class View implements InterfaceView {
         this.displayMessage = message;
     }
 
-@Override
+    @Override
     public void display() {  // displays start program view
 
         boolean done = false;
@@ -49,18 +51,23 @@ public abstract class View implements InterfaceView {
     @Override
     public String getInput() {
 
-        String input = " ";  // value to be returned 
+        String input = null;  // value to be returned 
         boolean validInput = false;  // initialize to not valid 
-        
 
-        while (!validInput) {  // loop while an invalid value is enter 
+        while (!validInput) {
+            try {
+                // loop while an invalid value is enter
 
-            input = this.keyboard.readLine();  // get next line typed on keyboard 
-            input = input.trim();  // trim off leading and trailing blanks 
-            input = input.toUpperCase();  // converts input to upper case 
+                input = this.keyboard.readLine();  // get next line typed on keyboard 
+                input = input.trim();  // trim off leading and trailing blanks 
+                input = input.toUpperCase();  // converts input to upper case 
+
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             if (input.length() < 1) {  // value is blank 
-                ErrorView.display("\nInvalid value: You must enter a character.");
+                ErrorView.display(this.getClass().getName(), "\nInvalid value: You must enter a character.");
             } else {
                 validInput = true;
             }

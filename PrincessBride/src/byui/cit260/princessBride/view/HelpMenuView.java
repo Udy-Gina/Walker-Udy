@@ -72,7 +72,7 @@ public class HelpMenuView extends View {
             case 'X':  // exit to the main menu 
                 return true;
             default:
-                ErrorView.display("\n*** Invalid selection *** Try again***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection *** Try again***");
                 break;
         }
 

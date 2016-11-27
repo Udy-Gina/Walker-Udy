@@ -11,12 +11,15 @@ import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
 
@@ -68,7 +71,7 @@ public class GameControl {
     public static void keepCurrentGame(Game game, String filePath)
             throws GameControlException {
         
-        try( FileOutStream fops = new FileOutputStream(filepath)) {
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
             output.writeObject(game); // write the ame object out to file
@@ -85,7 +88,7 @@ public class GameControl {
 //            
 //            oos.writeObject(PrincessBride.getGame());
 //        } catch(Exception e) {
-//            ErrorView.display("GameControl", e.getMessage());
+//            ErrorView.display(this.getClass().getName(), "GameControl", e.getMessage());
 //        }
 //    }
     
@@ -100,11 +103,15 @@ public class GameControl {
         }
             
             catch (Exception e) {
-            throw new GameControlException(e.getMessage());
+            try {
+                throw new GameControlException(e.getMessage());
+            } catch (GameControlException ex) {
+                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
             
             
-            PrincessBride.setGame(game);
+            PrincessBride.setSaveCurrentGame(game);
         } 
     
     
