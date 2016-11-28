@@ -49,7 +49,7 @@ public class Map implements Serializable {
         }
     }
 
-    public Location getLocationAt(int row, int col) {
+    public Location getLocationAt(int row, int col)  {
         return matrix[row][col];
     }
 

@@ -8,6 +8,8 @@ package byui.cit260.princessBride.view;
 import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
 import byui.cit260.princessBride.exceptions.GameControlException;
+import byui.cit260.princessBride.exceptions.LoseException;
+import byui.cit260.princessBride.exceptions.WinException;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
@@ -47,7 +49,7 @@ public class GameMenuView extends View {
     public boolean doAction(String selection) {
 
         char charSel = selection.toUpperCase().charAt(0);
-
+try {
         switch (charSel) {
             case 'V': //View map
                 this.viewMap();
@@ -90,6 +92,12 @@ public class GameMenuView extends View {
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
         }
+} catch (LoseException le){
+        this.console.println("You lost to the dreaded Fire Swamp.  Try again!");
+} 
+catch(WinException we){
+    this.console.println("Wow!  You bested the Fire Swamp.  Congratulations!");
+}
         return false;
     }
 
