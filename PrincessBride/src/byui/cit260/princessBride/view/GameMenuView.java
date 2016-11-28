@@ -7,10 +7,12 @@ package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
-import byui.cit260.princessBride.exceptions.MovementControlException;
+import byui.cit260.princessBride.exceptions.GameControlException;
+import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
+import java.util.List;
 import princessBride.PrincessBride;
 
 /**
@@ -56,19 +58,19 @@ public class GameMenuView extends View {
             case 'T': // Take Item
                 this.takeItemFromLocation();
                 break;
-            case 'U': //Use Item
-                this.useItemInBackpack();
-                break;
-            case 'N': 
+//            case 'U': //Use Item
+//                this.useItemInBackpack();
+//                break;
+            case 'N':
                 this.moveNorth();
                 break;
-            case 'E': 
+            case 'E':
                 this: moveEast();
                 break;
-            case 'S': 
+            case 'S':
                 this.moveSouth();
                 break;
-            case 'W': 
+            case 'W':
                 this.moveWest();
                 break;
             case 'L': // look around
@@ -89,8 +91,7 @@ public class GameMenuView extends View {
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
         }
         return false;
-}
-            
+    }
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
@@ -125,55 +126,75 @@ public class GameMenuView extends View {
 
     // Show the player what they have in their backpack
     private void showBackpack() {
-        GameControl gc = new GameControl();
-        gc.displayBackpack();
+
+        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
+
+        try {
+            GameControl gc = new GameControl();
+            gc.displayBackpack();
+            this.console.println("\nYou have " + "currentBackpackQuantity"
+                    + " items in your backpack."
+                    + "\nThe items are: "
+                    + currentBackpack
+                    + ".");
+        } catch (GameControlException e) {
+            ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
+        }
     }
 
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
-        GameControl gc = new GameControl();
-        gc.addItemToBackpack();
+
+        try {
+            GameControl gc = new GameControl();
+            gc.addItemToBackpack();
+            Location currentLocation = PrincessBride.getPlayer().getLocation();
+            this.console.println("You found a "
+                    + currentLocation.getItem().getItemDescription()
+                    + ".  It will be added to your backpack.");
+            currentLocation.setItem(null);
+        } catch (GameControlException e) {
+            this.console.println("\nThere is nothing here.");
+        }
     }
 
-    // Use an item from backpack to make it through a danger safely
-    private void useItemInBackpack() {
-        GameControl gc = new GameControl();
-        gc.removeItemFromBackpack();
-    }
-
-    private void moveNorth() throws Exception {
+//    // Use an item from backpack to make it through a danger safely
+//    private void useItemInBackpack() {
+//        GameControl gc = new GameControl();
+//        gc.removeItemFromBackpack();
+//    }
+    private void moveNorth() {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveNorth();
-        if(mc.moveNorth() == false) {
-            throw new MovementControlException("You cannot move further north.");
+        if (!success) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further north.");
         }
         determineNextView();
     }
 
-    private void moveEast() throws Exception {
+    private void moveEast() {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveEast();
-        if(mc.moveEast() == false) {
-            throw new MovementControlException("You cannot move further east.");
+        if (!success) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further east.");
         }
         determineNextView();
     }
 
-    private void moveSouth() throws Exception {
+    private void moveSouth() {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveSouth();
-        if(mc.moveSouth() == false) {
-        //if (!success) {
-            throw new MovementControlException("You cannot move further south.");
+        if (!success) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further south.");
         }
         determineNextView();
     }
 
-    private void moveWest() throws Exception {
+    private void moveWest() {
         MovementControl mc = new MovementControl();
         boolean success = mc.moveWest();
-        if(mc.moveWest() == false) {
-            throw new MovementControlException("You cannot move further west.");
+        if (!success) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further west.");
         }
         determineNextView();
     }
@@ -182,22 +203,28 @@ public class GameMenuView extends View {
     private void determineNextView() {
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
 
-        if (currentLocation.getLocationType() == LocationType.FLAMESPURT && !currentLocation.getVisited()) {
-            FlameSpurtView fsv = new FlameSpurtView();
-            fsv.display();
-            currentLocation.setVisited(true);
-        } else if (currentLocation.getLocationType() == LocationType.ROUS && !currentLocation.getVisited()) {
-            RodentSizeView rsv = new RodentSizeView();
-            rsv.display();
-            currentLocation.setVisited(true);
-        } else if (currentLocation.getLocationType() == LocationType.LIGHTNINGSAND && !currentLocation.getVisited()) {
-            LightningSandView lsv = new LightningSandView();
-            lsv.display();
-            currentLocation.setVisited(true);
-        } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
-            this.console.println("\nThere is nothing here.");
-            currentLocation.setVisited(true);
+        try {
+
+            if (currentLocation.getLocationType() == LocationType.FLAMESPURT && !currentLocation.getVisited()) {
+                FlameSpurtView fsv = new FlameSpurtView();
+                fsv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.ROUS && !currentLocation.getVisited()) {
+                RodentSizeView rsv = new RodentSizeView();
+                rsv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.LIGHTNINGSAND && !currentLocation.getVisited()) {
+                LightningSandView lsv = new LightningSandView();
+                lsv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
+                this.console.println("\nThere is nothing here.");
+                currentLocation.setVisited(true);
+            }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error on input");
         }
+
     }
 
     private void lookAround() {

@@ -22,7 +22,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
-
 /**
  *
  * @author Gina Udy
@@ -53,6 +52,11 @@ public class GameControl {
         // Player - create player 
         currentGame.setPlayer(player);
 
+        // TODO Need to set the inventory list...example from Ship game:
+        // InventoryItem[] = inventoryList = GameControl.createInventoryList(); 
+        // game.setInventory(InventoryList);
+        
+        
         // Create map
         Map map = new Map();
         map.init();
@@ -70,13 +74,12 @@ public class GameControl {
     // Save the current game
     public static void keepCurrentGame(Game game, String filePath)
             throws GameControlException {
-        
-        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
-            
+
             output.writeObject(game); // write the ame object out to file
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new GameControlException(e.getMessage());
         }
     }
@@ -91,79 +94,70 @@ public class GameControl {
 //            ErrorView.display(this.getClass().getName(), "GameControl", e.getMessage());
 //        }
 //    }
-    
     public static void playSavedGame(String filePath) {
         Game game = null;
-        
+
         try (
-            FileInputStream fips = new FileInputStream(filePath)){
+                FileInputStream fips = new FileInputStream(filePath)) {
             ObjectInputStream input = new ObjectInputStream(fips);
-            
-            game = (Game)input.readObject();
-        }
-            
-            catch (Exception e) {
+
+            game = (Game) input.readObject();
+        } catch (Exception e) {
             try {
                 throw new GameControlException(e.getMessage());
             } catch (GameControlException ex) {
                 Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            
-            
-            PrincessBride.setSaveCurrentGame(game);
-        } 
-    
-    
-    
+
+        PrincessBride.setSaveCurrentGame(game);
+    }
+
     // Reload and play a saved game 
 //    public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
 //        this.console.println("\n *** playSavedGame() function called *** ");
 //    }
-
-    public boolean displayBackpack() {
+    public boolean displayBackpack() throws GameControlException {
 
         //TODO Loop over backpack to display sorted/counted list
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
-        
+
         if (currentBackpack != null) {
-            this.console.println("\nYou have " + "currentBackpackQuantity" + " items in your backpack." 
-                    + "\nThe items are: " + currentBackpack + ".");
             return true;
         } else {
-            this.console.println("\nYour backpack is empty.");
-            return false;
+            throw new GameControlException("\nYour backpack is empty.");
         }
+        
+        
+        //return currentBackpack != null;
     }
 
     // Add items to the backpack list
-    public boolean addItemToBackpack() {
+    public boolean addItemToBackpack() throws GameControlException {
         Location currentLocation = PrincessBride.getPlayer().getLocation();
 
         if (currentLocation.getItem() != null) {
             PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            this.console.println("You found a " + currentLocation.getItem().getItemDescription() + ".  It will be added to your backpack.");
-            currentLocation.setItem(null);
             return true;
         } else {
-            this.console.println("\nThere is nothing here.");
-            return false;
+
+            throw new GameControlException("\nThere is nothing here.");
         }
     }
 
     // TODO Remove items from the backpack list when used in a danger
-    public void removeItemFromBackpack() {
-
-        //TODO Build function to remove item from backpack list
-        this.console.println("\n *** removeItemFromBackpack() function called *** ");
-    }
-
-    // Create starting point on map at location 0,0 
-    private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
-
-        player.setLocation(map.getLocationAt(0, 0));
-
-    }
+//    public void removeItemFromBackpack() {
+//
+//        //TODO Build function to remove item from backpack list
+//        this.console.println("\n *** removeItemFromBackpack() function called *** ");
+//    }
+//
+//    // Create starting point on map at location 0,0 
+//    private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
+//
+//        player.setLocation(map.getLocationAt(0, 0));
+//
+//    }
 
     // Creates map and assigns random items from backpack to various locations 
     public void createAndAssignItems(Map map) {
@@ -180,26 +174,26 @@ public class GameControl {
         rope2.setItemDescription("rope");
         rope2.setItemName("Rope2");
         rope2.setItemQuantity(1);
-        items.add(rope2); 
-        
+        items.add(rope2);
+
         Item rope3 = new Item();
         rope3.setItemDescription("rope");
         rope3.setItemName("Rope2");
         rope3.setItemQuantity(1);
-        items.add(rope3); 
-        
+        items.add(rope3);
+
         Item potion1 = new Item();
         potion1.setItemDescription("healing potion");
         potion1.setItemName("Healing Potion");
         potion1.setItemQuantity(1);
         items.add(potion1);
-        
+
         Item potion2 = new Item();
         potion2.setItemDescription("healing potion");
         potion2.setItemName("Healing Potion");
         potion2.setItemQuantity(1);
         items.add(potion2);
-        
+
         Item potion3 = new Item();
         potion3.setItemDescription("healing potion");
         potion3.setItemName("Healing Potion");
@@ -211,13 +205,13 @@ public class GameControl {
         water1.setItemName("Bucket of Water");
         water1.setItemQuantity(1);
         items.add(water1);
-        
+
         Item water2 = new Item();
         water2.setItemDescription("bucket of water");
         water2.setItemName("Bucket of Water");
         water2.setItemQuantity(1);
         items.add(water2);
-        
+
         Item water3 = new Item();
         water3.setItemDescription("bucket of water");
         water3.setItemName("Bucket of Water");
@@ -242,5 +236,5 @@ public class GameControl {
         }
 
     }
-    
+
 }
