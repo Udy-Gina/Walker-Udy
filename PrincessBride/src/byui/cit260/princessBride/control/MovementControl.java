@@ -5,6 +5,7 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.exceptions.MovementControlException;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
@@ -16,46 +17,46 @@ import princessBride.PrincessBride;
  */
 public class MovementControl  {
     
-    public boolean moveWest() {
+    public boolean moveWest() throws MovementControlException{
         Player player = PrincessBride.getCurrentGame().getPlayer();
         Location currentLocation = player.getLocation();
         Map map = PrincessBride.getCurrentGame().getMap();
 
         if (currentLocation.getCol() == 0) {
-            return false;
+        throw new MovementControlException();
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() - 1));
         return true;
     }
-      public boolean moveSouth() {
+      public boolean moveSouth() throws MovementControlException{
         Player player = PrincessBride.getCurrentGame().getPlayer();
         Location currentLocation = player.getLocation();
         Map map = PrincessBride.getCurrentGame().getMap();
 
         if (currentLocation.getRow() == 4) {
-            return false;
+           throw new MovementControlException();
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow() +1, currentLocation.getCol()));
         return true;
     }
-    public boolean moveNorth() {
+    public boolean moveNorth() throws MovementControlException {
         Player player = PrincessBride.getCurrentGame().getPlayer();
         Location currentLocation = player.getLocation();
         Map map = PrincessBride.getCurrentGame().getMap();
 
         if (currentLocation.getRow() == 0) {
-            return false;
+           throw new MovementControlException();
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow() -1, currentLocation.getCol()));
         return true;
     }
-    public boolean moveEast() {
+    public boolean moveEast() throws MovementControlException {
         Player player = PrincessBride.getCurrentGame().getPlayer();
         Location currentLocation = player.getLocation();
         Map map = PrincessBride.getCurrentGame().getMap();
 
         if (currentLocation.getCol() == 4) {
-            return false;
+     throw new MovementControlException();
         }
         player.setLocation(map.getLocationAt(currentLocation.getRow(), currentLocation.getCol() + 1));
         return true;

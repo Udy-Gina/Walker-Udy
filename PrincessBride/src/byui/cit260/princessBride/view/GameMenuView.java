@@ -9,6 +9,7 @@ import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
 import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.exceptions.LoseException;
+import byui.cit260.princessBride.exceptions.MovementControlException;
 import byui.cit260.princessBride.exceptions.WinException;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
@@ -171,39 +172,47 @@ catch(WinException we){
 //        GameControl gc = new GameControl();
 //        gc.removeItemFromBackpack();
 //    }
-    private void moveNorth() {
+    private void moveNorth(){
         MovementControl mc = new MovementControl();
-        boolean success = mc.moveNorth();
-        if (!success) {
-            ErrorView.display(this.getClass().getName(), "You cannot move further north.");
-        }
+       try{
+           mc.moveNorth();
+            }
+       catch(MovementControlException mce){
+           ErrorView.display (this.getClass().getName(), "You cannot move further North");
+       }
         determineNextView();
     }
 
     private void moveEast() {
         MovementControl mc = new MovementControl();
-        boolean success = mc.moveEast();
-        if (!success) {
-            ErrorView.display(this.getClass().getName(), "You cannot move further east.");
-        }
+       try{
+           mc.moveEast();
+            }
+       catch(MovementControlException mce){
+           ErrorView.display (this.getClass().getName(), "You cannot move further East");
+       }
         determineNextView();
     }
 
     private void moveSouth() {
         MovementControl mc = new MovementControl();
-        boolean success = mc.moveSouth();
-        if (!success) {
-            ErrorView.display(this.getClass().getName(), "You cannot move further south.");
-        }
+   try{
+           mc.moveSouth();
+            }
+       catch(MovementControlException mce){
+           ErrorView.display (this.getClass().getName(), "You cannot move further South");
+       }
         determineNextView();
     }
 
     private void moveWest() {
         MovementControl mc = new MovementControl();
-        boolean success = mc.moveWest();
-        if (!success) {
-            ErrorView.display(this.getClass().getName(), "You cannot move further west.");
-        }
+       try{
+           mc.moveWest();
+            }
+       catch(MovementControlException mce){
+           ErrorView.display (this.getClass().getName(), "You cannot move further West");
+       }
         determineNextView();
     }
 
