@@ -24,13 +24,14 @@ public class DangerControl {
 
     }
 
-    public boolean checkLightningSand(double input, double distance) {
+    public boolean checkLightningSand(double input, double distance){
 
         return input != distance;
     }
 
-    public double calcRodentSize(double length, double input) {
-
+    public double calcRodentSize(double length, double input) throws DangerControlException {
+            if(length <=0){
+                throw new DangerControlException();}
         double height = (((length * 12) / 2) + 6) / 12;
         
         checkRodentSize(input, height);
