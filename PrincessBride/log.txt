@@ -1,7 +1,3 @@
+byui.cit260.princessBride.view.MainMenuView - 
+*** Invalid selection *** Try again***
 byui.cit260.princessBride.view.FlameSpurtView - You are incorrect!  You will now perish by fire!
-byui.cit260.princessBride.view.RodentSizeView - 
- Invalid:  You must enter a number! 
-byui.cit260.princessBride.view.RodentSizeView - 
-Oh no!  You tripped on the smelly  rodent.  The nasty thing bit you!
-Check your backpack to see if you have a healing potion!
-"If you don't...you're dead!

@@ -6,10 +6,7 @@
 package byui.cit260.princessBride.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
 /**
@@ -51,7 +48,7 @@ public abstract class View implements InterfaceView {
     @Override
     public String getInput() {
 
-        String input = null;  // value to be returned 
+        String input = " ";  // value to be returned 
         boolean validInput = false;  // initialize to not valid 
 
         while (!validInput) {
@@ -62,8 +59,8 @@ public abstract class View implements InterfaceView {
                 input = input.trim();  // trim off leading and trailing blanks 
                 input = input.toUpperCase();  // converts input to upper case 
 
-            } catch (IOException ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                throw new RuntimeException("Error reading input");
             }
 
             if (input.length() < 1) {  // value is blank 

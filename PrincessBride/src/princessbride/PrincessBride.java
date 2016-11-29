@@ -122,7 +122,10 @@ public class PrincessBride {
         PrincessBride.player = player;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        
+        StartProgramView startProgram = null; 
+        
         try {
             PrincessBride.inFile = new BufferedReader(new InputStreamReader(System.in));
             PrincessBride.outFile = new PrintWriter(System.out, true);
@@ -131,15 +134,10 @@ public class PrincessBride {
             PrincessBride.logFile = new PrintWriter(filePath);
 
             //create StartProgramViewOrig and display the start program view
-            StartProgramView spv = new StartProgramView();
-            spv.displayStartProgramView();
-            return;
-
+            startProgram = new StartProgramView();
+            startProgram.displayStartProgramView();
         } catch (Exception e) {
-
-            this.console.println("Exception: " + e.toString()
-                    + "\nCause: " + e.getCause()
-                    + "\nMessage: " + e.getMessage());
+            startProgram.displayStartProgramView();
             //e.printStackTrace();
         } finally {
             try {
@@ -156,7 +154,7 @@ public class PrincessBride {
                 }
 
             } catch (IOException e) {
-                this.console.println("Error closing files");
+                System.out.println("Error closing files");
                 return;
             }
         }

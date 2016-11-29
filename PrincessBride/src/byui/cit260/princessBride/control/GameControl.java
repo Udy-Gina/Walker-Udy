@@ -11,6 +11,7 @@ import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
+import byui.cit260.princessBride.view.ErrorView;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -55,8 +56,6 @@ public class GameControl {
         // TODO Need to set the inventory list...example from Ship game:
         // InventoryItem[] = inventoryList = GameControl.createInventoryList(); 
         // game.setInventory(InventoryList);
-        
-        
         // Create map
         Map map = new Map();
         map.init();
@@ -72,15 +71,16 @@ public class GameControl {
     }
 
     // Save the current game
-    public static void keepCurrentGame(Game game, String filePath)
+    public static void keepCurrentGame(String filePath)
             throws GameControlException {
 
-        try (FileOutputStream fops = new FileOutputStream(filePath)) {
-            ObjectOutputStream output = new ObjectOutputStream(fops);
+        try {
+            FileOutputStream fops = new FileOutputStream(filePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fops);
 
-            output.writeObject(game); // write the ame object out to file
+            oos.writeObject(PrincessBride.getCurrentGame()); // write the ame object out to file
         } catch (Exception e) {
-            throw new GameControlException(e.getMessage());
+            ErrorView.display("ProgramController", e.getMessage());
         }
     }
 
@@ -97,20 +97,18 @@ public class GameControl {
     public static void playSavedGame(String filePath) {
         Game game = null;
 
-        try (
-                FileInputStream fips = new FileInputStream(filePath)) {
-            ObjectInputStream input = new ObjectInputStream(fips);
+        try {
+            FileInputStream fips = new FileInputStream(filePath);
+            ObjectInputStream ois = new ObjectInputStream(fips);
 
-            game = (Game) input.readObject();
+            game = (Game) ois.readObject();
+
+            PrincessBride.setCurrentGame(game);
+            PrincessBride.setPlayer(game.getPlayer());
+
         } catch (Exception e) {
-            try {
-                throw new GameControlException(e.getMessage());
-            } catch (GameControlException ex) {
-                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ErrorView.display("ProgramController", e.getMessage());
         }
-
-        PrincessBride.setSaveCurrentGame(game);
     }
 
     // Reload and play a saved game 
@@ -127,8 +125,7 @@ public class GameControl {
         } else {
             throw new GameControlException("\nYour backpack is empty.");
         }
-        
-        
+
         //return currentBackpack != null;
     }
 
@@ -158,65 +155,28 @@ public class GameControl {
 //        player.setLocation(map.getLocationAt(0, 0));
 //
 //    }
-
     // Creates map and assigns random items from backpack to various locations 
     public void createAndAssignItems(Map map) {
 
         List<Item> items = new ArrayList<>();
 
-        Item rope1 = new Item();
-        rope1.setItemDescription("rope");
-        rope1.setItemName("Rope");
-        rope1.setItemQuantity(1);
-        items.add(rope1);
+        Item rope = new Item();
+        rope.setItemDescription("rope");
+        rope.setItemName("Rope");
+        rope.setItemQuantity(1);
+        items.add(rope);
 
-        Item rope2 = new Item();
-        rope2.setItemDescription("rope");
-        rope2.setItemName("Rope2");
-        rope2.setItemQuantity(1);
-        items.add(rope2);
+        Item potion = new Item();
+        potion.setItemDescription("healing potion");
+        potion.setItemName("Healing Potion");
+        potion.setItemQuantity(1);
+        items.add(potion);
 
-        Item rope3 = new Item();
-        rope3.setItemDescription("rope");
-        rope3.setItemName("Rope2");
-        rope3.setItemQuantity(1);
-        items.add(rope3);
-
-        Item potion1 = new Item();
-        potion1.setItemDescription("healing potion");
-        potion1.setItemName("Healing Potion");
-        potion1.setItemQuantity(1);
-        items.add(potion1);
-
-        Item potion2 = new Item();
-        potion2.setItemDescription("healing potion");
-        potion2.setItemName("Healing Potion");
-        potion2.setItemQuantity(1);
-        items.add(potion2);
-
-        Item potion3 = new Item();
-        potion3.setItemDescription("healing potion");
-        potion3.setItemName("Healing Potion");
-        potion3.setItemQuantity(1);
-        items.add(potion3);
-
-        Item water1 = new Item();
-        water1.setItemDescription("bucket of water");
-        water1.setItemName("Bucket of Water");
-        water1.setItemQuantity(1);
-        items.add(water1);
-
-        Item water2 = new Item();
-        water2.setItemDescription("bucket of water");
-        water2.setItemName("Bucket of Water");
-        water2.setItemQuantity(1);
-        items.add(water2);
-
-        Item water3 = new Item();
-        water3.setItemDescription("bucket of water");
-        water3.setItemName("Bucket of Water");
-        water3.setItemQuantity(1);
-        items.add(water3);
+        Item water = new Item();
+        water.setItemDescription("bucket of water");
+        water.setItemName("Bucket of Water");
+        water.setItemQuantity(1);
+        items.add(water);
 
         Random rand = new Random();
 

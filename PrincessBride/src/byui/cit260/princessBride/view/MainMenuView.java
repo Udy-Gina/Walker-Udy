@@ -76,25 +76,28 @@ public class MainMenuView extends View {
     } */
     private void saveCurrentGame() {
         this.console.println("\nSave game as: ");
-        String filePath = this.getInput();
+
         try {
-            GameControl.keepCurrentGame(PrincessBride.getCurrentGame(), filePath);
+            String filePath = this.getInput();
+            GameControl.keepCurrentGame(filePath);
 
         } catch (Exception e) {
-            ErrorView.display("\nMainMenuView", e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error on input");
         }
     }
 
     private void loadSavedGame() {
         this.console.println("\nEnter the saved file name: ");
-        String filePath = this.getInput();
+
         try {
+            String filePath = this.getInput();
             GameControl.playSavedGame(filePath);
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
         } catch (Exception e) {
-            ErrorView.display("\nMainMenuView", e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error on input");
         }
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+
     }
 
     private void HelpMenuView() {
