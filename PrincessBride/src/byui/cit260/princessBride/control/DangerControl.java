@@ -5,14 +5,17 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.exceptions.DangerControlException;
+
 /**
  *
  * @author Gina Udy
  */
 public class DangerControl {
 
-    public double calcLightningSand(double diameter, double input) {
-
+    public double calcLightningSand(double diameter, double input) throws DangerControlException {
+         if(diameter <=0){
+             throw new DangerControlException ();        }
         double distance = diameter * Math.PI / 2;
         
         checkLightningSand(input, distance);

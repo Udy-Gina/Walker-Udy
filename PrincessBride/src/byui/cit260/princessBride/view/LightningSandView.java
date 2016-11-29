@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.control.DangerControl;
+import byui.cit260.princessBride.exceptions.DangerControlException;
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
@@ -31,8 +31,8 @@ public class LightningSandView extends View {
                 + "\nIf you don't think quickly, you will sink to your death."
                 + "\n"
                 + "\nThe diameter of the sand pit is " + diameter + "ft.  How far"
-                + "\nmust you walk around the lightning sand to get to safety?"); 
-                
+                + "\nmust you walk around the lightning sand to get to safety?");
+
         //get input
         String input = getInput();
 
@@ -53,10 +53,11 @@ public class LightningSandView extends View {
         String input = " ";  // value to be returned
         boolean validInput = false;    // initialize to not valid
 
-        while (!validInput) { try {
-            // loop while an invalid value is entered
-            
-            input = this.keyboard.readLine();  // get next line typed on keyboard 
+        while (!validInput) {
+            try {
+                // loop while an invalid value is entered
+
+                input = this.keyboard.readLine();  // get next line typed on keyboard 
             } catch (IOException ex) {
                 Logger.getLogger(LightningSandView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -69,22 +70,25 @@ public class LightningSandView extends View {
                 ErrorView.display(this.getClass().getName(), "\nInvalid:  You must enter a number!");
             }
         }
-            return input; // return the value entered
-    }   
+        return input; // return the value entered
+    }
 
     @Override
-    public boolean doAction(String value){
-        
+    public boolean doAction(String value) {
+
         // convert string input into double
         double input = Double.parseDouble(value);
-        
+
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
-        
-        //return answer
-        double actualAnswer = dc.calcLightningSand(diameter, input);
 
-        return (int) actualAnswer == (int) input;
+        //return answer
+        try {
+
+            double actualAnswer = dc.calcLightningSand(diameter, input);
+        } catch(DangerControlException e)  {
+            ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
+        }
+        return true;
     }
 }
-
