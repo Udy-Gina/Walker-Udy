@@ -7,6 +7,7 @@
 package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.control.DangerControl;
+import byui.cit260.princessBride.exceptions.DangerControlException;
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
@@ -88,9 +89,12 @@ public class FlameSpurtView extends View {
         DangerControl dc = new DangerControl();
         
         //return answer
-        double actualAnswer = dc.calcFlameSpurt(length, width, height, input);
-
-        return (int) actualAnswer == (int) input;
+        try {
+        double actualAnswer = dc.calcFlameSpurt(length, width, height, input); }
+        catch (DangerControlException e){
+            ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
+        }
+        return true;
     }
     
 }

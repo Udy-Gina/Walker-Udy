@@ -14,7 +14,7 @@ import byui.cit260.princessBride.exceptions.DangerControlException;
 public class DangerControl {
 
     public double calcLightningSand(double diameter, double input) throws DangerControlException {
-         if(diameter <=0){
+         if(input <=0){
              throw new DangerControlException ();        }
         double distance = diameter * Math.PI / 2;
         
@@ -30,7 +30,7 @@ public class DangerControl {
     }
 
     public double calcRodentSize(double length, double input) throws DangerControlException {
-            if(length <=0){
+            if(input <=0){
                 throw new DangerControlException();}
         double height = (((length * 12) / 2) + 6) / 12;
         
@@ -44,8 +44,10 @@ public class DangerControl {
         return input != height;
     }
 
-    public double calcFlameSpurt(double length, double width, double height, double input) {
+    public double calcFlameSpurt(double length, double width, double height, double input) throws DangerControlException {
 
+        if(input <=0){
+                throw new DangerControlException();}
         double volume = (height * length * width) / 3;
         
         checkFlameSpurt(input, volume);
