@@ -17,11 +17,11 @@ public class HelpMenuView extends View {
             + "\n--------------------------------------"
             + "\nHELP MENU"
             + "\n--------------------------------------"
-            + "\nM - Movement"
+            + "\nM - Movement information"
             + "\nI - backpack Inventory"
             + "\nC - Clues"
             + "\nD - Dangers"
-            + "\nX - Exit to Previous Menu"
+            + "\nX - eXit to previous menu"
             + "\n--------------------------------------");
 }
     
@@ -32,10 +32,39 @@ public class HelpMenuView extends View {
 
         switch (charSel) {
             case 'M':  // view movement tips 
-                this.console.println("\n*** View movement tips ***");
+                this.console.println("\n***************************************************************************"
+                        + "\n*                                                                         *"
+                        + "\n*  In the fire swamp you will be able to move north, south,               *"
+                        + "\n*  east, and west.  You will not be allowed to move outside               *"
+                        + "\n*  the confines of the map...you will receive an error message            *"
+                        + "\n*  if you try.  You will enter the map at location 0.0, which             *"
+                        + "\n*  is the top, left-hand corner of the map.  The first coordinate         *"
+                        + "\n*  represents the row you are on, which starts at row zero and            *"
+                        + "\n*  continues to row four.  The second coordinate represents the           *"
+                        + "\n*  column you are on, which starts at column zero and continues           *"
+                        + "\n*  to column four.  You may move in any direction at any time             *"
+                        + "\n*  within the confines of the map.  The game ends at location             *"
+                        + "\n*  4.4 (if you make it that far, that is!)                                *"
+                        + "\n*                                                                         *"
+                        + "\n***************************************************************************");
                 break;
             case 'I':  // backpack inventory information 
-                BackpackMenuView();
+                this.console.println("\n***************************************************************************"
+                        + "\n*                                                                         *"
+                        + "\n*  In the fire swamp you will encounter dangers at some                   *"
+                        + "\n*  locations.  At other locations you will find items you                 *"
+                        + "\n*  may pick up and place in your backpack.  The items may                 *"
+                        + "\n*  save your life.  The dangers you face will require you                 *"
+                        + "\n*  to calculate math problems.  If you guess incorrectly,                 *"
+                        + "\n*  having the appropriate item in your backpack will allow                *"
+                        + "\n*  you to continue on to the next location.  You may choose               *"
+                        + "\n*  to pick up an item or to leave it.  Once you pick up an                *"
+                        + "\n*  item, it will no longer be available at that location.                 *"
+                        + "\n*                                                                         *"
+                        + "\n*  To view the formulas for the calculations, see the Dangers             *"
+                        + "\n*  option in the Help Menu.                                               *"
+                        + "\n*                                                                         *"
+                        + "\n***************************************************************************");
                 break;
             case 'C':  // display clues 
                 this.console.println("\n*** Clues ***");
@@ -47,25 +76,29 @@ public class HelpMenuView extends View {
                         + "\n*"
                         + "\n* Rodent of Unusual Size (R.O.U.S.)"
                         + "\n*"
-                        + "\n* Your way is blocked by an R.O.U.S.!  You must jump over the"
-                        + "\n* rodent with six inches of clearance in order to pass through"
-                        + "\n* the danger and continue the game.  Given the rodent's length," 
-                        + "\n* you must calculate the height of your jump.  If you are correct,"
-                        + "\n* you will be allowed to pass through the danger.  If you are"
-                        + "\n* incorrect, you will be bitten by the rodent and only a healing"
-                        + "\n* potion will save you.  You may check your backpack inventory, and"
-                        + "\n* if you have a healing potion, you will be allowed to continue the game."
-                        + "\n* If you don't, you will perish!"
+                        + "\n* You will need to perform a calculation to pass"
+                        + "\n* through this danger safely.  The formula for the"
+                        + "\n* calculation is:"
+                        + "\n*"
+                        + "\n* (((length * 12) / 2) + 6) / 12"
                         + "\n*"
                         + "\n*"
                         + "\n* Lightning Sand"
                         + "\n*"
-                        + "\n* Need to add this description..."
+                        + "\n* You will need to perform a calculation to pass"
+                        + "\n* through this danger safely.  The formula for the"
+                        + "\n* calculation is:"
+                        + "\n*"
+                        + "\n* (pi * diameter) / 2"
                         + "\n*"
                         + "\n*"
                         + "\n* Flame Spurt"
                         + "\n*"
-                        + "\n* Need to add this description..."
+                        + "\n* You will need to perform a calculation to pass"
+                        + "\n* through this danger safely.  The formula for the"
+                        + "\n* calculation is:"
+                        + "\n*"
+                        + "\n* (length * width * height) / 3"
                         + "\n*"
                         + "\n***************************************************************************");
                 break;
@@ -79,10 +112,4 @@ public class HelpMenuView extends View {
         return false;
     }
 
-    private void BackpackMenuView() {
-        BackpackMenuView backpackMenu = new BackpackMenuView();
-        backpackMenu.display();
     }
-
-  
-}

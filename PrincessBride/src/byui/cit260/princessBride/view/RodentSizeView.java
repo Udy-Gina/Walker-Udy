@@ -46,21 +46,22 @@ public class RodentSizeView extends View {
         } else {
             //TODO  Check if player has a healing potion  and then use it
             ErrorView.display(this.getClass().getName(), "\nOh no!  You tripped on the smelly  rodent.  The nasty thing bit you!"
-            + "\nCheck your backpack to see if you have a healing potion!"
-            + "\n\"If you don't...you're dead!");
+                    + "\nCheck your backpack to see if you have a healing potion!"
+                    + "\n\"If you don't...you're dead!");
         }
     }
 
     @Override
     public String getInput() {
-        
+
         String input = " ";  // value to be returned
         boolean validInput = false;    // initialize to not valid
 
-        while (!validInput) { try {
-            // loop while an invalid value is entered
-            
-            input = this.keyboard.readLine();  // get next line typed on keyboard 
+        while (!validInput) {
+            try {
+                // loop while an invalid value is entered
+
+                input = this.keyboard.readLine();  // get next line typed on keyboard 
             } catch (IOException ex) {
                 Logger.getLogger(RodentSizeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -70,7 +71,7 @@ public class RodentSizeView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                ErrorView.display(this.getClass().getName(), "\n Invalid:  You must enter a number! ");
+                ErrorView.display(this.getClass().getName(), "\n Invalid: You must enter a valid number! ");
             }
         }
         return input; // return the value entered
@@ -78,18 +79,17 @@ public class RodentSizeView extends View {
 
     @Override
     public boolean doAction(String value) {
-        
+
         // convert string input into double
         double input = Double.parseDouble(value);
         
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
-        
+
         //return answer
         try {
-                   
-        double actualAnswer = dc.calcRodentSize(length, input);}
-        catch (DangerControlException e){
+            double actualAnswer = dc.calcRodentSize(length, input); 
+        } catch (DangerControlException e) {
             ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
         }
         return true;

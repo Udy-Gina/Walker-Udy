@@ -67,7 +67,7 @@ public class LightningSandView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                ErrorView.display(this.getClass().getName(), "\nInvalid:  You must enter a number!");
+                ErrorView.display(this.getClass().getName(), "\nInvalid: You must enter a valid number!");
             }
         }
         return input; // return the value entered
@@ -78,16 +78,15 @@ public class LightningSandView extends View {
 
         // convert string input into double
         double input = Double.parseDouble(value);
-
+        
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
 
         //return answer
         try {
-
             double actualAnswer = dc.calcLightningSand(diameter, input);
-        } catch(DangerControlException e)  {
-            ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
+        } catch (DangerControlException e)  {
+            ErrorView.display(this.getClass().getName(), "\nInvalid: Your answer must be greater than zero");
         }
         return true;
     }

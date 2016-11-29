@@ -65,15 +65,6 @@ public class MainMenuView extends View {
 
     }
 
-    /*private void saveCurrentGame() {
-        this.console.println("\nPlease enter your name: ");
-        try {
-            String fileName = in.readLine();
-            GameControl.keepCurrentGame(fileName);
-        } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(), "\n *** Please enter a valid file name! ***");
-        }
-    } */
     private void saveCurrentGame() {
         this.console.println("\nSave game as: ");
 
@@ -106,13 +97,3 @@ public class MainMenuView extends View {
     }
 
 }
-
-/* console.println("Enter file name: ");
-        try {
-            String fileName = in.readLine();
-            ProgramController.loadCurrentGame(fileName);
-            GameMenuView gmv = new GameMenuView();
-            gmv.display();
-        } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(), "Error on input");
-        } */

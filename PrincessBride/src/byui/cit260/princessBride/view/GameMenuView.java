@@ -38,7 +38,7 @@ public class GameMenuView extends View {
                 + "\nE - move East"
                 + "\nS - move South"
                 + "\nW - move West"
-                + "\nG - save Game"
+                + "\nG - save current Game"
                 + "\nH - Help menu"
                 + "\nL - Look around"
                 + "\nB - go Back"
@@ -79,16 +79,13 @@ try {
             case 'L': // look around
                 this.lookAround();
                 break;
-            case 'B': // go Back
-                this.goBack();
-                break;
             case 'H'://ask for Help
                 this.HelpMenuView();
                 break;
             case 'X':// exit Game
                 return true;
             case 'G':// save Game
-                this.saveGame();
+                this.saveCurrentGame();
                 break;
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
@@ -248,12 +245,16 @@ catch(WinException we){
         this.console.println("***lookAround function called****");
     }
 
-    private void goBack() {
-        this.console.println("***goBack function called****");
-    }
+    private void saveCurrentGame() {
+        this.console.println("\nSave game as: ");
 
-    private void saveGame() {
-        this.console.println("***saveGame function called****");
+        try {
+            String filePath = this.getInput();
+            GameControl.keepCurrentGame(filePath);
+
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error on input");
+        }
     }
 
     private void HelpMenuView() {

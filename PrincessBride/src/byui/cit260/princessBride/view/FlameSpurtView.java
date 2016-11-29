@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package byui.cit260.princessBride.view;
 
 import byui.cit260.princessBride.control.DangerControl;
@@ -18,9 +17,9 @@ import java.util.logging.Logger;
  * @author Gina Udy
  */
 public class FlameSpurtView extends View {
-    
-    private double length; 
-    private double height; 
+
+    private double length;
+    private double height;
     private double width;
 
     @Override
@@ -30,14 +29,13 @@ public class FlameSpurtView extends View {
         length = r.nextInt(5) + 5;
         width = r.nextInt(5) + 5;
         height = r.nextInt(5) + 5;
-                
 
         // display problem
         this.console.println("Beware the Flame Spurt!  Your path is blocked."
                 + "You must calculate the volume of a pyramid to safely"
                 + "\ncross this danger.  Answer incorrectly and you with perish!"
                 + "\n"
-                + "\nThe pyramid's dimensions are: Length = " + length + "; Height = " 
+                + "\nThe pyramid's dimensions are: Length = " + length + "; Height = "
                 + "\n" + height + "; Width = " + width + ".  What is the volume?");
         //get input
         String input = getInput();
@@ -56,14 +54,15 @@ public class FlameSpurtView extends View {
 
     @Override
     public String getInput() {
-        
+
         String input = " ";  // value to be returned
         boolean validInput = false;    // initialize to not valid
 
-        while (!validInput) { try {
-            // loop while an invalid value is entered
-            
-            input = this.keyboard.readLine();  // get next line typed on keyboard 
+        while (!validInput) {
+            try {
+                // loop while an invalid value is entered
+
+                input = this.keyboard.readLine();  // get next line typed on keyboard 
             } catch (IOException ex) {
                 Logger.getLogger(FlameSpurtView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -73,7 +72,7 @@ public class FlameSpurtView extends View {
                 Double.parseDouble(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                ErrorView.display(this.getClass().getName(), "\n Invalid:  You must enter a number! ");
+                ErrorView.display(this.getClass().getName(), "\n Invalid: You must enter a valid number! ");
             }
         }
         return input; // return the value entered
@@ -81,20 +80,20 @@ public class FlameSpurtView extends View {
 
     @Override
     public boolean doAction(String value) {
-        
+
         // convert string input into double
         double input = Double.parseDouble(value);
         
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
-        
+
         //return answer
         try {
-        double actualAnswer = dc.calcFlameSpurt(length, width, height, input); }
-        catch (DangerControlException e){
-            ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
+            double actualAnswer = dc.calcFlameSpurt(length, width, height, input);
+        } catch (DangerControlException e) {
+            ErrorView.display(this.getClass().getName(), "\nInvalid: Your answer must be greater than zero.");
         }
         return true;
     }
-    
+
 }
