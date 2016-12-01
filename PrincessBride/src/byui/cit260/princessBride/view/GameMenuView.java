@@ -60,9 +60,9 @@ public class GameMenuView extends View {
                 case 'T': // Take Item
                     this.takeItemFromLocation();
                     break;
-//            case 'U': //Use Item
-//                this.useItemInBackpack();
-//                break;
+                case 'U': //Use Item
+                    this.useItemInBackpack();
+                    break;
                 case 'N':
                     this.moveNorth();
                     break;
@@ -147,6 +147,23 @@ public class GameMenuView extends View {
 
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
+
+        Location currentLocation = PrincessBride.getPlayer().getLocation();
+        
+        try {
+            BackpackControl bc = new BackpackControl();
+            bc.addItemToBackpack();
+            this.console.println("You found a "
+                    + currentLocation.getItem().getItemDescription()
+                    + ".  It will be added to your backpack.");
+            currentLocation.setItem(null);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "There is nothing here.");
+        }
+    }
+    
+    // Pick up an item and put it in backpack
+    private void useItemInBackpack() {
 
         Location currentLocation = PrincessBride.getPlayer().getLocation();
         

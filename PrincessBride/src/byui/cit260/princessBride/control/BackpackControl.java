@@ -5,6 +5,7 @@
  */
 package byui.cit260.princessBride.control;
 
+import byui.cit260.princessBride.exceptions.BackpackControlException;
 import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
@@ -19,39 +20,34 @@ public class BackpackControl {
 
     List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
 
-    public boolean displayBackpack() throws GameControlException {
+    public boolean displayBackpack() throws BackpackControlException {
 
         if (currentBackpack != null) {
             return true;
         } else {
-            throw new GameControlException("\nYour backpack is empty.");
+            throw new BackpackControlException("\nYour backpack is empty.");
         }
 
         //return currentBackpack != null;
     }
 
-    public boolean addItemToBackpack() throws GameControlException {
+    public boolean addItemToBackpack() throws BackpackControlException {
         Location currentLocation = PrincessBride.getPlayer().getLocation();
 
         if (currentLocation.getItem() != null) {
             PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
             return true;
         } else {
-            throw new GameControlException("\nThere is nothing here.");
+            throw new BackpackControlException("\nThere is nothing here.");
         }
     }
-}
 
-// TODO Remove items from the backpack list when used in a danger
-//    public void removeItemFromBackpack() {
-//
-//        //TODO Build function to remove item from backpack list
-//        this.console.println("\n *** removeItemFromBackpack() function called *** ");
-//    }
-//
-//    // Create starting point on map at location 0,0 
-//    private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
-//
-//        player.setLocation(map.getLocationAt(0, 0));
-//
-//    }
+    //TODO Remove items from the backpack list when used in a danger
+    public boolean removeItemFromBackpack() throws BackpackControlException {
+
+        System.out.println("\n *** removeItemFromBackpack() function called ***");
+
+        return true;
+    }
+
+}
