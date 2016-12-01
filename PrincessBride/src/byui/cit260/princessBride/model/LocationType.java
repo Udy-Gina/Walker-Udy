@@ -10,5 +10,5 @@ package byui.cit260.princessBride.model;
  * @author Gina Udy
  */
 public enum LocationType {
-    NONE, FLAMESPURT, ROUS, LIGHTNINGSAND
+    NONE, FLAMESPURT, ROUS, LIGHTNINGSAND, DART, WATER, POTION
 }

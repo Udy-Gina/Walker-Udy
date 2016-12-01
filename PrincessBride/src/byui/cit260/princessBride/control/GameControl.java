@@ -10,6 +10,7 @@ import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.view.ErrorView;
@@ -101,16 +102,25 @@ public class GameControl {
 
         List<Item> items = createItemList();
 
-        Random rand = new Random();
-
+        LocationType locDart = LocationType.DART;
+        LocationType locPotion = LocationType.POTION;
+        LocationType locWater = LocationType.WATER;
+        
+        Random rand = new Random(); 
+        
         for (Item item : items) {
             boolean placed = false;
             while (!placed) {
                 int randomRow = rand.nextInt(Map.ROWS);
-                int randomCol = rand.nextInt(Map.COLUMNS);
-
+                        int randomCol = rand.nextInt(Map.COLUMNS);
                 Location location = map.getLocationAt(randomRow, randomCol);
-                if (location.getItem() == null) {
+                if (location.getLocationType() == locDart) {
+                    location.setItem(item);
+                    placed = true;
+                } else if (location.getLocationType() == locPotion) {
+                    location.setItem(item);
+                    placed = true;
+                } else if (location.getLocationType() == locWater) {
                     location.setItem(item);
                     placed = true;
                 }

@@ -9,9 +9,9 @@ package byui.cit260.princessBride.view;
  *
  * @author Gina Udy
  */
-public class BackpackMenuView extends View {
+public class BackpackView extends View {
 
-    public BackpackMenuView() {
+    public BackpackView() {
     this.console.println("\n *** BackbackMenuView() function called *** ");
     }
     

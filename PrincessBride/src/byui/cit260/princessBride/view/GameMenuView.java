@@ -34,7 +34,7 @@ public class GameMenuView extends View {
                 + "\n================================="
                 + "\n    V - View map                 "
                 + "\n    B - Backpack inventory       "
-                + "\n    I - Current Inventory        "
+                + "\n    I - Inventory report         "
                 + "\n    T - Take item                "
                 + "\n    U - Use item                 "
                 + "\n    N - move North               "
@@ -60,7 +60,7 @@ public class GameMenuView extends View {
                 case 'B': // List Backpack Inventory
                     this.showBackpack();
                     break;
-                case 'I': // show current inventory
+                case 'I': // Inventory report
                     this.showCurrentInventory();
                     break;
                 case 'T': // Take Item
@@ -270,6 +270,18 @@ public class GameMenuView extends View {
             } else if (currentLocation.getLocationType() == LocationType.LIGHTNINGSAND && !currentLocation.getVisited()) {
                 LightningSandView lsv = new LightningSandView();
                 lsv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.DART && !currentLocation.getVisited()) {
+                BackpackView bpv = new BackpackView();
+                bpv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.WATER && !currentLocation.getVisited()) {
+                BackpackView bpv = new BackpackView();
+                bpv.display();
+                currentLocation.setVisited(true);
+            } else if (currentLocation.getLocationType() == LocationType.POTION && !currentLocation.getVisited()) {
+                BackpackView bpv = new BackpackView();
+                bpv.display();
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
                 this.console.println("\nThere is nothing here.");
