@@ -5,6 +5,7 @@
  */
 package byui.cit260.princessBride.control;
 
+import static byui.cit260.princessBride.control.GameControl.createItemList;
 import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Game;
 import byui.cit260.princessBride.model.Item;
@@ -36,7 +37,7 @@ public class GameControl {
         Player player = new Player();
         player.setName(name);
 
-        PrincessBride.setPlayer(player);  
+        PrincessBride.setPlayer(player);
 
         return player;
 
@@ -60,7 +61,7 @@ public class GameControl {
 
         currentGame.setMap(map);
 
-        createAndAssignItems(map);
+        assignItemsToMap(map);
 
     }
 
@@ -96,27 +97,9 @@ public class GameControl {
         }
     }
 
-    public void createAndAssignItems(Map map) {
+    public static void assignItemsToMap(Map map) {
 
-        List<Item> items = new ArrayList<>();
-
-        Item rope = new Item();
-        rope.setItemDescription("rope");
-        rope.setItemName("Rope");
-        rope.setItemQuantity(1);
-        items.add(rope);
-
-        Item potion = new Item();
-        potion.setItemDescription("healing potion");
-        potion.setItemName("Healing Potion");
-        potion.setItemQuantity(1);
-        items.add(potion);
-
-        Item water = new Item();
-        water.setItemDescription("bucket of water");
-        water.setItemName("Bucket of Water");
-        water.setItemQuantity(1);
-        items.add(water);
+        List<Item> items = createItemList();
 
         Random rand = new Random();
 
@@ -132,8 +115,32 @@ public class GameControl {
                     placed = true;
                 }
             }
-
         }
+    }
+
+    public static List<Item> createItemList() {
+
+        List<Item> backpackItem = new ArrayList<>();
+
+        Item dart = new Item();
+        dart.setItemDescription("dart");
+        dart.setItemName("Tranquilizer Dart");
+        dart.setItemQuantity(1);
+        backpackItem.add(dart);
+
+        Item potion = new Item();
+        potion.setItemDescription("healing potion");
+        potion.setItemName("Healing Potion");
+        potion.setItemQuantity(1);
+        backpackItem.add(potion);
+
+        Item water = new Item();
+        water.setItemDescription("bucket of water");
+        water.setItemName("Bucket of Water");
+        water.setItemQuantity(1);
+        backpackItem.add(water);
+
+        return backpackItem;
 
     }
 

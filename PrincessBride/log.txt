@@ -1,7 +1,2 @@
-byui.cit260.princessBride.view.GameMenuView - 
-*** Invalid Selection *** Please Try Again ***
-byui.cit260.princessBride.view.GameMenuView - There is nothing here.
-byui.cit260.princessBride.view.GameMenuView - 
-*** Invalid Selection *** Please Try Again ***
-byui.cit260.princessBride.view.GameMenuView - 
-*** Invalid Selection *** Please Try Again ***
+byui.cit260.princessBride.view.MainMenuView - 
+*** Invalid selection *** Try again***

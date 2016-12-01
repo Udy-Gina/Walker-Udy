@@ -150,8 +150,11 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
     }
+    
+    
 // showCurrentInventory needs some help-------------------------------------------------------------------------------- 
-//     show the player which items are in their inventory
+
+    // Create report to show the player which items are in their inventory
     public void showCurrentInventory(ArrayList<Item> currentBackpack, String inventoryList) {
         //create BufferedReader object for input file
         try 
@@ -175,6 +178,7 @@ public class GameMenuView extends View {
         }
     }
 //------------------------------------------------------------------------------------------------------------------
+    
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
 
