@@ -150,8 +150,9 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
     }
+// showCurrentInventory needs some help-------------------------------------------------------------------------------- 
 //     show the player which items are in their inventory
-    public void showCurrentInventory(ArrayList<Item> inventoryItems, String inventoryList) {
+    public void showCurrentInventory(ArrayList<Item> currentBackpack, String inventoryList) {
         //create BufferedReader object for input file
         try 
             (PrintWriter out = new PrintWriter(inventoryList)) {
@@ -160,19 +161,20 @@ public class GameMenuView extends View {
         out.printf("%n%20s%-30s%5s", "Name", "Description", "Quantity");
         out.printf("%n%20s%-30s%5s", "----", "-----------", "--------");
         for
-            (Item item : inventoryItems) {
+            (Item item : currentBackpack) {
             out.printf("%n%20s%-30s%5d" // 5d means output as an integer
                     , item.getItemName()
                     , item.getItemDescription()
                     , item.getItemQuantity());
         }
-                
+        out.println("\n\n Now get out there and save the princess!");
         out.flush();
                 
     }   catch (Exception e) {
-    ErrorView.display(this.getClass().getName(), "You've gotta pick something up first sillY!");
+    ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
         }
     }
+//------------------------------------------------------------------------------------------------------------------
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
 
