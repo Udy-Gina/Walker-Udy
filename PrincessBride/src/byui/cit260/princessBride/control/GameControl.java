@@ -19,8 +19,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
 /**
@@ -38,7 +36,7 @@ public class GameControl {
         Player player = new Player();
         player.setName(name);
 
-        PrincessBride.setPlayer(player);  // save the player 
+        PrincessBride.setPlayer(player);  
 
         return player;
 
@@ -46,11 +44,9 @@ public class GameControl {
 
     public void createNewGame(Player player) {
 
-        // New Game - create new game
         Game currentGame = new Game();
         PrincessBride.setCurrentGame(currentGame);
 
-        // Player - create player 
         currentGame.setPlayer(player);
 
         // TODO Need to set the inventory list...example from Ship game:
@@ -62,10 +58,8 @@ public class GameControl {
 
         player.setLocation(map.getLocationAt(0, 0));
 
-        // Set map for the current game
         currentGame.setMap(map);
 
-        // Assign items to random locations
         createAndAssignItems(map);
 
     }
@@ -84,16 +78,7 @@ public class GameControl {
         }
     }
 
-//    public static void saveGame(String filePath) {
-//        try {
-//            FileOutputStream fos = new FileOutputStream(filePath);
-//            ObjectOutputStream oos = new ObjectOutputStream(fos);
-//            
-//            oos.writeObject(PrincessBride.getGame());
-//        } catch(Exception e) {
-//            ErrorView.display(this.getClass().getName(), "GameControl", e.getMessage());
-//        }
-//    }
+    // Play saved game
     public static void playSavedGame(String filePath) {
         Game game = null;
 
@@ -111,51 +96,6 @@ public class GameControl {
         }
     }
 
-    // Reload and play a saved game 
-//    public static void playSavedGame(String file) throws IOException, ClassNotFoundException {
-//        this.console.println("\n *** playSavedGame() function called *** ");
-//    }
-    public boolean displayBackpack() throws GameControlException {
-
-        //TODO Loop over backpack to display sorted/counted list
-        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
-
-        if (currentBackpack != null) {
-            return true;
-        } else {
-            throw new GameControlException("\nYour backpack is empty.");
-        }
-
-        //return currentBackpack != null;
-    }
-
-    // Add items to the backpack list
-    public boolean addItemToBackpack() throws GameControlException {
-        Location currentLocation = PrincessBride.getPlayer().getLocation();
-
-        if (currentLocation.getItem() != null) {
-            PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            return true;
-        } else {
-
-            throw new GameControlException("\nThere is nothing here.");
-        }
-    }
-
-    // TODO Remove items from the backpack list when used in a danger
-//    public void removeItemFromBackpack() {
-//
-//        //TODO Build function to remove item from backpack list
-//        this.console.println("\n *** removeItemFromBackpack() function called *** ");
-//    }
-//
-//    // Create starting point on map at location 0,0 
-//    private void startingLocation(Map map, Player player) {  //TODO: set starting point on map 
-//
-//        player.setLocation(map.getLocationAt(0, 0));
-//
-//    }
-    // Creates map and assigns random items from backpack to various locations 
     public void createAndAssignItems(Map map) {
 
         List<Item> items = new ArrayList<>();

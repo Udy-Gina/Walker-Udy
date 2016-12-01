@@ -17,15 +17,15 @@ public class MainMenuView extends View {
     public MainMenuView() {
 
         super("\n"
-                + "\n--------------------------------------"
-                + "\nMAIN MENU"
-                + "\n--------------------------------------"
-                + "\nN - start New game"
-                + "\nL - Load saved game"
-                + "\nS - Save current game"
-                + "\nH - Help menu"
-                + "\nQ - Quit"
-                + "\n--------------------------------------");
+                + "\n================================="
+                + "\n           MAIN MENU             "
+                + "\n================================="
+                + "\n      N - start New game         "
+                + "\n      L - Load saved game        "
+                + "\n      S - Save current game      "
+                + "\n      H - Help menu              "
+                + "\n      Q - Quit                   "
+                + "\n=================================");
     }
 
     @Override
@@ -34,19 +34,19 @@ public class MainMenuView extends View {
         char charSel = selection.charAt(0);
 
         switch (charSel) {
-            case 'N':  // create and start a new game 
+            case 'N':  // Start New Game 
                 startNewGame();
                 break;
-            case 'L':  // load and play an existing game 
+            case 'L':  // Load Saved Game
                 loadSavedGame();
                 break;
-            case 'S':  // save the current game 
+            case 'S':  // Save Current Game 
                 saveCurrentGame();
                 break;
-            case 'H':  // display help menu 
+            case 'H':  // Help Menu
                 HelpMenuView();
                 break;
-            case 'Q':  // quit the current game 
+            case 'Q':  // Quit 
                 return true;
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid selection *** Try again***");
@@ -57,7 +57,6 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        // create and start a new game 
         GameControl gc = new GameControl();
         gc.createNewGame(PrincessBride.getPlayer());
         GameMenuView gameMenu = new GameMenuView();

@@ -5,9 +5,9 @@
  */
 package byui.cit260.princessBride.view;
 
+import byui.cit260.princessBride.control.BackpackControl;
 import byui.cit260.princessBride.control.GameControl;
 import byui.cit260.princessBride.control.MovementControl;
-import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.exceptions.LoseException;
 import byui.cit260.princessBride.exceptions.MovementControlException;
 import byui.cit260.princessBride.exceptions.WinException;
@@ -27,85 +27,83 @@ public class GameMenuView extends View {
     public GameMenuView() {
 
         super("\n"
-                + "\n--------------------------------------"
-                + "\n GAME MENU"
-                + "\n--------------------------------------"
-                + "\nV - View map"
-                + "\nI - backpack Inventory"
-                + "\nT - Take item"
-                + "\nU - Use item"
-                + "\nN - move North"
-                + "\nE - move East"
-                + "\nS - move South"
-                + "\nW - move West"
-                + "\nG - save current Game"
-                + "\nH - Help menu"
-                + "\nL - Look around"
-                + "\nB - go Back"
-                + "\nX - eXit to main menu"
-                + "\n--------------------------------------");
+                + "\n================================="
+                + "\n           GAME MENU"
+                + "\n================================="
+                + "\n    V - View map                 "
+                + "\n    B - Backpack inventory       "
+                + "\n    T - Take item                "
+                + "\n    U - Use item                 "
+                + "\n    N - move North               "
+                + "\n    E - move East                "
+                + "\n    S - move South               "
+                + "\n    W - move West                "
+                + "\n    G - save current Game        "
+                + "\n    H - Help menu                "
+                + "\n    L - Look around              "
+                + "\n    X - eXit to main menu        "
+                + "\n=================================");
     }
 
     @Override
     public boolean doAction(String selection) {
 
         char charSel = selection.toUpperCase().charAt(0);
-try {
-        switch (charSel) {
-            case 'V': //View map
-                this.viewMap();
-                break;
-            case 'I': // List Backpack  Inventory
-                this.showBackpack();
-                break;
-            case 'T': // Take Item
-                this.takeItemFromLocation();
-                break;
+        try {
+            switch (charSel) {
+                case 'V': //View Map
+                    this.viewMap();
+                    break;
+                case 'B': // List Backpack Inventory
+                    this.showBackpack();
+                    break;
+                case 'T': // Take Item
+                    this.takeItemFromLocation();
+                    break;
 //            case 'U': //Use Item
 //                this.useItemInBackpack();
 //                break;
-            case 'N':
-                this.moveNorth();
-                break;
-            case 'E':
-                this: moveEast();
-                break;
-            case 'S':
-                this.moveSouth();
-                break;
-            case 'W':
-                this.moveWest();
-                break;
-            case 'L': // look around
-                this.lookAround();
-                break;
-            case 'H'://ask for Help
-                this.HelpMenuView();
-                break;
-            case 'X':// exit Game
-                return true;
-            case 'G':// save Game
-                this.saveCurrentGame();
-                break;
-            default:
-                ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
+                case 'N':
+                    this.moveNorth();
+                    break;
+                case 'E':
+                    this: moveEast();
+                    break;
+                case 'S':
+                    this.moveSouth();
+                    break;
+                case 'W':
+                    this.moveWest();
+                    break;
+                case 'L': // Look Around
+                    this.lookAround();
+                    break;
+                case 'H':// Help Menu
+                    this.HelpMenuView();
+                    break;
+                case 'X':// Exit Game
+                    return true;
+                case 'G':// Save Current Game
+                    this.saveCurrentGame();
+                    break;
+                default:
+                    ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
+            }
+        } catch (LoseException le) {
+            this.console.println("You lost to the dreaded Fire Swamp.  Try again!");
+        } catch (WinException we) {
+            this.console.println("Wow!  You bested the Fire Swamp.  Congratulations!");
         }
-} catch (LoseException le){
-        this.console.println("You lost to the dreaded Fire Swamp.  Try again!");
-} 
-catch(WinException we){
-    this.console.println("Wow!  You bested the Fire Swamp.  Congratulations!");
-}
         return false;
     }
 
     private void viewMap() {
         Map map = PrincessBride.getCurrentGame().getMap();
 
-        this.console.println("\n ***********************************************"
-                + "\n"
-                + "\n                 Fire Swamp Map                 "
-                + "\n"
+        this.console.println("\n"
+                + "\n================================================="
+                + "\n                 FIRE SWAMP MAP                  "
+                + "\n================================================="
                 + "\n");
 
         for (int row = 0; row < Map.ROWS; row++) {
@@ -123,11 +121,10 @@ catch(WinException we){
             this.console.println("");
         }
 
-        this.console.println("\n"
-                + "\n ***********************************************");
+        this.console.println("\n=================================================");
 
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
-        this.console.println("\nYou are at location " + currentLocation.getRow() + ", " + currentLocation.getCol() + ".");
+        this.console.println("\n             YOU ARE AT LOCATION " + currentLocation.getRow() + "." + currentLocation.getCol());
     }
 
     // Show the player what they have in their backpack
@@ -136,14 +133,14 @@ catch(WinException we){
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
 
         try {
-            GameControl gc = new GameControl();
-            gc.displayBackpack();
+            BackpackControl bc = new BackpackControl();
+            bc.displayBackpack();
             this.console.println("\nYou have " + "currentBackpackQuantity"
                     + " items in your backpack."
                     + "\nThe items are: "
                     + currentBackpack
                     + ".");
-        } catch (GameControlException e) {
+        } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
     }
@@ -151,65 +148,57 @@ catch(WinException we){
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
 
+        Location currentLocation = PrincessBride.getPlayer().getLocation();
+        
         try {
-            GameControl gc = new GameControl();
-            gc.addItemToBackpack();
-            Location currentLocation = PrincessBride.getPlayer().getLocation();
+            BackpackControl bc = new BackpackControl();
+            bc.addItemToBackpack();
             this.console.println("You found a "
                     + currentLocation.getItem().getItemDescription()
                     + ".  It will be added to your backpack.");
             currentLocation.setItem(null);
-        } catch (GameControlException e) {
-            this.console.println("\nThere is nothing here.");
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "There is nothing here.");
         }
     }
 
-//    // Use an item from backpack to make it through a danger safely
-//    private void useItemInBackpack() {
-//        GameControl gc = new GameControl();
-//        gc.removeItemFromBackpack();
-//    }
-    private void moveNorth(){
+    private void moveNorth() {
         MovementControl mc = new MovementControl();
-       try{
-           mc.moveNorth();
-            }
-       catch(MovementControlException mce){
-           ErrorView.display (this.getClass().getName(), "You cannot move further North");
-       }
+        try {
+            mc.moveNorth();
+        } catch (MovementControlException mce) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further North!");
+        }
         determineNextView();
     }
 
     private void moveEast() {
         MovementControl mc = new MovementControl();
-       try{
-           mc.moveEast();
-            }
-       catch(MovementControlException mce){
-           ErrorView.display (this.getClass().getName(), "You cannot move further East");
-       }
+        try {
+            mc.moveEast();
+        } catch (MovementControlException mce) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further East!");
+        }
         determineNextView();
     }
 
     private void moveSouth() {
         MovementControl mc = new MovementControl();
-   try{
-           mc.moveSouth();
-            }
-       catch(MovementControlException mce){
-           ErrorView.display (this.getClass().getName(), "You cannot move further South");
-       }
+        try {
+            mc.moveSouth();
+        } catch (MovementControlException mce) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further South!");
+        }
         determineNextView();
     }
 
     private void moveWest() {
         MovementControl mc = new MovementControl();
-       try{
-           mc.moveWest();
-            }
-       catch(MovementControlException mce){
-           ErrorView.display (this.getClass().getName(), "You cannot move further West");
-       }
+        try {
+            mc.moveWest();
+        } catch (MovementControlException mce) {
+            ErrorView.display(this.getClass().getName(), "You cannot move further West!");
+        }
         determineNextView();
     }
 
