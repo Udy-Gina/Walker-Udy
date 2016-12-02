@@ -108,6 +108,7 @@ public class MainMenuView extends View {
             output.println("We created this game for you to enjoy!");
 
             output.printf("%20s%20s%20s", "Gina Udy", "Lisa Walker", "Kelly Johnson");
+            output.printf("%n%20s%20s%20s", "Student",  "Student", "Student");
 
             output.flush();
         } catch (Exception e) {
