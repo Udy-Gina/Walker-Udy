@@ -15,8 +15,11 @@ import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import princessBride.PrincessBride;
 
 /**
@@ -153,7 +156,7 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
     }
-    
+
     // Create report to show the player which items are in their inventory
     public void showCurrentInventory() {
         //create BufferedReader object for input file
@@ -294,36 +297,37 @@ public class GameMenuView extends View {
     private void lookAround() {
         this.console.println("***lookAround function called****");
     }
-    
-    
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
-    // TODO: Gina is creating map report here for W12 Individual Assignment
-    
-    public void createMapReport() {
-        //create BufferedReader object for input file
-        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
-        try {
-            String inventoryList = "myReport.txt";
-            PrintWriter out = new PrintWriter(inventoryList);
-            out.println("\n\n Inventory List");
-            //print the name, description and quantity of each item
-            out.printf("%n%30s%30s%30s", "Name", "Description", "Quantity");
-            out.printf("%n%30s%30s%30s", "-------------------", "-------------------", "----------");
-            for (Item item : currentBackpack) {
-                out.printf("%n%20s%30s%30d" // 5d means output as an integer
-                        , item.getItemName(), item.getItemDescription(), item.getItemQuantity());
-            }
-            out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
-            out.flush();
 
-        } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
+    public void createMapReport() {
+
+        try {
+            
+            Map map = PrincessBride.getCurrentGame().getMap();
+            int locationRow = PrincessBride.getCurrentGame().getPlayer().getLocation().getRow();
+            int locationCol = PrincessBride.getCurrentGame().getPlayer().getLocation().getCol();
+                        
+            String mapLocationReport = "myMap.txt";
+            PrintWriter out;
+            
+            out = new PrintWriter(mapLocationReport);
+            
+            out.println("Map Locations");
+            
+            //print the name, description and quantity of each item
+            out.printf("%n%-30s%-30s", "Map Coordinates", "Location Types");
+            out.printf("%n%-30s%-30s", "-------------------", "-------------------");
+            
+            for (locationRow = 0; locationRow < 5; locationRow++) {
+                for (locationCol = 0; locationCol < 5; locationCol++) {
+                    String locationType = map.getLocationAt(locationRow, locationCol).getLocationType().toString();
+                    out.printf("%n%-30s%-30s", locationRow + "." + locationCol, locationType);
+                    out.flush();
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
     
     private void saveCurrentGame() {
         this.console.println("\nSave game as: ");
