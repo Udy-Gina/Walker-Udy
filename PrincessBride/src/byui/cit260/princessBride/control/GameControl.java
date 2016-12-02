@@ -62,7 +62,7 @@ public class GameControl {
 
         currentGame.setMap(map);
 
-        assignItemsToMap(map);
+        //assignItemsToMap(map);
 
     }
 
@@ -102,7 +102,7 @@ public class GameControl {
     
     // TODO  Need to get this working (assign items to ENUM LocationTypes for items
     
-    public static void assignItemsToMap(Map map) {
+    /* public static void assignItemsToMap(Map map) {
 
         List<Item> items = createItemList();
 
@@ -132,7 +132,7 @@ public class GameControl {
                 }
             }
         }
-    }
+    } */
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
