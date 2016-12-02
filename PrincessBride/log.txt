@@ -1,2 +1,1 @@
-byui.cit260.princessBride.view.MainMenuView - 
-*** Invalid selection *** Try again***
+byui.cit260.princessBride.view.MainMenuView - Created by: (The filename, directory name, or volume label syntax is incorrect)

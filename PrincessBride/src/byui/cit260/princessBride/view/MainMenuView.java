@@ -98,15 +98,15 @@ public class MainMenuView extends View {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
-    
- private void GameCreators() {
+
+    private void GameCreators() {
         try {
             String filePath = "Created by:";
             PrintWriter output = new PrintWriter(filePath);
 
             output.println("We created this game for you to enjoy!");
 
-            output.printf("%20s%20s%20s\n", "Gina Udy", "Lisa Walker", "Kelly Johnson");
+            output.printf("%20s%20s%20s", "Gina Udy", "Lisa Walker", "Kelly Johnson");
 
             output.flush();
         } catch (Exception e) {
