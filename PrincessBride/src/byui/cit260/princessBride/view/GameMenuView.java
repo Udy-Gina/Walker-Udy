@@ -156,7 +156,6 @@ public class GameMenuView extends View {
     public void showCurrentInventory(ArrayList<Item> currentBackpack, String inventoryList) {
         //create BufferedReader object for input file
         try {
-            String filePath = "MyReport";
             PrintWriter out = new PrintWriter(inventoryList);
             out.println("\n\n Inventory List");
             //print the name, description and quantity of each item
