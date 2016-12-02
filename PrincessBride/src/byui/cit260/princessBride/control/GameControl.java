@@ -105,15 +105,17 @@ public class GameControl {
         LocationType locDart = LocationType.DART;
         LocationType locPotion = LocationType.POTION;
         LocationType locWater = LocationType.WATER;
-        
-        Random rand = new Random(); 
-        
+
+        Random rand = new Random();
+
         for (Item item : items) {
             boolean placed = false;
             while (!placed) {
                 int randomRow = rand.nextInt(Map.ROWS);
-                        int randomCol = rand.nextInt(Map.COLUMNS);
+                int randomCol = rand.nextInt(Map.COLUMNS);
+
                 Location location = map.getLocationAt(randomRow, randomCol);
+
                 if (location.getLocationType() == locDart) {
                     location.setItem(item);
                     placed = true;
