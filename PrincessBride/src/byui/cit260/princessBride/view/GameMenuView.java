@@ -153,19 +153,21 @@ public class GameMenuView extends View {
 
 // showCurrentInventory needs some help-------------------------------------------------------------------------------- 
     // Create report to show the player which items are in their inventory
-    public void showCurrentInventory(ArrayList<Item> currentBackpack, String inventoryList) {
+    public void showCurrentInventory() {
         //create BufferedReader object for input file
+        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
         try {
+            String inventoryList = "myReport.txt";
             PrintWriter out = new PrintWriter(inventoryList);
             out.println("\n\n Inventory List");
             //print the name, description and quantity of each item
-            out.printf("%n%20s%-30s%5s", "Name", "Description", "Quantity");
-            out.printf("%n%20s%-30s%5s", "----", "-----------", "--------");
+            out.printf("%n%30s%30s%30s", "Name", "Description", "Quantity");
+            out.printf("%n%30s%30s%30s", "-------------------", "-------------------", "----------");
             for (Item item : currentBackpack) {
-                out.printf("%n%20s%-30s%5d" // 5d means output as an integer
+                out.printf("%n%20s%30s%30d" // 5d means output as an integer
                         , item.getItemName(), item.getItemDescription(), item.getItemQuantity());
             }
-            out.println("\n Now get out there and save the princess!");
+            out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
             out.flush();
 
         } catch (Exception e) {

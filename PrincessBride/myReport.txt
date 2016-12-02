@@ -1,0 +1,10 @@
+
+
+ Inventory List
+
+                          Name                   Description                      Quantity
+           -------------------           -------------------                    ----------
+   Tranquilizer Dart                          dart                             1
+
+
+     Now get out there and conquer the Fire Swamp!
