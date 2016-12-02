@@ -16,7 +16,6 @@ import byui.cit260.princessBride.model.Location;
 import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import princessBride.PrincessBride;
 
@@ -269,16 +268,16 @@ public class GameMenuView extends View {
                 lsv.display();
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.DART && !currentLocation.getVisited()) {
-                BackpackView bpv = new BackpackView();
-                bpv.display();
+                DartView dv = new DartView();
+                dv.display();
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.WATER && !currentLocation.getVisited()) {
-                BackpackView bpv = new BackpackView();
-                bpv.display();
+                WaterView wv = new WaterView();
+                wv.display();
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.POTION && !currentLocation.getVisited()) {
-                BackpackView bpv = new BackpackView();
-                bpv.display();
+                PotionView pv = new PotionView();
+                pv.display();
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
                 this.console.println("\nThere is nothing here.");

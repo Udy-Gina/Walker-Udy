@@ -98,6 +98,10 @@ public class GameControl {
         }
     }
 
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // TODO  Need to get this working (assign items to ENUM LocationTypes for items
+    
     public static void assignItemsToMap(Map map) {
 
         List<Item> items = createItemList();
@@ -114,7 +118,7 @@ public class GameControl {
                 int randomRow = rand.nextInt(Map.ROWS);
                 int randomCol = rand.nextInt(Map.COLUMNS);
 
-                Location location = map.getLocationAt(randomRow, randomCol);
+                Location location = map.getLocationAt(0,0);
 
                 if (location.getLocationType() == locDart) {
                     location.setItem(item);
@@ -130,6 +134,8 @@ public class GameControl {
         }
     }
 
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
     public static List<Item> createItemList() {
 
         List<Item> backpackItem = new ArrayList<>();

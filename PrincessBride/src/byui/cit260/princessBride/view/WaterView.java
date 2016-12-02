@@ -9,20 +9,19 @@ package byui.cit260.princessBride.view;
  *
  * @author Gina Udy
  */
-public class BackpackView extends View {
-
-    public BackpackView() {
-    this.console.println("\n *** BackbackMenuView() function called *** ");
+public class WaterView extends View{
+    public WaterView() {
+    this.console.println("\n *** WaterView() function called *** ");
     }
     
     @Override
     public void display() {
-        this.console.println("\n *** BackpackMenuView display() function called *** ");
+        this.console.println("\n *** WaterView display() function called *** ");
     }
 
     @Override
     public boolean doAction(String value) {
-        this.console.println("\n *** BackpackMenuView doAction() function called *** ");
+        this.console.println("\n *** WaterView doAction() function called *** ");
         return false;
     }
 }
