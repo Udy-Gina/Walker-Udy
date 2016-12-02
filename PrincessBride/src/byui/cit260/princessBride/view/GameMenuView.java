@@ -41,8 +41,9 @@ public class GameMenuView extends View {
                 + "\n    S - move South               "
                 + "\n    W - move West                "
                 + "\n    G - save current Game        "
-                + "\n    H - Help menu                "
                 + "\n    L - Look around              "
+                + "\n    H - Help menu                "
+                + "\n    M - Map report               "
                 + "\n    X - eXit to main menu        "
                 + "\n=================================");
     }
@@ -59,7 +60,7 @@ public class GameMenuView extends View {
                 case 'B': // List Backpack Inventory
                     this.showBackpack();
                     break;
-                case 'I': // Inventory report
+                case 'I': // Inventory Report
                     this.showCurrentInventory();
                     break;
                 case 'T': // Take Item
@@ -80,17 +81,20 @@ public class GameMenuView extends View {
                 case 'W':
                     this.moveWest();
                     break;
+                case 'G':// Save Current Game
+                    this.saveCurrentGame();
+                    break;
                 case 'L': // Look Around
                     this.lookAround();
                     break;
                 case 'H':// Help Menu
                     this.HelpMenuView();
                     break;
+                case 'M':// Map Report
+                    this.createMapReport();
+                    break;
                 case 'X':// Exit Game
                     return true;
-                case 'G':// Save Current Game
-                    this.saveCurrentGame();
-                    break;
                 default:
                     ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Please Try Again ***");
             }
@@ -149,8 +153,7 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
     }
-
-// showCurrentInventory needs some help-------------------------------------------------------------------------------- 
+    
     // Create report to show the player which items are in their inventory
     public void showCurrentInventory() {
         //create BufferedReader object for input file
@@ -173,7 +176,6 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
         }
     }
-//------------------------------------------------------------------------------------------------------------------
 
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
@@ -292,7 +294,37 @@ public class GameMenuView extends View {
     private void lookAround() {
         this.console.println("***lookAround function called****");
     }
+    
+    
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // TODO: Gina is creating map report here for W12 Individual Assignment
+    
+    public void createMapReport() {
+        //create BufferedReader object for input file
+        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
+        try {
+            String inventoryList = "myReport.txt";
+            PrintWriter out = new PrintWriter(inventoryList);
+            out.println("\n\n Inventory List");
+            //print the name, description and quantity of each item
+            out.printf("%n%30s%30s%30s", "Name", "Description", "Quantity");
+            out.printf("%n%30s%30s%30s", "-------------------", "-------------------", "----------");
+            for (Item item : currentBackpack) {
+                out.printf("%n%20s%30s%30d" // 5d means output as an integer
+                        , item.getItemName(), item.getItemDescription(), item.getItemQuantity());
+            }
+            out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
+            out.flush();
 
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
+        }
+    }
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    
     private void saveCurrentGame() {
         this.console.println("\nSave game as: ");
 
