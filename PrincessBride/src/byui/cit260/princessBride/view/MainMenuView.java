@@ -25,7 +25,7 @@ public class MainMenuView extends View {
                 + "\n      L - Load saved game        "
                 + "\n      S - Save current game      "
                 + "\n      H - Help menu              "
-                + "\n      C - Creator's Report       "
+                + "\n      C - Creator's report       "
                 + "\n      Q - Quit                   "
                 + "\n=================================");
     }
