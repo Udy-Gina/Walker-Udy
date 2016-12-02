@@ -157,8 +157,8 @@ public class GameMenuView extends View {
     // Create report to show the player which items are in their inventory
     public void showCurrentInventory(ArrayList<Item> currentBackpack, String inventoryList) {
         //create BufferedReader object for input file
-        try 
-            (PrintWriter out = new PrintWriter(inventoryList)) {
+        try {
+            PrintWriter out = new PrintWriter(inventoryList) 
         out.println("\n\n Inventory List");
         //print the name, description and quantity of each item
         out.printf("%n%20s%-30s%5s", "Name", "Description", "Quantity");
