@@ -101,7 +101,7 @@ public class MainMenuView extends View {
 
     private void GameCreators() {
         try {
-            String filePath = "Created by:";
+            String filePath = "Created by.txt";
             PrintWriter output = new PrintWriter(filePath);
 
             output.println("We created this game for you to enjoy!");
