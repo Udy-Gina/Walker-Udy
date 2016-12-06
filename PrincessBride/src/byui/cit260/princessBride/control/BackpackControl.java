@@ -68,7 +68,7 @@ public class BackpackControl {
                 
                 if (location.getLocationType() == locDart) {
                     // Need to loop through List<> to find potion? 
-                    // Need to .setItem in the POTION locationType
+                    // Need to .setItem in the DART locationType
                     .setItem();
                     placed = true;
                 } else if (location.getLocationType() == locPotion) {
@@ -78,7 +78,7 @@ public class BackpackControl {
                     placed = true;
                 } else if (location.getLocationType() == locWater) {
                     // Need to loop through List<> to find potion? 
-                    // Need to .setItem in the POTION locationType 
+                    // Need to .setItem in the WATER locationType 
                     .setItem(item);
                     placed = true;
                 }
