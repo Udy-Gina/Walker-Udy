@@ -13,11 +13,27 @@ import java.io.Serializable;
  */
 public class Backpack implements Serializable {
 
-    public Backpack() {
-    }
+    private Item item;
+    private Location location;
 
     //public void createBackpackList() {
     //   this.console.println("\n *** init() function called ***");
     //}
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+        
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
 }

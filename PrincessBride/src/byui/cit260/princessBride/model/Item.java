@@ -15,19 +15,9 @@ import java.util.Objects;
 public class Item implements Serializable{
     
     //class instance variables 
-    private String itemName;
     private String itemDescription; 
-    private int itemQuantity; 
-
+    
     public Item() {
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
     }
 
     public String getItemDescription() {
@@ -38,20 +28,10 @@ public class Item implements Serializable{
         this.itemDescription = itemDescription;
     }
 
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    public void setItemQuantity(int itemQuantity) {
-        this.itemQuantity = itemQuantity;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.itemName);
         hash = 97 * hash + Objects.hashCode(this.itemDescription);
-        hash = 97 * hash + this.itemQuantity;
         return hash;
     }
 
@@ -67,21 +47,12 @@ public class Item implements Serializable{
             return false;
         }
         final Item other = (Item) obj;
-        if (this.itemQuantity != other.itemQuantity) {
-            return false;
-        }
-        if (!Objects.equals(this.itemName, other.itemName)) {
-            return false;
-        }
-        if (!Objects.equals(this.itemDescription, other.itemDescription)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.itemDescription, other.itemDescription);
     }
 
     @Override
     public String toString() {
-        return "Item{" + "itemName=" + itemName + ", itemDescription=" + itemDescription + ", itemQuantity=" + itemQuantity + '}';
+        return "Item{" + "itemDescription=" + itemDescription + '}';
     }
  
 }

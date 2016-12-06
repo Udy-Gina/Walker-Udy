@@ -69,9 +69,9 @@ public class GameMenuView extends View {
                 case 'T': // Take Item
                     this.takeItemFromLocation();
                     break;
-                case 'U': //Use Item
-                    this.useItemInBackpack();
-                    break;
+                //case 'U': //Use Item
+                //    this.useItemInBackpack();
+                //    break;
                 case 'N':
                     this.moveNorth();
                     break;
@@ -166,11 +166,11 @@ public class GameMenuView extends View {
             PrintWriter out = new PrintWriter(inventoryList);
             out.println("\n\n Inventory List");
             //print the name, description and quantity of each item
-            out.printf("%n%30s%30s%30s", "Name", "Description", "Quantity");
-            out.printf("%n%30s%30s%30s", "-------------------", "-------------------", "----------");
+            out.printf("%n%30s", "Item Description");
+            out.printf("%n%30s", "--------------------------------");
             for (Item item : currentBackpack) {
-                out.printf("%n%20s%30s%30d" // 5d means output as an integer
-                        , item.getItemName(), item.getItemDescription(), item.getItemQuantity());
+                out.printf("%n%30s" 
+                        , item.getItemDescription());
             }
             out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
             out.flush();
@@ -198,7 +198,7 @@ public class GameMenuView extends View {
     }
 
     // Pick up an item and put it in backpack
-    private void useItemInBackpack() {
+    /*private void useItemInBackpack() {
 
         Location currentLocation = PrincessBride.getPlayer().getLocation();
 
@@ -212,7 +212,7 @@ public class GameMenuView extends View {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "There is nothing here.");
         }
-    }
+    } */
 
     private void moveNorth() {
         MovementControl mc = new MovementControl();

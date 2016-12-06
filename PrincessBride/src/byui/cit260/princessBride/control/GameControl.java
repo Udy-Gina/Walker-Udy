@@ -5,12 +5,8 @@
  */
 package byui.cit260.princessBride.control;
 
-import static byui.cit260.princessBride.control.GameControl.createItemList;
 import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Game;
-import byui.cit260.princessBride.model.Item;
-import byui.cit260.princessBride.model.Location;
-import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.view.ErrorView;
@@ -18,9 +14,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import princessBride.PrincessBride;
 
 /**
@@ -98,9 +91,10 @@ public class GameControl {
         }
     }
 
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
-    // TODO  Need to get this working (assign items to ENUM LocationTypes for items
+    ////////////////////////////////////////////////////////////////////////////
+    // The functions below have been moved to the BackpackControl() - will    //
+    // delete once the function is working correctly                          //
+    //////////////////////////////////////////////////////////////////////////// 
     
     /* public static void assignItemsToMap(Map map) {
 
@@ -132,10 +126,8 @@ public class GameControl {
                 }
             }
         }
-    } */
+    } 
 
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
     public static List<Item> createItemList() {
 
         List<Item> backpackItem = new ArrayList<>();
@@ -160,6 +152,6 @@ public class GameControl {
 
         return backpackItem;
 
-    }
+    } */
 
 }

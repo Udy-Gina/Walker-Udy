@@ -21,6 +21,7 @@ public class Location implements Serializable {
     private LocationType locationType;
     private boolean visited;
     private Item item;
+    private Backpack backpack;
 
     public Location() {
     }
@@ -29,6 +30,14 @@ public class Location implements Serializable {
         return description;
     }
 
+    public Backpack getBackpack() {
+        return backpack;
+    }
+
+    public void setBackpack(Backpack backpack) {
+        this.backpack = backpack;
+    }
+    
     public void setDescription(String description) {
         this.description = description;
     }
