@@ -27,7 +27,7 @@ public class DangerControl {
 
     public boolean checkLightningSand(double input, double distance){
 
-        return input != distance;
+        return (int)input == (int)distance;
     }
 
     public double calcRodentSize(double length, double input) throws DangerControlException {

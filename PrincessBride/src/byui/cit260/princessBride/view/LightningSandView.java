@@ -85,9 +85,11 @@ public class LightningSandView extends View {
         //return answer
         try {
             double actualAnswer = dc.calcLightningSand(diameter, input);
+            return dc.checkLightningSand(input, actualAnswer);
         } catch (DangerControlException e)  {
             ErrorView.display(this.getClass().getName(), "\nInvalid: Your answer must be greater than zero");
         }
-        return true;
+        
+        return false;
     }
 }
