@@ -187,9 +187,9 @@ public class GameMenuView extends View {
 
         try {
             BackpackControl bc = new BackpackControl();
-            bc.addItemToBackpack();
+            Item picked = bc.addItemToBackpack();
             this.console.println("You found a "
-                    + currentLocation.getItem().getItemDescription()
+                    + picked.getItemDescription()
                     + ".  It will be added to your backpack.");
             currentLocation.setItem(null);
         } catch (Exception e) {

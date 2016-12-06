@@ -37,53 +37,22 @@ public class BackpackControl {
     }
     
     
-    
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // NEED TO FIGURE OUT HOW TO ASSIGN SPECIFIC ITEMS TO SPECIFIC LOCATION   //
-    // TYPES...A WATER TO A WATER LOCATION, A POTION TO A POTION LOCATION, ETC./
-    ////////////////////////////////////////////////////////////////////////////
-       
-    public boolean addItemToBackpack() throws BackpackControlException {
-        
-        List<Item> items = createItemList();
+    public Item addItemToBackpack() throws BackpackControlException {
         
         Location location = PrincessBride.getCurrentGame().getPlayer().getLocation();
         LocationType locationType = PrincessBride.getCurrentGame().getPlayer().getLocation().getLocationType();
-        LocationType locDart = LocationType.DART;
-        LocationType locPotion = LocationType.POTION;
-        LocationType locWater = LocationType.WATER;
         
-        // I'M NOT SURE IF I NEED THESE...
-        // Map map = PrincessBride.getCurrentGame().getMap();
-        // Item backpack = PrincessBride.getCurrentGame().getPlayer().getBackpack()
-        // int locationRow = PrincessBride.getCurrentGame().getPlayer().getLocation().getRow();
-        // int locationCol = PrincessBride.getCurrentGame().getPlayer().getLocation().getCol();
-        
-        for (Item item : items) {
-            boolean placed = false;
-            while (!placed) {
-                
-                
-                
-                if (location.getLocationType() == locDart) {
-                    // Need to loop through List<> to find potion? 
-                    // Need to .setItem in the DART locationType
-                    .setItem();
-                    placed = true;
-                } else if (location.getLocationType() == locPotion) {
-                    // Need to loop through List<> to find potion? 
-                    // Need to .setItem in the POTION locationType
-                    .setItem();
-                    placed = true;
-                } else if (location.getLocationType() == locWater) {
-                    // Need to loop through List<> to find potion? 
-                    // Need to .setItem in the WATER locationType 
-                    .setItem(item);
-                    placed = true;
-                }
-            }
+        if(location.getItem() == null) {
+            throw new BackpackControlException("No item here");
         }
+        
+        PrincessBride.getCurrentGame().getPlayer().addItemToBackpack(location.getItem());
+        
+        Item rtn = location.getItem();
+        
+        location.setItem(null);
+        
+        return rtn;
     }       
 
     ////////////////////////////////////////////////////////////////////////////

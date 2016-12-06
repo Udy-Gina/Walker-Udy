@@ -47,6 +47,44 @@ public class Map implements Serializable {
             }
 
         }
+        
+        boolean dartExists = false;
+        boolean potionExists = false;
+        boolean waterExists = false;
+        
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                if(matrix[row][col].getLocationType() == LocationType.DART) {
+                    dartExists = true;
+                }
+                if(matrix[row][col].getLocationType() == LocationType.POTION) {
+                    dartExists = true;
+                }
+                if(matrix[row][col].getLocationType() == LocationType.WATER) {
+                    dartExists = true;
+                }
+            }
+        }
+        
+        if(!dartExists) {
+            matrix[rand.nextInt(ROWS)][rand.nextInt(COLUMNS)].setLocationType(LocationType.DART);
+        }
+        while(!potionExists) {
+            int row = rand.nextInt(ROWS);
+            int col = rand.nextInt(COLUMNS);
+            if(matrix[row][col].getLocationType() != LocationType.DART) {
+                matrix[row][col].setLocationType(LocationType.POTION);
+                potionExists = true;
+            }
+        }
+        while(!waterExists) {
+            int row = rand.nextInt(ROWS);
+            int col = rand.nextInt(COLUMNS);
+            if(!(matrix[row][col].getLocationType() == LocationType.DART || matrix[row][col].getLocationType() == LocationType.POTION)) {
+                matrix[row][col].setLocationType(LocationType.WATER);
+                waterExists = true;
+            }
+        }
     }
 
     public Location getLocationAt(int row, int col)  {

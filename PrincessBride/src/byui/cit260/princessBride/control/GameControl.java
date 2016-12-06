@@ -7,6 +7,9 @@ package byui.cit260.princessBride.control;
 
 import byui.cit260.princessBride.exceptions.GameControlException;
 import byui.cit260.princessBride.model.Game;
+import byui.cit260.princessBride.model.Item;
+import byui.cit260.princessBride.model.Location;
+import byui.cit260.princessBride.model.LocationType;
 import byui.cit260.princessBride.model.Map;
 import byui.cit260.princessBride.model.Player;
 import byui.cit260.princessBride.view.ErrorView;
@@ -14,6 +17,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import princessBride.PrincessBride;
 
 /**
@@ -55,7 +61,7 @@ public class GameControl {
 
         currentGame.setMap(map);
 
-        //assignItemsToMap(map);
+        assignItemsToMap(map);
 
     }
 
@@ -96,7 +102,7 @@ public class GameControl {
     // delete once the function is working correctly                          //
     //////////////////////////////////////////////////////////////////////////// 
     
-    /* public static void assignItemsToMap(Map map) {
+    public static void assignItemsToMap(Map map) {
 
         List<Item> items = createItemList();
 
@@ -112,15 +118,15 @@ public class GameControl {
                 int randomRow = rand.nextInt(Map.ROWS);
                 int randomCol = rand.nextInt(Map.COLUMNS);
 
-                Location location = map.getLocationAt(0,0);
+                Location location = map.getLocationAt(randomRow, randomCol);
 
-                if (location.getLocationType() == locDart) {
+                if (location.getLocationType() == locDart && location.getItem() == null) {
                     location.setItem(item);
                     placed = true;
-                } else if (location.getLocationType() == locPotion) {
+                } else if (location.getLocationType() == locPotion && location.getItem() == null) {
                     location.setItem(item);
                     placed = true;
-                } else if (location.getLocationType() == locWater) {
+                } else if (location.getLocationType() == locWater && location.getItem() == null) {
                     location.setItem(item);
                     placed = true;
                 }
@@ -134,24 +140,24 @@ public class GameControl {
 
         Item dart = new Item();
         dart.setItemDescription("dart");
-        dart.setItemName("Tranquilizer Dart");
-        dart.setItemQuantity(1);
+//        dart.setItemName("Tranquilizer Dart");
+//        dart.setItemQuantity(1);
         backpackItem.add(dart);
 
         Item potion = new Item();
         potion.setItemDescription("healing potion");
-        potion.setItemName("Healing Potion");
-        potion.setItemQuantity(1);
+//        potion.setItemName("Healing Potion");
+//        potion.setItemQuantity(1);
         backpackItem.add(potion);
 
         Item water = new Item();
         water.setItemDescription("bucket of water");
-        water.setItemName("Bucket of Water");
-        water.setItemQuantity(1);
+//        water.setItemName("Bucket of Water");
+//        water.setItemQuantity(1);
         backpackItem.add(water);
 
         return backpackItem;
 
-    } */
+    }
 
 }
