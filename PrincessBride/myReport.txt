@@ -1,10 +1,10 @@
 
 
- Inventory List
 
-              Item Description
---------------------------------
-               bucket of water
+
+        Items in your backpack
+        ----------------------
+
 
 
      Now get out there and conquer the Fire Swamp!

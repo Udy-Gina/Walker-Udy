@@ -162,14 +162,14 @@ public class GameMenuView extends View {
         try {
             String inventoryList = "myReport.txt";
             PrintWriter out = new PrintWriter(inventoryList);
-            out.println("\n\n Inventory List");
+            out.println("\n\n");
             //print the name, description and quantity of each item
-            out.printf("%n%30s", "Item Description");
-            out.printf("%n%30s", "--------------------------------");
+            out.printf("%n%30s", "Items in your backpack");
+            out.printf("%n%30s", "----------------------");
             for (Item item : currentBackpack) {
                 out.printf("%n%30s", item.getItemDescription());
             }
-            out.printf("\n %n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
+            out.printf("\n%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
             out.flush();
 
         } catch (Exception e) {
