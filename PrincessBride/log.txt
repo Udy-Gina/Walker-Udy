@@ -1,11 +1,3 @@
 byui.cit260.princessBride.view.PotionView - 
 *** Invalid selection *** Try again ***
 byui.cit260.princessBride.view.PotionView -  *** Not sure what this should say. ***
-byui.cit260.princessBride.view.GameMenuView - 
-*** Invalid Selection *** Please Try Again ***
-byui.cit260.princessBride.view.GameMenuView - There is nothing here.
-byui.cit260.princessBride.view.GameMenuView - 
-*** Invalid Selection *** Please Try Again ***
-byui.cit260.princessBride.view.PotionView - 
-*** Invalid selection *** Try again ***
-byui.cit260.princessBride.view.PotionView -  *** Not sure what this should say. ***

@@ -2,8 +2,9 @@
 
  Inventory List
 
-                          Name                   Description                      Quantity
-           -------------------           -------------------                    ----------
+              Item Description
+--------------------------------
+               bucket of water
 
 
      Now get out there and conquer the Fire Swamp!

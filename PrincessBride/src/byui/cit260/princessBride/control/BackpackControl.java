@@ -19,47 +19,36 @@ import princessBride.PrincessBride;
  */
 public class BackpackControl {
 
-    List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
+    public boolean displayBackpack() throws BackpackControlException {
 
-    public void displayBackpack() throws BackpackControlException {
+        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
 
-        /*for (currentBackpack = 0; currentBackpack < 10; currentBackpack++) {
-            String Backpack = currentBackpack.toString();
-            if (currentBackpack != null) {
-                return true;
-            } else {
-                throw new BackpackControlException("\nYour backpack is empty.");
-            }
-
-        } return false; */
-        System.out.println("\n *** currentBackpack() function called *** ");
-
+        return currentBackpack != null;
     }
-    
-    
+
+
     public Item addItemToBackpack() throws BackpackControlException {
-        
+
         Location location = PrincessBride.getCurrentGame().getPlayer().getLocation();
-        LocationType locationType = PrincessBride.getCurrentGame().getPlayer().getLocation().getLocationType();
-        
-        if(location.getItem() == null) {
-            throw new BackpackControlException("No item here");
+        //LocationType locationType = PrincessBride.getCurrentGame().getPlayer().getLocation().getLocationType();
+
+        if (location.getItem() == null) {
+            throw new BackpackControlException("There is nothing here.");
         }
-        
+
         PrincessBride.getCurrentGame().getPlayer().addItemToBackpack(location.getItem());
-        
+
         Item rtn = location.getItem();
-        
+
         location.setItem(null);
-        
+
         return rtn;
-    }       
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     /// THIS IS WHAT THE CODE WAS PRIOR TO MAKING THE ITEM LOCATIONS PART OF ///
     /// THE LOCATIONTYPE ENUM (IT WOULD ASSIGN AN ITEM TO RANDOM LOCATIONS   ///
     ////////////////////////////////////////////////////////////////////////////
-    
     /*public boolean addItemToBackpack() throws BackpackControlException {
         
         Location currentLocation = PrincessBride.getPlayer().getLocation();
@@ -70,8 +59,7 @@ public class BackpackControl {
         } else {
             throw new BackpackControlException("\nThere is nothing here.");
         }
-    }*/    
-    
+    }*/
     public static List<Item> createItemList() {
 
         List<Item> backpackItem = new ArrayList<>();
@@ -92,7 +80,6 @@ public class BackpackControl {
 
     }
 
-    
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //TODO Remove items from the backpack list when used in a danger
     public boolean removeItemFromBackpack() throws BackpackControlException {

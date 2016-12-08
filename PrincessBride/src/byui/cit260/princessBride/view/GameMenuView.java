@@ -147,9 +147,7 @@ public class GameMenuView extends View {
         try {
             BackpackControl bc = new BackpackControl();
             bc.displayBackpack();
-            this.console.println("\nYou have " + "currentBackpackQuantity"
-                    + " items in your backpack."
-                    + "\nThe items are: "
+            this.console.println("\nThe items in your backpack are:"
                     + currentBackpack
                     + ".");
         } catch (Exception e) {
@@ -169,8 +167,7 @@ public class GameMenuView extends View {
             out.printf("%n%30s", "Item Description");
             out.printf("%n%30s", "--------------------------------");
             for (Item item : currentBackpack) {
-                out.printf("%n%30s" 
-                        , item.getItemDescription());
+                out.printf("%n%30s", item.getItemDescription());
             }
             out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
             out.flush();
