@@ -60,7 +60,7 @@ public class DangerControl {
 
     public boolean checkFlameSpurt(double input, double volume) {
 
-        return input != volume;
+        return (int) input == (int) volume;
     }
 
 }

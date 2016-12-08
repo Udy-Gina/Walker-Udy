@@ -1,3 +1,11 @@
+byui.cit260.princessBride.view.LightningSandView - Oh no!  You fell in.
+byui.cit260.princessBride.view.PotionView - 
+*** Invalid selection *** Try again ***
+byui.cit260.princessBride.view.PotionView -  *** Not sure what this should say. ***
+byui.cit260.princessBride.view.FlameSpurtView - You are incorrect!  You will now perish by fire!
+byui.cit260.princessBride.view.PotionView - 
+*** Invalid selection *** Try again ***
+byui.cit260.princessBride.view.PotionView -  *** Not sure what this should say. ***
 byui.cit260.princessBride.view.PotionView - 
 *** Invalid selection *** Try again ***
 byui.cit260.princessBride.view.PotionView -  *** Not sure what this should say. ***

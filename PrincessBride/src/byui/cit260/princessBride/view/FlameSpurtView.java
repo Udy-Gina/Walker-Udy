@@ -90,10 +90,11 @@ public class FlameSpurtView extends View {
         //return answer
         try {
             double actualAnswer = dc.calcFlameSpurt(length, width, height, input);
+            return dc.checkFlameSpurt(input, actualAnswer);
         } catch (DangerControlException e) {
             ErrorView.display(this.getClass().getName(), "\nInvalid: Your answer must be greater than zero.");
         }
-        return true;
+        return false;
     }
 
 }
