@@ -8,7 +8,6 @@ package byui.cit260.princessBride.control;
 import byui.cit260.princessBride.exceptions.BackpackControlException;
 import byui.cit260.princessBride.model.Item;
 import byui.cit260.princessBride.model.Location;
-import byui.cit260.princessBride.model.LocationType;
 import java.util.ArrayList;
 import java.util.List;
 import princessBride.PrincessBride;
@@ -18,14 +17,6 @@ import princessBride.PrincessBride;
  * @author Gina Udy
  */
 public class BackpackControl {
-
-    public boolean displayBackpack() throws BackpackControlException {
-
-        List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
-
-        return currentBackpack != null;
-    }
-
 
     public Item addItemToBackpack() throws BackpackControlException {
 
@@ -45,21 +36,6 @@ public class BackpackControl {
         return rtn;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    /// THIS IS WHAT THE CODE WAS PRIOR TO MAKING THE ITEM LOCATIONS PART OF ///
-    /// THE LOCATIONTYPE ENUM (IT WOULD ASSIGN AN ITEM TO RANDOM LOCATIONS   ///
-    ////////////////////////////////////////////////////////////////////////////
-    /*public boolean addItemToBackpack() throws BackpackControlException {
-        
-        Location currentLocation = PrincessBride.getPlayer().getLocation();
-
-        if (currentLocation.getItem() != null) {
-            PrincessBride.getPlayer().addItemToBackpack(currentLocation.getItem());
-            return true;
-        } else {
-            throw new BackpackControlException("\nThere is nothing here.");
-        }
-    }*/
     public static List<Item> createItemList() {
 
         List<Item> backpackItem = new ArrayList<>();

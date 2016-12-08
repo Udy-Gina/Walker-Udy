@@ -145,11 +145,9 @@ public class GameMenuView extends View {
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
 
         try {
-            BackpackControl bc = new BackpackControl();
-            bc.displayBackpack();
-            this.console.println("\nThe items in your backpack are:"
-                    + currentBackpack
-                    + ".");
+            for (Item item : currentBackpack) {
+                this.console.println("\nYour backpack contains the following item(s): " + item.getItemDescription());
+            }
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
         }
