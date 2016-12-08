@@ -169,7 +169,7 @@ public class GameMenuView extends View {
             for (Item item : currentBackpack) {
                 out.printf("%n%30s", item.getItemDescription());
             }
-            out.printf("%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
+            out.printf("\n %n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
             out.flush();
 
         } catch (Exception e) {
