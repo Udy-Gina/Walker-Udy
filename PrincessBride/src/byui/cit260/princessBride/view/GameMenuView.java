@@ -142,14 +142,25 @@ public class GameMenuView extends View {
     // Show the player what they have in their backpack
     private void showBackpack() {
 
+        //create BufferedReader object for input file
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
-
         try {
+            String inventoryList = "myReport.txt";
+            PrintWriter out = new PrintWriter(System.out);
+            
+            out.println("\n\n");
+            //print the name, description and quantity of each item
+            out.printf("%n%-30s", "=================================");
+            out.printf("%n%-30s", "      Items in your backpack     ");
+            out.printf("%n%-30s", "=================================");
             for (Item item : currentBackpack) {
-                this.console.println("\nYour backpack contains the following item(s): " + item.getItemDescription());
+                out.printf("%n%-30s", item.getItemDescription());
             }
+            out.printf("\n%n%n%n%50s", "Now get out there and conquer the Fire Swamp!");
+            out.flush();
+
         } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(), "Your backpack is empty.");
+            ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
         }
     }
 
@@ -159,8 +170,7 @@ public class GameMenuView extends View {
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
         try {
             String inventoryList = "myReport.txt";
-            PrintWriter out = new PrintWriter(System.out);
-            // PrintWriter out = new PrintWriter(inventoryList); //use this code to print to myReport.txt
+            PrintWriter out = new PrintWriter(inventoryList); //use this code to print to myReport.txt
 
             out.println("\n\n");
             //print the name, description and quantity of each item
@@ -175,8 +185,9 @@ public class GameMenuView extends View {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
         }
+        this.console.println("Your inventory report has been saved as myReport.txt in your system files.");
     }
-
+   
     // Pick up an item and put it in backpack
     private void takeItemFromLocation() {
 

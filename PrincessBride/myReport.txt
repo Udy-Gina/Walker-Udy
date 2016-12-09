@@ -2,8 +2,9 @@
 
 
 
-        Items in your backpack
-        ----------------------
+Items in your backpack        
+----------------------        
+bucket of water               
 
 
 

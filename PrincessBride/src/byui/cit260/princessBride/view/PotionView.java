@@ -18,10 +18,16 @@ public final class PotionView extends View {
     public void display() {
         
         // display problem
-        this.console.println("You have found a healing potion.  It may save"
-                + "\nyour life if you come across the dreaded flame spurt."
-                + "\nTo pick it up, press P.  To leave it, press X.");
-
+        this.console.println("\n"
+            + "\n================================="
+            + "\n  You have found a useful item.  "
+            + "\n  It may save your life  if you  "
+            + "\n  encounter one  of the dangers  "
+            + "\n  of the fire swamp! Press T if  "
+            + "\n  you want to put the  item in   "
+            + "\n  your backpack.                 "
+            + "\n=================================");
+        
         //get input
         String input = getInput();
 
