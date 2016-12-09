@@ -159,7 +159,9 @@ public class GameMenuView extends View {
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
         try {
             String inventoryList = "myReport.txt";
-            PrintWriter out = new PrintWriter(inventoryList);
+            PrintWriter out = new PrintWriter(System.out);
+            // PrintWriter out = new PrintWriter(inventoryList); //use this code to print to myReport.txt
+
             out.println("\n\n");
             //print the name, description and quantity of each item
             out.printf("%n%-30s", "Items in your backpack");
