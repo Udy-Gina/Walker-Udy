@@ -78,6 +78,7 @@ public class LightningSandView extends View {
 
     @Override
     public String getInput() {
+        
         String input = " ";  // value to be returned
         boolean validInput = false;    // initialize to not valid
 

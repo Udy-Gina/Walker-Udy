@@ -43,7 +43,7 @@ public class DangerControl {
 
     public boolean checkRodentSize(double input, double height) {
 
-        return input != height;
+        return (int) input == (int) height;
     }
 
     public double calcFlameSpurt(double length, double width, double height, double input) throws DangerControlException {

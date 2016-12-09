@@ -89,6 +89,7 @@ public class RodentSizeView extends View {
         //return answer
         try {
             double actualAnswer = dc.calcRodentSize(length, input); 
+            return dc.checkRodentSize(input, actualAnswer);
         } catch (DangerControlException e) {
             ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
         }
