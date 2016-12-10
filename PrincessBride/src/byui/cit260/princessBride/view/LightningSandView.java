@@ -5,12 +5,17 @@
  */
 package byui.cit260.princessBride.view;
 
+import byui.cit260.princessBride.control.BackpackControl;
 import byui.cit260.princessBride.control.DangerControl;
+import byui.cit260.princessBride.exceptions.BackpackControlException;
 import byui.cit260.princessBride.exceptions.DangerControlException;
+import byui.cit260.princessBride.model.Item;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import princessBride.PrincessBride;
 
 /**
  *
@@ -27,11 +32,15 @@ public class LightningSandView extends View {
         diameter = r.nextInt(5) + 5;
 
         // display problem
-        this.console.println("Uh-oh, the dreaded lightning sand.  This is terrible"
-                + "\nIf you don't think quickly, you will sink to your death."
-                + "\n"
-                + "\nThe diameter of the sand pit is " + diameter + "ft.  How far"
-                + "\nmust you walk around the lightning sand to get to safety?");
+        this.console.println("\n"
+                + "\n==========================================================================="
+                + "\n          OH NO!  YOU'VE ENCOUNTERED THE DREADED LIGHTNING SAND!!!         "
+                + "\n==========================================================================="
+                + "\n                                                                           "
+                + "\n   If you don't think quickly you will sink to your  death.  How far must  "
+                + "\n   you walk around the lightning sand pit to get to safety?  The diameter  "
+                + "\n   of the sand pit is " + diameter + "ft.                                  "
+                + "\n===========================================================================");
 
         //get input
         String input = getInput();
@@ -41,44 +50,51 @@ public class LightningSandView extends View {
 
         // present results
         if (isCorrect) {
-            this.console.println("Good job!  You made it across!");
+            this.console.println("Good job! You made it across!");
         } else {
-            //TODO  Check if player has a rope and then use it
-            ErrorView.display(this.getClass().getName(), "Oh no!  You fell in."
-            +"\n"
-+"\n.............://////////////////..........."
-+"\n.............#//............`//............"
-+"\n.............///............//#............"
-+"\n.............//............///............."
-+"\n............,//...........///.............."
-+"\n.............//...........///.............."
-+"\n............///..........#//..............."
-+"\n............//#..........//`..............."
-+"\n............//.........'///////////........"
-+"\n...........///................///.........."
-+"\n...........///.............:///............"
-+"\n..........;///////.......////.............."
-+"\n...............///.....`///................"
-+"\n...............///....`///................."
-+"\n..............;//.....///,................."
-+"\n..............//'...///;..................."
-+"\n.............#//...///'...................."
-+"\n.............///..///......................"
-+"\n.............//,.///#......................"
-+"\n............///////........................"
-+"\n...........;//////........................."
-+"\n..........#////............................"
-+"\n.........`///.............................."
-+"\n.........///..............................."
-+"\n........:/................................."
-+"\n......../.................................."
-);
+            BackpackControl bc = new BackpackControl();
+            try {
+                List<Item> backpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
+                bc.removeItemFromBackpack(backpack, "");
+            } catch (BackpackControlException bce) {
+                ErrorView.display(this.getClass().getName(), "Oh no!  You fell in!"
+                        + "\n"
+                        + "\n.............://////////////////..........."
+                        + "\n.............#//............`//............"
+                        + "\n.............///............//#............"
+                        + "\n.............//............///............."
+                        + "\n............,//...........///.............."
+                        + "\n.............//...........///.............."
+                        + "\n............///..........#//..............."
+                        + "\n............//#..........//`..............."
+                        + "\n............//.........'///////////........"
+                        + "\n...........///................///.........."
+                        + "\n...........///.............:///............"
+                        + "\n..........;///////.......////.............."
+                        + "\n...............///.....`///................"
+                        + "\n...............///....`///................."
+                        + "\n..............;//.....///,................."
+                        + "\n..............//'...///;..................."
+                        + "\n.............#//...///'...................."
+                        + "\n.............///..///......................"
+                        + "\n.............//,.///#......................"
+                        + "\n............///////........................"
+                        + "\n...........;//////........................."
+                        + "\n..........#////............................"
+                        + "\n.........`///.............................."
+                        + "\n.........///..............................."
+                        + "\n........:/................................."
+                        + "\n......../.................................."
+                );
+                LoseMenuView loseView = new LoseMenuView();
+                loseView.display();
+            }
         }
     }
 
     @Override
     public String getInput() {
-        
+
         String input = " ";  // value to be returned
         boolean validInput = false;    // initialize to not valid
 
@@ -103,11 +119,12 @@ public class LightningSandView extends View {
     }
 
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String value
+    ) {
 
         // convert string input into double
         double input = Double.parseDouble(value);
-        
+
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
 
@@ -115,10 +132,10 @@ public class LightningSandView extends View {
         try {
             double actualAnswer = dc.calcLightningSand(diameter, input);
             return dc.checkLightningSand(input, actualAnswer);
-        } catch (DangerControlException e)  {
+        } catch (DangerControlException e) {
             ErrorView.display(this.getClass().getName(), "\nInvalid: Your answer must be greater than zero");
         }
-        
+
         return false;
     }
 }
