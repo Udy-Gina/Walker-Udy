@@ -265,6 +265,7 @@ public class GameMenuView extends View {
     // Determines the next view based on the player's location
     private void determineNextView() {
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
+        Location itemLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
 
         try {
 

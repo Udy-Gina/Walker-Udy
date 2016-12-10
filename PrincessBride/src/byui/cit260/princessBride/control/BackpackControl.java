@@ -40,17 +40,29 @@ public class BackpackControl {
 
         List<Item> backpackItem = new ArrayList<>();
 
-        Item dart = new Item();
-        dart.setItemDescription("tranquilizer dart");
-        backpackItem.add(dart);
+        Item dart1 = new Item();
+        dart1.setItemDescription("Tranquilizer Dart");
+        backpackItem.add(dart1);
 
-        Item potion = new Item();
-        potion.setItemDescription("healing potion");
-        backpackItem.add(potion);
+        Item potion1 = new Item();
+        potion1.setItemDescription("Healing Potion");
+        backpackItem.add(potion1);
 
-        Item water = new Item();
-        water.setItemDescription("bucket of water");
-        backpackItem.add(water);
+        Item water1 = new Item();
+        water1.setItemDescription("Bucket of Water");
+        backpackItem.add(water1);
+        
+        Item dart2 = new Item();
+        dart2.setItemDescription("Tranquilizer Dart");
+        backpackItem.add(dart2);
+
+        Item potion2 = new Item();
+        potion2.setItemDescription("Healing Potion");
+        backpackItem.add(potion2);
+
+        Item water2 = new Item();
+        water2.setItemDescription("Bucket of Water");
+        backpackItem.add(water2);
 
         return backpackItem;
 
@@ -58,11 +70,14 @@ public class BackpackControl {
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //TODO Remove items from the backpack list when used in a danger
-    public boolean removeItemFromBackpack() throws BackpackControlException {
+    public int removeItemFromBackpack(List<Item> backpack, String itemDescription) throws BackpackControlException {
 
-        System.out.println("\n *** removeItemFromBackpack() function called ***");
-
-        return true;
+        for (Item item : backpack) {
+            if (item.getItemDescription().equals(itemDescription)) {
+                return backpack.indexOf(item);
+            }
+        }
+        throw new BackpackControlException("Item not found in backpack.");
     }
 
 }

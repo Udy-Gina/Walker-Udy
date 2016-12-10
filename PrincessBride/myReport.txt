@@ -4,7 +4,8 @@
 
 Items in your backpack        
 ----------------------        
-bucket of water               
+healing potion                
+dart                          
 
 
 

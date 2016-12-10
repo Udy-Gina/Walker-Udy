@@ -27,13 +27,19 @@ public class RodentSizeView extends View {
         length = r.nextInt(5) + 5;
 
         // display problem
-        this.console.println("\nAGH!  A Rodent of Unusual Size.  Your path is blocked."
-                + "\nYou must calculate how high must jump to clear this "
-                + "\ngiant rodent.  You must have six inches of clearance."
-                + "\nPlease answer carefully...you could get injured and die!"
-                + "\n"
-                + "\nThe length  of the rodent is " + length + "ft.  You know ROUS's are"
-                + "\nhalf as tall as they are long.  How high must you jump?");
+        this.console.println("\n"
+                + "\n==========================================================================="
+                + "\n                  AGH!!! IT'S A RODENT OF UNUSUAL SIZE!!!                  "
+                + "\n==========================================================================="
+                + "\n                                                                           "
+                + "\n   You must  jump  over the R.O.U.S. with 6 inches of  clearance in order  "
+                + "\n   to pass through safely.                                                 "
+                + "\n                                                                           "
+                + "\n   The rodent is " + length + "feet long. You know R.O.U.S.'s are half as  "
+                + "\n   tall as they are long.  How high must you jump?                         "
+                + "\n                                                                           "
+                + "\n===========================================================================");
+
         //get input
         String input = getInput();
 
@@ -45,9 +51,32 @@ public class RodentSizeView extends View {
             this.console.println("Good job!  You jumped over the vile rodent!");
         } else {
             //TODO  Check if player has a healing potion  and then use it
-            ErrorView.display(this.getClass().getName(), "\nOh no!  You tripped on the smelly  rodent.  The nasty thing bit you!"
-                    + "\nCheck your backpack to see if you have a healing potion!"
-                    + "\n\"If you don't...you're dead!");
+            ErrorView.display(this.getClass().getName(), "You guessed wrong!  Prepare to be eaten!!!"
+                    + "\n                                               "
+                    + "\n       INSERT PICTURE OF RODENT HERE:          "
+                    + "\n                                               "
+                    + "\n.............:................................."
+                    + "\n.............'......;.........................."
+                    + "\n............;'.....,;.........................."
+                    + "\n............''.....''.........................."
+                    + "\n............':....:;'.........................."
+                    + "\n..................';;....;....................."
+                    + "\n................;;:::;'..''.;.................."
+                    + "\n......'...,....:;:::::;..,,.'.....,............"
+                    + "\n.....';...;;...;::,,,::;....;;:..''............"
+                    + "\n.....';..;;;..;::,,,,,::;..;;;;.:':............"
+                    + "\n.........;:;,.;::,,,,,::;.;;::;;..............."
+                    + "\n........:;:::,::,,,,,,,::;:::::;..............."
+                    + "\n........;::,::::,,,,,,,,:::,,,::;.............."
+                    + "\n.......,::,,,,,,,,,,,,,,,,,,,,,:::............."
+                    + "\n.......::,,,,,,.............,,,,:::............"
+                    + "\n.......::,,,,,.....````.....,,,,::,............"
+                    + "\n.......::,,,,....````````....,,,::............."
+                    + "\n.......;::,,....``````````...,,,:;............."
+                    + "\n........;::,,...```    ```...,::;.............."
+                    + "\n.........;::,,,...``````...,,::;..............."
+                    + "\n..........;::::::,,,,,,,,:::::;................"
+                    + "\n............;::::::::::::::::..................");
         }
     }
 
@@ -82,13 +111,13 @@ public class RodentSizeView extends View {
 
         // convert string input into double
         double input = Double.parseDouble(value);
-        
+
         // create appropriate controller and evaluate answer
         DangerControl dc = new DangerControl();
 
         //return answer
         try {
-            double actualAnswer = dc.calcRodentSize(length, input); 
+            double actualAnswer = dc.calcRodentSize(length, input);
             return dc.checkRodentSize(input, actualAnswer);
         } catch (DangerControlException e) {
             ErrorView.display(this.getClass().getName(), "\nInvalid:  Your answer must be greater than zero");
