@@ -58,10 +58,12 @@ public class GameControl {
         map.init();
 
         player.setLocation(map.getLocationAt(0, 0));
-
+        
         currentGame.setMap(map);
 
         assignItemsToMap(map);
+        
+        
 
     }
 
@@ -101,10 +103,8 @@ public class GameControl {
 
         List<Item> items = createItemList();
 
-        LocationType locDart = LocationType.ITEM;
-        LocationType locPotion = LocationType.ITEM;
-        LocationType locWater = LocationType.ITEM;
-
+        LocationType locItem = LocationType.ITEM;
+        
         Random rand = new Random();
 
         for (Item item : items) {
@@ -115,17 +115,11 @@ public class GameControl {
 
                 Location location = map.getLocationAt(randomRow, randomCol);
 
-                if (location.getLocationType() == locDart && location.getItem() == null) {
-                    location.setItem(item);
-                    placed = true;
-                } else if (location.getLocationType() == locPotion && location.getItem() == null) {
-                    location.setItem(item);
-                    placed = true;
-                } else if (location.getLocationType() == locWater && location.getItem() == null) {
+                if (location.getLocationType() == locItem && location.getItem() == null) {
                     location.setItem(item);
                     placed = true;
                 }
-            }
+              }
         }
     } 
     
@@ -167,24 +161,30 @@ public class GameControl {
 
         List<Item> backpackItem = new ArrayList<>();
 
-        Item dart = new Item();
-        dart.setItemDescription("dart");
-//        dart.setItemName("Tranquilizer Dart");
-//        dart.setItemQuantity(1);
-        backpackItem.add(dart);
+        Item dart1 = new Item();
+        dart1.setItemDescription("dart");
+        backpackItem.add(dart1);
 
-        Item potion = new Item();
-        potion.setItemDescription("healing potion");
-//        potion.setItemName("Healing Potion");
-//        potion.setItemQuantity(1);
-        backpackItem.add(potion);
+        Item potion1 = new Item();
+        potion1.setItemDescription("healing potion");
+        backpackItem.add(potion1);
 
-        Item water = new Item();
-        water.setItemDescription("bucket of water");
-//        water.setItemName("Bucket of Water");
-//        water.setItemQuantity(1);
-        backpackItem.add(water);
+        Item water1 = new Item();
+        water1.setItemDescription("bucket of water");
+        backpackItem.add(water1);
+        
+        Item dart2 = new Item();
+        dart2.setItemDescription("dart");
+        backpackItem.add(dart2);
 
+        Item potion2 = new Item();
+        potion2.setItemDescription("healing potion");
+        backpackItem.add(potion2);
+
+        Item water2 = new Item();
+        water2.setItemDescription("bucket of water");
+        backpackItem.add(water2);
+        
         return backpackItem;
 
     }

@@ -296,7 +296,7 @@ public class GameMenuView extends View {
                 this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
                 currentLocation.setVisited(true);
             } */ else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
-                this.console.println("\nThere is nothing here.");
+                this.console.println("\n");
                 currentLocation.setVisited(true);
             }
         } catch (Exception e) {

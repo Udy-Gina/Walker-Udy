@@ -25,15 +25,15 @@ public class Player implements Serializable {
     public List<Item> getBackpack() {
         return backpack;
     }
-    
+
     public Player() {
         backpack = new ArrayList<>();
     }
-  
+
     public void addItemToBackpack(Item item) {
         backpack.add(item);
     }
-    
+
     public String getName() {
         return name;
     }
