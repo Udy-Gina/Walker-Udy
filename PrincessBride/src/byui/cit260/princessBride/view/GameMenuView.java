@@ -335,6 +335,7 @@ public class GameMenuView extends View {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+         this.console.println("Your Map report has been saved as myMap.txt in your system files.");
     }
     
     private void saveCurrentGame() {
