@@ -265,6 +265,7 @@ public class GameMenuView extends View {
     // Determines the next view based on the player's location
     private void determineNextView() {
         Location currentLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
+        Location itemLocation = PrincessBride.getCurrentGame().getPlayer().getLocation();
 
         try {
 
@@ -280,19 +281,16 @@ public class GameMenuView extends View {
                 LightningSandView lsv = new LightningSandView();
                 lsv.display();
                 currentLocation.setVisited(true);
-            } else if (currentLocation.getLocationType() == LocationType.DART && !currentLocation.getVisited()) {
-                DartView dv = new DartView();
-                dv.display();
+            } /*else if (currentLocation.getLocationType() == LocationType.DART && !currentLocation.getVisited()) {
+                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.WATER && !currentLocation.getVisited()) {
-                WaterView wv = new WaterView();
-                wv.display();
+                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
                 currentLocation.setVisited(true);
             } else if (currentLocation.getLocationType() == LocationType.POTION && !currentLocation.getVisited()) {
-                PotionView pv = new PotionView();
-                pv.display();
+                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
                 currentLocation.setVisited(true);
-            } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
+            } */ else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
                 this.console.println("\nThere is nothing here.");
                 currentLocation.setVisited(true);
             }
