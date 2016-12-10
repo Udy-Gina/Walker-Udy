@@ -48,9 +48,50 @@ public class Map implements Serializable {
 
         }
         
+        boolean itemExists = false;
+        
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                if(matrix[row][col].getLocationType() == LocationType.ITEM) {
+                    itemExists = true;
+                }
+            }
+        } 
+        
+            
+        if(!itemExists) {
+            matrix[rand.nextInt(ROWS)][rand.nextInt(COLUMNS)].setLocationType(LocationType.ITEM);
+            itemExists = true;
+        }
+    }
+
+    
+    
+    // THIS IS BROTHER G'S FIX FOR THE ITEM LOCATIONS...ENTIRE FUNCTION INTACT AND COMMENTED OUT //
+    /*public void init() {
+
+        Random rand = new Random();
+
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                int randLocation = rand.nextInt(LocationType.values().length);
+
+                Location location = new Location();
+                location.setCol(col);
+                location.setRow(row);
+                location.setVisited(false);
+
+                location.setLocationType(LocationType.values()[randLocation]);
+
+                matrix[row][col] = location;
+            }
+
+        }
+        
         boolean dartExists = false;
         boolean potionExists = false;
         boolean waterExists = false;
+        
         
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLUMNS; col++) {
@@ -64,8 +105,9 @@ public class Map implements Serializable {
                     dartExists = true;
                 }
             }
-        }
+        } 
         
+            
         if(!dartExists) {
             matrix[rand.nextInt(ROWS)][rand.nextInt(COLUMNS)].setLocationType(LocationType.DART);
         }
@@ -85,8 +127,8 @@ public class Map implements Serializable {
                 waterExists = true;
             }
         }
-    }
-
+    } */
+    
     public Location getLocationAt(int row, int col)  {
         return matrix[row][col];
     }

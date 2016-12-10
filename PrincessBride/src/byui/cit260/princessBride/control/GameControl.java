@@ -97,12 +97,41 @@ public class GameControl {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // The functions below have been moved to the BackpackControl() - will    //
-    // delete once the function is working correctly                          //
-    //////////////////////////////////////////////////////////////////////////// 
-    
     public static void assignItemsToMap(Map map) {
+
+        List<Item> items = createItemList();
+
+        LocationType locDart = LocationType.ITEM;
+        LocationType locPotion = LocationType.ITEM;
+        LocationType locWater = LocationType.ITEM;
+
+        Random rand = new Random();
+
+        for (Item item : items) {
+            boolean placed = false;
+            while (!placed) {
+                int randomRow = rand.nextInt(Map.ROWS);
+                int randomCol = rand.nextInt(Map.COLUMNS);
+
+                Location location = map.getLocationAt(randomRow, randomCol);
+
+                if (location.getLocationType() == locDart && location.getItem() == null) {
+                    location.setItem(item);
+                    placed = true;
+                } else if (location.getLocationType() == locPotion && location.getItem() == null) {
+                    location.setItem(item);
+                    placed = true;
+                } else if (location.getLocationType() == locWater && location.getItem() == null) {
+                    location.setItem(item);
+                    placed = true;
+                }
+            }
+        }
+    } 
+    
+    
+    // THIS IS BROTHER G'S FIX FOR THE ITEM LOCATIONS...ENTIRE FUNCTION INTACT AND COMMENTED OUT //
+    /* public static void assignItemsToMap(Map map) {
 
         List<Item> items = createItemList();
 
@@ -132,7 +161,7 @@ public class GameControl {
                 }
             }
         }
-    } 
+    } */
 
     public static List<Item> createItemList() {
 

@@ -10,5 +10,11 @@ package byui.cit260.princessBride.model;
  * @author Gina Udy
  */
 public enum LocationType {
-    NONE, FLAMESPURT, ROUS, LIGHTNINGSAND, DART, WATER, POTION
+    
+    // Commenting out the original ENUM until we know it's working...
+    //NONE, FLAMESPURT, ROUS, LIGHTNINGSAND, DART, WATER, POTION
+    
+
+    // Changed the item locations to just one ITEM location 
+    NONE, FLAMESPURT, ROUS, LIGHTNINGSAND, ITEM
 }

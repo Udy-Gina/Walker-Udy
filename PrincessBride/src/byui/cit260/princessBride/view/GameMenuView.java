@@ -87,9 +87,6 @@ public class GameMenuView extends View {
                 case 'G':// Save Current Game
                     this.saveCurrentGame();
                     break;
-                case 'L': // Look Around
-                    this.lookAround();
-                    break;
                 case 'H':// Help Menu
                     this.HelpMenuView();
                     break;
@@ -306,10 +303,6 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Error on input");
         }
 
-    }
-
-    private void lookAround() {
-        this.console.println("***lookAround function called****");
     }
 
     public void createMapReport() {

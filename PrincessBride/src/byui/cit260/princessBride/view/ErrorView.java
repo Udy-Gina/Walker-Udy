@@ -18,9 +18,9 @@ public class ErrorView {
     private static final PrintWriter logFile = PrincessBride.getLogFile();
 
     public static void display(String className, String errorMessage) {
-        errorFile.println("-----------------------------------"
+        errorFile.println("==========================================================================="
                 + "\nERROR: " + errorMessage
-                + "\n-----------------------------------");
+                + "\n===========================================================================");
 
         logFile.println(className + " - " + errorMessage);
         logFile.flush();
