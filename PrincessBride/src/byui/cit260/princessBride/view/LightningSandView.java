@@ -52,6 +52,37 @@ public class LightningSandView extends View {
         if (isCorrect) {
             this.console.println("Good job! You made it across!");
         } else {
+            //TODO  Check if player has a rope and then use it
+            ErrorView.display(this.getClass().getName(), "Oh no!  You fell in."
++"\n"
++"\n             ://////////////////           "
++"\n             #//            `//            "
++"\n             ///            //#            "
++"\n             //            ///             "
++"\n            ,//           ///              "
++"\n             //           ///              "
++"\n            ///          #//               "
++"\n            //#          //`               "
++"\n            //         '///////////        "
++"\n           ///                ///          "
++"\n           ///             :///            "
++"\n          ;///////       ////              "
++"\n               ///     `///                "
++"\n               ///    `///                 "
++"\n              ;//     ///,                 "
++"\n              //'   ///;                   "
++"\n             #//   ///'                    "
++"\n             ///  ///                      "
++"\n             //, ///#                      "
++"\n            ///////                        "
++"\n           ;//////                         "
++"\n          #////                            "
++"\n         `///                              "
++"\n         ///                               "
++"\n        :/                                 "
++"\n        /                                  "
+
+);
             BackpackControl bc = new BackpackControl();
             try {
                 List<Item> backpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();

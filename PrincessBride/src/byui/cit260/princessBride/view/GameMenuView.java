@@ -168,6 +168,11 @@ public class GameMenuView extends View {
     public void showCurrentInventory() {
         //create BufferedReader object for input file
         List<Item> currentBackpack = PrincessBride.getCurrentGame().getPlayer().getBackpack();
+        //------------------ new code to catch empty backpack
+        if ( currentBackpack == null)
+            System.out.printf("You've gotta pick something up first silly!");
+        else {
+            // ------------------------------------
         try {
             String inventoryList = "myReport.txt";
             PrintWriter out = new PrintWriter(inventoryList); //use this code to print to myReport.txt
@@ -186,6 +191,9 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(), "You've gotta pick something up first silly!");
         }
         this.console.println("Your inventory report has been saved as myReport.txt in your system files.");
+        // new code to catch empty backpack -----------------
+        }
+        // -------------------------------------
     }
    
     // Pick up an item and put it in backpack
@@ -333,6 +341,7 @@ public class GameMenuView extends View {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+         this.console.println("Your Map report has been saved as myMap.txt in your system files.");
     }
     
     private void saveCurrentGame() {
