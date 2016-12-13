@@ -19,7 +19,6 @@ public class Map implements Serializable {
     public static final int ROWS = 5;
     public static final int COLUMNS = 5;
     private Location[][] matrix = new Location[ROWS][COLUMNS];
-    private Location exit;
     
     public Map() { 
     }
@@ -131,14 +130,6 @@ public class Map implements Serializable {
 
     public void setMatrix(Location[][] matrix) {
         this.matrix = matrix;
-    }
-
-    public Location getExit() {
-        return exit;
-    }
-
-    public void setExit(Location exit) {
-        this.exit = exit;
     }
 
     @Override

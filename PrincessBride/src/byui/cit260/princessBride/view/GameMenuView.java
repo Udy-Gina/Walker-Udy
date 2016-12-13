@@ -286,16 +286,7 @@ public class GameMenuView extends View {
                 LightningSandView lsv = new LightningSandView();
                 lsv.display();
                 currentLocation.setVisited(true);
-            } /*else if (currentLocation.getLocationType() == LocationType.DART && !currentLocation.getVisited()) {
-                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
-                currentLocation.setVisited(true);
-            } else if (currentLocation.getLocationType() == LocationType.WATER && !currentLocation.getVisited()) {
-                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
-                currentLocation.setVisited(true);
-            } else if (currentLocation.getLocationType() == LocationType.POTION && !currentLocation.getVisited()) {
-                this.console.println("\n You have found a useful item.  Press 'T' to place in your backpack.");
-                currentLocation.setVisited(true);
-            } */ else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
+            } else if (currentLocation.getLocationType() == LocationType.NONE && !currentLocation.getVisited()) {
                 this.console.println("\n");
                 currentLocation.setVisited(true);
             }
